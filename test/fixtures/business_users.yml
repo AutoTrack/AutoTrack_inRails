@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_user_name: MyString
+  business_user_email: MyString
+  business_user_password: MyString
+  business_user_cap: 1
+
+two:
+  business_user_name: MyString
+  business_user_email: MyString
+  business_user_password: MyString
+  business_user_cap: 1

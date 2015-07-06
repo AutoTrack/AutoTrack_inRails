@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_user_id: 1
+  repair_order_id: 1
+  client_id: 1
+  invoice_url: MyString
+  invoice_status: MyText
+
+two:
+  business_user_id: 1
+  repair_order_id: 1
+  client_id: 1
+  invoice_url: MyString
+  invoice_status: MyText

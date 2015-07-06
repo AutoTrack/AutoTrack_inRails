@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_user_id: 1
+  employee_first_name: MyString
+  employee_last_name: MyString
+  employee_email: MyString
+  employee_password: MyString
+  employee_pin: MyString
+  employee_access_rights: MyString
+
+two:
+  business_user_id: 1
+  employee_first_name: MyString
+  employee_last_name: MyString
+  employee_email: MyString
+  employee_password: MyString
+  employee_pin: MyString
+  employee_access_rights: MyString
