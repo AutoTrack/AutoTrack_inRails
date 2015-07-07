@@ -7,7 +7,7 @@ class CreateRepairOrders < ActiveRecord::Migration
       t.string :repair_order_number
       t.integer :vehicle_id
       t.integer :repair_type_id
-
+      t.boolean :repair_status, default: false
       t.timestamps null: false
     end
   end
