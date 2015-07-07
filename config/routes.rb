@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root to: 'home#index'
   post 'business_user/register', to: 'business_user#register'
   get 'business_user/login', to: 'business_user#login'
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
