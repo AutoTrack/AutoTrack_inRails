@@ -8,7 +8,8 @@ class EmployeeUsersController < ApplicationController
                                        employee_password: passhash,
                                        employee_first_name: params[:employee_first_name],
                                        employee_last_name: params[:employee_last_name],
-                                       employee_access_rights: params[:employee_access_rights])
+                                       employee_access_rights: params[:employee_access_rights],
+                                       super_user: params[:super_user])
      if @employee_user.save
        # render json "register.json.jbuilder", status: :created
        render json: { employee_user: @employee_user.as_json(only: [:id, :employee_first_name,
@@ -20,7 +21,6 @@ class EmployeeUsersController < ApplicationController
          status: :unprocessable_entity
      end
   end
-
 
   def employee_login
     passhash = Digest::SHA1.hexdigest(params[:password])
