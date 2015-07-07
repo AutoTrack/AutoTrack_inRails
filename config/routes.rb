@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
   root to: 'home#index'
+  get 'business_user/index', to: 'business_users#index'
+  post 'business_user/register', to: 'business_users#business_register'
+  post 'business_user/login', to: 'business_users#business_login'
 
-  post 'business_user/register', to: 'business_user#register'
-  get 'business_user/login', to: 'business_user#login'
+  get 'employee_user/index', to: 'employee_users#index'
+  post 'employee_user/register', to: 'employee_users#employee_register'
+  post 'employee_user/login', to: 'employee_users#employee_login'
+  post 'employee_user/pin_login', to: 'employee_users#employee_pin_login'
 
-  post 'employee_user/sregister', to: 'employee_user#super_employee_register'
-  post 'employee_user/register', to: 'employee_user#employee_register'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,7 +8,7 @@ class CreateEmployeeUsers < ActiveRecord::Migration
       t.string :employee_password
       t.string :employee_pin
       t.string :employee_access_rights
-
+      t.boolean :super_user, default: false
       t.timestamps null: false
     end
   end
