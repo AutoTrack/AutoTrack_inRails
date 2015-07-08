@@ -28,6 +28,8 @@ gem 'httparty'
 # gem 'bcrypt', '~> 3.1.7'
 #database to deploy to heroku
 gem 'pg'
+#Let's get some Cars data and inventory
+gem 'edmunds_ruby'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
