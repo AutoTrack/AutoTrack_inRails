@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'business_user', to: 'business_users#business_user_index'
-  post 'business_user_register', to: 'business_users#business_register'
-  post 'business_user_login', to: 'business_users#business_login'
+  root to: 'home#index'
+  get 'business_user/index', to: 'business_users#index'
+  post 'business_user/register', to: 'business_users#business_register'
+  post 'business_user/login', to: 'business_users#business_login'
 
-  # root to: 'home#index'
-  get 'employee_user_index', to: 'employee_users#employees_index'
-  post 'employee_user_register', to: 'employee_users#employee_register'
-  post 'employee_user_login', to: 'employee_users#employee_login'
-  post 'employee_user_pin_login', to: 'employee_users#employee_pin_login'
+  get 'employee_user/index', to: 'employee_users#index'
+  post 'employee_user/register', to: 'employee_users#employee_register'
+  post 'employee_user/login', to: 'employee_users#employee_login'
+  post 'employee_user/pin_login', to: 'employee_users#employee_pin_login'
 
 #--------------------------Client-Routes--------------------------------#
 

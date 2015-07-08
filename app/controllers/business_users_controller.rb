@@ -10,7 +10,7 @@ class BusinessUsersController < ApplicationController
 
   def business_register
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
-     # passhash2 = Digest::SHA1.hexdigest(params[:employee_password])
+     passhash2 = Digest::SHA1.hexdigest(params[:employee_password])
 
      @business_user = BusinessUser.new(business_user_email: params[:business_user_email],
                       business_user_password: passhash,
@@ -22,25 +22,23 @@ class BusinessUsersController < ApplicationController
                       business_logo_url: params[:business_logo_url],
                       business_user_cap: params[:business_user_cap])
 
-      @business_user.save
-      # @employee_user = @business_user.employee_users.new(employee_email: params[:employee_email],
-      #                 employee_pin: params[:employee_pin],
-      #                 # employee_password: passhash2,
-      #                 employee_first_name: params[:employee_first_name],
-      #                 employee_last_name: params[:employee_last_name],
-      #                 employee_number: params[:employee_number],
-      #                 super_user: true)
-      #   if @employee_user.save
-      #     render json: {business_user: @business_user.as_json(include: :employee_users)}
-      #   else
-          # render json: {errors: @employee_user.errors.full_messages}, status: :unprocessable_entity
-        # end
-    # else
-      # render json: { errors: @business_user.errors.full_messages },
-      #   status: :unprocessable_entity
-      render json: {business_user: @business_user.as_json}
-
-  end
+    if @business_user.save
+      @employee_user = @business_user.employee_users.new(employee_email: params[:employee_email],
+                      employee_pin: params[:employee_pin],
+                      employee_password: passhash2,
+                      employee_first_name: params[:employee_first_name],
+                      employee_last_name: params[:employee_last_name],
+                      employee_number: params[:employee_number],
+                      super_user: true)
+        if @employee_user.save
+          render json: {business_user: @business_user.as_json(include: :employee_users)}
+        else
+          render json: {errors: @employee_user.errors.full_messages}, status: :unprocessable_entity
+        end
+    else
+      render json: { errors: @business_user.errors.full_messages },
+        status: :unprocessable_entity
+    end
 
     #  if @business_user.save && @employee_user.save
      #
@@ -51,7 +49,7 @@ class BusinessUsersController < ApplicationController
     #    render json: { errors: @business_user.errors.full_messages },
     #      status: :unprocessable_entity
     #  end
-  # end
+  end
 
    def business_login
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
