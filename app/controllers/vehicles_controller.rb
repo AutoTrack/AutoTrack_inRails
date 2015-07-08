@@ -9,12 +9,12 @@ class VehiclesController < ApplicationController
 
     def vehicles_create
         @vehicle = Vehicle.new(vehicle_type: params[:vehicle_type],
-                                                    vehicle_year: params[:vehicle_year],
-                                                    vehicle_model: params[:vehicle_model],
-                                                    vehicle_vin_number: params[:vehicle_vin_number],
-                                                    vehicle_color: params[:vehicle_color],
-                                                    vehicle_liscense_plate: params[:vehicle_liscense_plate],
-                                                    vehicle_comment: params[:vehicle_comment])
+                               vehicle_year: params[:vehicle_year],
+                               vehicle_model: params[:vehicle_model],
+                               vehicle_vin_number: params[:vehicle_vin_number],
+                               vehicle_color: params[:vehicle_color],
+                               vehicle_liscense_plate: params[:vehicle_liscense_plate],
+                               vehicle_comment: params[:vehicle_comment])
         @vehicle.save
 
         render json: {vehicle: @vehicle.as_json},
@@ -31,12 +31,12 @@ class VehiclesController < ApplicationController
     def vehicle_update
         @vehicle = Vehicle.find(params[:id])
         @vehicle.update(vehicle_type: params[:vehicle_type],
-                                    vehicle_year: params[:vehicle_year],
-                                    vehicle_model: params[:vehicle_model],
-                                    vehicle_vin_number: params[:vehicle_vin_number],
-                                    vehicle_color: params[:vehicle_color],
-                                    vehicle_liscense_plate: params[:vehicle_liscense_plate],
-                                    vehicle_comment: params[:vehicle_comment])
+                        vehicle_year: params[:vehicle_year],
+                        vehicle_model: params[:vehicle_model],
+                        vehicle_vin_number: params[:vehicle_vin_number],
+                        vehicle_color: params[:vehicle_color],
+                        vehicle_liscense_plate: params[:vehicle_liscense_plate],
+                        vehicle_comment: params[:vehicle_comment])
 
         render json: {vehicle: @vehicle.as_json},
         status: :create
