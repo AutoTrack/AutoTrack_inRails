@@ -7,6 +7,18 @@ Rails.application.routes.draw do
 
   post 'employee_user/sregister', to: 'employee_user#super_employee_register'
   post 'employee_user/register', to: 'employee_user#employee_register'
+
+
+#--------------------------Client-Routes--------------------------------#
+
+get 'clients/', to: 'clients#clients_index'
+post 'clients', to: 'clients#clients_create'
+get 'client/:id', to: 'client#client_show'
+patch 'client/:id', to: 'client#client_update'
+delete 'client/:id', to: 'client#client_destroy'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

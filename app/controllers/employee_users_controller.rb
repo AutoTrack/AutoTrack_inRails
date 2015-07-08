@@ -13,8 +13,8 @@ class EmployeeUsersController < ApplicationController
      if @employee_user.save
        # render json "register.json.jbuilder", status: :created
        render json: { employee_user: @employee_user.as_json(only: [:id, :employee_first_name,
-                                                            :employee_last_name, :access_token
-                                                            :access_token2]) },
+                                                            :employee_last_name, :access_token,
+                                                            :access_token2])},
          status: :created
      else
        render json: { errors: @employee_user.errors.full_messages },
