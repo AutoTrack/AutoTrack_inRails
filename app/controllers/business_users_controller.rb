@@ -32,9 +32,7 @@ class BusinessUsersController < ApplicationController
 
      if @business_user.save && @employee_user.save
 
-       render json: { business_user: @business_user.as_json(only: [:id,
-                                                                   :business_user_email,
-                                                                   :access_token]) },
+       render json: { business_user: @business_user.as_json },
 
          status: :created
      else
@@ -48,7 +46,7 @@ class BusinessUsersController < ApplicationController
      @business_user = BusinessUser.find_by(business_user_password: passhash,
                       business_user_email: params[:business_user_email])
      if @business_user
-       render json: { business_user: @business_user.as_json(only: [:id, :business_user_email, :access_token]) },
+       render json: { business_user: @business_user.as_json(only: [:id, :business_user_name, :access_token]) },
          status: :ok
      else
        render json: { message: "Invalid Login" },
