@@ -1,12 +1,12 @@
 class EmployeeUsersController < ApplicationController
 
-  def index
+  def employees_index
     @employee_users = EmployeeUser.all
     render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
                                                                  :employee_last_name,
                                                                  :employee_email,
                                                                  :employee_number]) },
-     status: :created
+     status: :ok
   end
 
   def employee_register
