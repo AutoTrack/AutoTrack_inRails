@@ -1,5 +1,13 @@
 class EmployeeUsersController < ApplicationController
 
+  def index
+    @employee_users = EmployeeUser.all
+    render json: { employee_user: @employee_users.as_json(only: [:id,
+                                                                 :employee_email,
+                                                                 :employee_password]) },
+     status: :created
+  end
+
   def employee_register
      pinhash = Digest::SHA1.hexdigest(params[:employee_pin])
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
@@ -13,7 +21,7 @@ class EmployeeUsersController < ApplicationController
      if @employee_user.save
        # render json "register.json.jbuilder", status: :created
        render json: { employee_user: @employee_user.as_json(only: [:id, :employee_first_name,
-                                                            :employee_last_name, :access_token
+                                                            :employee_last_name,
                                                             :access_token2]) },
          status: :created
      else
@@ -23,13 +31,12 @@ class EmployeeUsersController < ApplicationController
   end
 
   def employee_login
-    passhash = Digest::SHA1.hexdigest(params[:password])
-    @employee_user = EmployeeUser.find_by(password: passhash,
-                     email: params[:email])
+    passhash = Digest::SHA1.hexdigest(params[:employee_password])
+    @employee_user = EmployeeUser.find_by(employee_password: passhash,
+                     employee_email: params[:employee_email])
     if @employee_user
 
-      render json: { employee_user: @employee_user.as_json(only: [:id, :email,
-                                                                  :access_token,
+      render json: { employee_user: @employee_user.as_json(only: [:id, :employee_email,
                                                                   :access_token2]) },
         status: :ok
     else
@@ -43,8 +50,7 @@ class EmployeeUsersController < ApplicationController
     @employee_user = EmployeeUser.find_by(employee_pin: pinhash)
     if @employee_user
 
-      render json: { employee_user: @employee_user.as_json(only: [:id, :email,
-                                                                  :access_token,
+      render json: { employee_user: @employee_user.as_json(only: [:id, :employee_email,
                                                                   :access_token2]) },
         status: :ok
     else
