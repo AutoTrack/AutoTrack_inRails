@@ -14,9 +14,25 @@ Rails.application.routes.draw do
 
 get 'clients/', to: 'clients#clients_index'
 post 'clients', to: 'clients#clients_create'
-get 'client/:id', to: 'client#client_show'
-patch 'client/:id', to: 'client#client_update'
-delete 'client/:id', to: 'client#client_destroy'
+get 'client/:id', to: 'clients#client_show'
+patch 'client/:id', to: 'clients#client_update'
+delete 'client/:id', to: 'clients#client_destroy'
+
+#------------------------InvetoryItems-Routes------------------------#
+
+get 'inventory_items', to: 'inventory_items#inventory_items_all'
+post 'inventory_items', to: 'inventory_items#inventory_items_create'
+get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
+patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
+delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
+
+#-------------------------Vehicles-Routes-----------------------------#
+get 'vehicles', to: 'vehicles#vehicles_all'
+post 'vehicles', to: 'vehicles#vehicles_create'
+get 'vehicle/:id', to: 'vehicles#vehicle_show'
+patch 'vehicle/:id', to: 'vehicles#vehicle_update'
+delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
