@@ -2,8 +2,9 @@ class EmployeeUsersController < ApplicationController
 
   def index
     @employee_users = EmployeeUser.all
-    render json: { employee_user: @employee_users.as_json(only: [:id, :employee_email, :access_token2,
-                                             :employee_password]) },
+    render json: { employee_user: @employee_users.as_json(only: [:id,
+                                                                 :employee_email,
+                                                                 :employee_password]) },
      status: :created
   end
 
