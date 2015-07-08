@@ -1,6 +1,6 @@
 class BusinessUsersController < ApplicationController
 
-  def business_user_index
+  def index
     @business_users = BusinessUser.all
     render json: { business_user: @business_users.as_json(only: [:id,
                                                                  :business_user_email,
