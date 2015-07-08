@@ -2,9 +2,10 @@ class EmployeeUsersController < ApplicationController
 
   def index
     @employee_users = EmployeeUser.all
-    render json: { employee_user: @employee_users.as_json(only: [:id,
+    render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
+                                                                 :employee_last_name,
                                                                  :employee_email,
-                                                                 :employee_password]) },
+                                                                 :employee_number]) },
      status: :created
   end
 
@@ -36,8 +37,7 @@ class EmployeeUsersController < ApplicationController
                      employee_email: params[:employee_email])
     if @employee_user
 
-      render json: { employee_user: @employee_user.as_json(only: [:id, :employee_email,
-                                                                  :access_token2]) },
+      render json: { employee_user: @employee_user.as_json },
         status: :ok
     else
       render json: { message: "Invalid Login" },
@@ -50,8 +50,7 @@ class EmployeeUsersController < ApplicationController
     @employee_user = EmployeeUser.find_by(employee_pin: pinhash)
     if @employee_user
 
-      render json: { employee_user: @employee_user.as_json(only: [:id, :employee_email,
-                                                                  :access_token2]) },
+      render json: { employee_user: @employee_user.as_json },
         status: :ok
     else
       render json: { message: "Invalid Employee Pin" },
