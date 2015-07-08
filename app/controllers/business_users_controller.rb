@@ -39,16 +39,6 @@ class BusinessUsersController < ApplicationController
       render json: { errors: @business_user.errors.full_messages },
         status: :unprocessable_entity
     end
-
-    #  if @business_user.save && @employee_user.save
-     #
-    #    render json: { business_user: @business_user.as_json(include: { employee_user: @employee_user.as_json }),
-     #
-    #      status: :created
-    #  else
-    #    render json: { errors: @business_user.errors.full_messages },
-    #      status: :unprocessable_entity
-    #  end
   end
 
    def business_login
