@@ -1,28 +1,28 @@
-#Welcome to AutoTrak API Documantation
+# Welcome to AutoTrak API Documantation
 
-##CONTENT of this FILE
+## CONTENT of this FILE
 
 * Introduction
 * API Documantation
-* Client
-* Inventory Items
-* Vehicles
-* Repair Orders
+** Client
+** Inventory Items
+** Vehicles
+** Repair Orders
 
-##Introduction
+## Introduction
 
 AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
 Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a responsive and amazing web-design.
 
-##Website URL
+## Website URL
 
 https://rocky-hollows-1826.herokuapp.com
 
-##API's
+## API's
 
-#Clients
+# Clients
 
-###Request all Clients
+### Request all Clients
 
 * Path: GET '/clients'
 * Params: none
@@ -63,7 +63,7 @@ Response:
   ]
 }```
 
-###Create Clients
+### Create Clients
 
 * Path: POST '/clients'
 *Params: none
@@ -89,7 +89,7 @@ Response:
     }
 }```
 
-###Show a Client
+### Show a Client
 
 * Path: GET '/client/:id'
 * Params: :id
@@ -113,7 +113,7 @@ Response:
   }
 }```
 
-###Update a Client
+### Update a Client
 
 * Path: PATCH '/client/:id'
 * Params: :id
@@ -137,7 +137,7 @@ Response:
   }
 }```
 
-###Delete a Client
+### Delete a Client
 
 * Path: DELETE '/client/:id'
 * Params: :id
@@ -163,7 +163,3 @@ Response:
 }```
 
 
-###Create Clients
-###Request one Client
-###Update one Client
-###Delete a Client
