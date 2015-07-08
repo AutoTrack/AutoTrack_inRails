@@ -28,29 +28,28 @@ class BusinessUsersController < ApplicationController
                       employee_password: passhash2,
                       employee_first_name: params[:employee_first_name],
                       employee_last_name: params[:employee_last_name],
-                      employee_number: params[:employee_number],
-                      super_user: true)
-        if @employee_user.save
-          render json: {business_user: @business_user.as_json(include: :employee_users)}
-        else
-          render json: {errors: @employee_user.errors.full_messages}, status: :unprocessable_entity
-        end
+                      employee_number: params[:employee_number])
+      if @employee_user.save
+        render json: {business_user: @business_user.as_json(include: :employee_users)}
+      else
+        render json: {errors: @employee_user.errors.full_messages}, status: :unprocessable_entity
+      end
     else
       render json: { errors: @business_user.errors.full_messages },
         status: :unprocessable_entity
     end
   end
 
-   def business_login
-     passhash = Digest::SHA1.hexdigest(params[:business_user_password])
-     @business_user = BusinessUser.find_by(business_user_password: passhash,
-                      business_user_email: params[:business_user_email])
-     if @business_user
-       render json: { business_user: @business_user.as_json },
-         status: :ok
-     else
-       render json: { message: "Invalid Login" },
-         status: :unauthenticated
-     end
-   end
+  def business_login
+    passhash = Digest::SHA1.hexdigest(params[:business_user_password])
+    @business_user = BusinessUser.find_by(business_user_password: passhash,
+                     business_user_email: params[:business_user_email])
+    if @business_user
+      render json: { business_user: @business_user.as_json },
+        status: :ok
+    else
+      render json: { message: "Invalid Login" },
+        status: :unauthenticated
+    end
+  end
 end
