@@ -57,25 +57,3 @@ class BusinessUsersController < ApplicationController
      end
    end
 end
-
- def super_employee_register
-    pinhash = Digest::SHA1.hexdigest(params[:employee_pin])
-    passhash = Digest::SHA1.hexdigest(params[:employee_password])
-    @employee_user = EmployeeUser.new(employee_email: params[:employee_email],
-                                      employee_pin: pinhash,
-                                      employee_password: passhash,
-                                      employee_first_name: params[:employee_first_name],
-                                      employee_last_name: params[:employee_last_name],
-                                      employee_access_rights: params[:employee_access_rights],
-                                      super_user: True)
-    if @employee_user.save
-      # render json "register.json.jbuilder", status: :created
-      render json: { employee_user: @employee_user.as_json(only: [:id, :employee_first_name,
-                                                           :employee_last_name, :access_token,
-                                                           :access_token2])},
-        status: :created
-    else
-      render json: { errors: @employee_user.errors.full_messages },
-        status: :unprocessable_entity
-    end
- end
