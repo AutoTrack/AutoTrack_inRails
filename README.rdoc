@@ -1,5 +1,169 @@
-== README
+#Welcome to AutoTrak API Documantation
 
-#Routes:
+##CONTENT of this FILE
+
+* Introduction
+* API Documantation
+* Client
+* Inventory Items
+* Vehicles
+* Repair Orders
+
+##Introduction
+
+AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
+Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a responsive and amazing web-design.
+
+##Website URL
+
+https://rocky-hollows-1826.herokuapp.com
+
+##API's
+
+#Clients
+
+###Request all Clients
+
+* Path: GET '/clients'
+* Params: none
+Status: 200 OK
+Response:
+```{
+  "client": [
+    {
+      "id": 1,
+      "client_first_name": "Juan",
+      "client_last_name": "Woods",
+      "client_street_address": "2210 Street Road",
+      "client_city": "New York",
+      "client_state": null,
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    },
+    {
+      "id": 2,
+      "client_first_name": "John",
+      "client_last_name": "Madera",
+      "client_street_address": "2200 Working Road",
+      "client_city": "Mars",
+      "client_state": "Pluto",
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    }
+  ]
+}```
+
+###Create Clients
+
+* Path: POST '/clients'
+*Params: none
+Status: 201 Created
+Response:
+
+```{
+  "client": [
+    {
+      "id": 1,
+      "client_first_name": "Juan",
+      "client_last_name": "Woods",
+      "client_street_address": "2210 Street Road",
+      "client_city": "New York",
+      "client_state": null,
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    }
+}```
+
+###Show a Client
+
+* Path: GET '/client/:id'
+* Params: :id
+Status: 200 OK
+Response:
+```{
+  "client": {
+    "id": 1,
+    "client_first_name": "Juan",
+    "client_last_name": "Woods",
+    "client_street_address": "2210 Street Road",
+    "client_city": "New York",
+    "client_state": null,
+    "client_zipcode": "20394",
+    "client_primary_phone": "123-123-2123",
+    "client_secondary_phone": "324-234-3234",
+    "client_email": "juan_woods@yahoo.com",
+    "created_at": "2015-07-08T23:09:38.000Z",
+    "updated_at": "2015-07-08T23:09:38.000Z",
+    "business_user_id": 1
+  }
+}```
+
+###Update a Client
+
+* Path: PATCH '/client/:id'
+* Params: :id
+Status: 200 OK
+Response:
+```{
+  "client": {
+    "id": 1,
+    "client_first_name": "Micha",
+    "client_last_name": "Vela",
+    "client_street_address": "5030 Albaro Uribe Road",
+    "client_city": "San Pancho",
+    "client_state": "Guadalajara",
+    "client_zipcode": "12345",
+    "client_primary_phone": "123-123-1212",
+    "client_secondary_phone": "123-122-1322",
+    "client_email": "micha@yahoo.com",
+    "created_at": "2015-07-08T23:09:38.000Z",
+    "updated_at": "2015-07-08T23:31:10.652Z",
+    "business_user_id": 1
+  }
+}```
+
+###Delete a Client
+
+* Path: DELETE '/client/:id'
+* Params: :id
+Status: 410 Gone
+Response:
+
+```{
+  "client": {
+    "id": 3,
+    "client_first_name": null,
+    "client_last_name": null,
+    "client_street_address": null,
+    "client_city": null,
+    "client_state": null,
+    "client_zipcode": null,
+    "client_primary_phone": null,
+    "client_secondary_phone": null,
+    "client_email": null,
+    "created_at": "2015-07-08T23:23:51.272Z",
+    "updated_at": "2015-07-08T23:23:51.272Z",
+    "business_user_id": null
+  }
+}```
 
 
+###Create Clients
+###Request one Client
+###Update one Client
+###Delete a Client
