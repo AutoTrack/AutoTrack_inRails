@@ -10,10 +10,9 @@ class EmployeeUsersController < ApplicationController
   end
 
   def employee_register
-     pinhash = Digest::SHA1.hexdigest(params[:employee_pin])
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
      @employee_user = EmployeeUser.new(employee_email: params[:employee_email],
-                                       employee_pin: pinhash,
+                                       employee_pin: params[:employee_pin],
                                        employee_password: passhash,
                                        employee_first_name: params[:employee_first_name],
                                        employee_last_name: params[:employee_last_name],
@@ -46,8 +45,7 @@ class EmployeeUsersController < ApplicationController
   end
 
   def employee_pin_login
-    pinhash = Digest::SHA1.hexdigest(params[:employee_pin])
-    @employee_user = EmployeeUser.find_by(employee_pin: pinhash)
+    @employee_user = EmployeeUser.find_by(params[:employee_pin])
     if @employee_user
 
       render json: { employee_user: @employee_user.as_json },
