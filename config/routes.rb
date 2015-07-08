@@ -12,12 +12,19 @@ Rails.application.routes.draw do
 
 #--------------------------Client-Routes--------------------------------#
 
-get 'clients/', to: 'clients#clients_index'
+get 'clients', to: 'clients#clients_index'
 post 'clients', to: 'clients#clients_create'
-get 'client/:id', to: 'client#client_show'
-patch 'client/:id', to: 'client#client_update'
-delete 'client/:id', to: 'client#client_destroy'
+get 'client/:id', to: 'clients#client_show'
+patch 'client/:id', to: 'clients#client_update'
+delete 'client/:id', to: 'clients#client_destroy'
 
+#--------------------------RepairOrder-Routes--------------------------------#
+
+get 'repair_orders', to: 'repair_orders#repair_orders_index'
+post 'repair_order', to: 'repair_orders#repair_order_create'
+get 'repair_order/:id', to: 'repair_orders#repair_order_show'
+patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
+delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
