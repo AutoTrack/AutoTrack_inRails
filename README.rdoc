@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 #Welcome to AutoTrak API Documantation
 
 ##CONTENT of this FILE
@@ -11,7 +10,7 @@
 * Repair Orders
 
 ##Introduction
-=======
+
 # Welcome to AutoTrak API Documantation
 
 ## CONTENT of this FILE
@@ -24,12 +23,10 @@
 ** Repair Orders
 
 ## Introduction
->>>>>>> Stashed changes
 
 AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
 Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a responsive and amazing web-design.
 
-<<<<<<< Updated upstream
 ##Website URL
 
 https://rocky-hollows-1826.herokuapp.com
@@ -39,7 +36,7 @@ https://rocky-hollows-1826.herokuapp.com
 #Clients
 
 ###Request all Clients
-=======
+
 ## Website URL
 
 https://rocky-hollows-1826.herokuapp.com
@@ -49,7 +46,6 @@ https://rocky-hollows-1826.herokuapp.com
 # Clients
 
 ### Request all Clients
->>>>>>> Stashed changes
 
 * Path: GET '/clients'
 * Params: none
@@ -90,11 +86,8 @@ Response:
   ]
 }```
 
-<<<<<<< Updated upstream
-###Create Clients
-=======
+
 ### Create Clients
->>>>>>> Stashed changes
 
 * Path: POST '/clients'
 *Params: none
@@ -120,11 +113,8 @@ Response:
     }
 }```
 
-<<<<<<< Updated upstream
-###Show a Client
-=======
+
 ### Show a Client
->>>>>>> Stashed changes
 
 * Path: GET '/client/:id'
 * Params: :id
@@ -133,7 +123,8 @@ Response:
 ```{
   "client": {
     "id": 1,
-    "client_first_name": "Juan",
+    "client_firs
+    t_name": "Juan",
     "client_last_name": "Woods",
     "client_street_address": "2210 Street Road",
     "client_city": "New York",
@@ -148,11 +139,7 @@ Response:
   }
 }```
 
-<<<<<<< Updated upstream
-###Update a Client
-=======
 ### Update a Client
->>>>>>> Stashed changes
 
 * Path: PATCH '/client/:id'
 * Params: :id
@@ -176,11 +163,7 @@ Response:
   }
 }```
 
-<<<<<<< Updated upstream
-###Delete a Client
-=======
 ### Delete a Client
->>>>>>> Stashed changes
 
 * Path: DELETE '/client/:id'
 * Params: :id
@@ -206,16 +189,8 @@ Response:
 }```
 
 #Inventory Items
+##Reques all Inventory Items
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-###Create Clients
-###Request one Client
-###Update one Client
-###Delete a Client
-=======
-=======
->>>>>>> Stashed changes
 Path: GET '/inventory_items'
 Params: none
 Status: 200 OK
@@ -423,8 +398,3 @@ Path: DELETE '/repair_orders/:id'
 Params: :id
 Status:
 Response:
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
