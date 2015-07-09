@@ -5,7 +5,7 @@ class BusinessUsersController < ApplicationController
     render json: { business_user: @business_users.as_json(only: [:id,
                                                                  :business_user_email,
                                                                  :business_user_password]) },
-     status: :created
+     status: :ok
   end
 
   def business_register
