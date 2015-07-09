@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def authenticate_employee_user_with_token!
     unless current_employee_user
       render json: { message: "Employee Access Token Not Found." },
-        status: :unauthenticated
+        status: :unauthorized
     end
   end
 end
