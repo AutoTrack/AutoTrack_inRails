@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'business_user/login', to: 'business_users#business_login'
 
   get 'employee_user/index', to: 'employee_users#index'
+  post 'employee_user/sregister', to: 'employee_users#super_employee_register'
   post 'employee_user/register', to: 'employee_users#employee_register'
   post 'employee_user/login', to: 'employee_users#employee_login'
   post 'employee_user/pin_login', to: 'employee_users#employee_pin_login'

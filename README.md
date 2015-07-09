@@ -22,7 +22,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 ### **Business User**
 * [Request all Business Users](#request-all-business-users)
 `GET 'business_user/index'`
-* [Register A New Business And Super User](#register-a-new-business-and-super-user)
+* [Register A New Business](#register-a-new-business)
 `POST 'business_user/register'`
 * [Login A Business](#login-a-business)
 `POST 'business_user/login'`
@@ -30,6 +30,8 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 ### **Employee User**
 * [Request All Employee Users](#request-all-employee-users)
 `GET 'employee_user/index'`
+* [Register A Super Employee](#register-a-super-employee)
+`POST 'employee_user/sregister'`
 * [Register A New Employee](#register-a-new-employee)
 `POST 'employee_user/register'`
 * [Login A Employee](#login-a-employee)
@@ -98,7 +100,7 @@ Example success:
 ```
 
 
-### **Register A New Business And Super User**
+### **Register A New Business**
 
 `POST 'business_user/register'`
 
@@ -112,13 +114,6 @@ Params:
  * business_user_state:string
  * business_user_zipcode:string
  * business_logo_url:string
- * employee_first_name:string
- * employee_last_name:string
- * employee_email:string
- * employee_password:string
- * employee_pin:string
- * employee_access_rights:string
- * employee_number:string
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -127,36 +122,19 @@ Example success:
 ```json
 {
   "business_user": {
-    "id": 43,
+    "id": 47,
     "business_user_name": "AutoPlace30",
-    "business_user_email": "autotrak2030@autotrak.com",
-    "business_user_password": "c8cb9726c77f6c4e2db6fb1dda065b81e7c0e758",
+    "business_user_email": "autotrak20302@autotrak.com",
+    "business_user_password": "91e16309f3078ebf9c02c0be641bdecd4f45bc55",
     "business_user_cap": 25,
     "business_user_street": "123 Main Street",
     "business_user_city": "Anywhere",
     "business_user_state": "GA",
     "business_user_zipcode": "30001",
     "business_logo_url": "www.google.com",
-    "created_at": "2015-07-09T10:56:17.310Z",
-    "updated_at": "2015-07-09T10:56:17.310Z",
-    "access_token": "88d6b5b3681aeb37d73da7940023432432",
-    "employee_users": [
-      {
-        "id": 36,
-        "business_user_id": 43,
-        "employee_first_name": "Philip",
-        "employee_last_name": "Wood",
-        "employee_email": "pwood2030@gmail.com",
-        "employee_password": "c8cb9726c77f6c4e2db6fb1dda065b81e7c0e758",
-        "employee_pin": "9930",
-        "employee_access_rights": level1,
-        "created_at": "2015-07-09T10:56:17.534Z",
-        "updated_at": "2015-07-09T10:56:17.534Z",
-        "super_user": false,
-        "access_token2": "4fb7c3e3be1c72382889e7f38b8532452353",
-        "employee_number": 2456
-      }
-    ]
+    "created_at": "2015-07-09T15:48:15.963Z",
+    "updated_at": "2015-07-09T15:48:15.963Z",
+    "access_token": "48bba144b206df3d5d0f296a66557687"
   }
 }
 ```
@@ -252,6 +230,45 @@ Example success:
 
 
 
+### **Register A Super Employee**
+
+`POST 'employee_user/sregister'`
+
+Params:
+  * employee_first_name:string
+  * employee_last_name:string
+  * employee_email:string
+  * employee_password:string
+  * employee_pin:string
+  * employee_access_rights:string
+  * employee_number:string
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:  
+```json
+{
+  "employee_user": {
+    "id": 52,
+    "business_user_id": 46,
+    "employee_first_name": "Philip",
+    "employee_last_name": "Wood",
+    "employee_email": "ppwood1204@gmail.com",
+    "employee_password": "08cb824ba9ea8d8fe48f161b263cb68c36c712ed",
+    "employee_pin": "1234",
+    "employee_access_rights": level1,
+    "created_at": "2015-07-09T15:53:14.610Z",
+    "updated_at": "2015-07-09T15:53:14.610Z",
+    "super_user": false,
+    "access_token2": "3bbce7fc0e864169cfcb87e476067786",
+    "employee_number": 46576
+  }
+}
+```
+
+
+
 
 ### **Register A New Employee**
 
@@ -273,15 +290,19 @@ Example success:
 ```json
 {
   "employee_user": {
-    "id": 39,
-    "employee_first_name": "Juan",
-    "employee_last_name": "Marcinek",
-    "employee_email": "jmarcinek2035@autotrak.com",
-    "employee_password": "5d33b937a88b4fd6e610002425a3665550569ff3",
-    "employee_pin": "3242",
+    "id": 41,
+    "business_user_id": null,
+    "employee_first_name": "Philip",
+    "employee_last_name": "Wood",
+    "employee_email": "pwood2098@gmail.com",
+    "employee_password": "8a483dda053b68d3aeef878a3dd64dc2e04516f5",
+    "employee_pin": "9930",
     "employee_access_rights": level3,
-    "access_token2": "570e68ad88a56d945aa1c4b9easadfasdf",
-    "employee_number": "23432"
+    "created_at": "2015-07-09T13:42:52.782Z",
+    "updated_at": "2015-07-09T13:42:52.782Z",
+    "super_user": false,
+    "access_token2": "80fd2a2eb354b9d6810a396c6dde3454",
+    "employee_number": 23423
   }
 }
 ```

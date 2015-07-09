@@ -10,7 +10,6 @@ class BusinessUsersController < ApplicationController
 
   def business_register
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
-     passhash2 = Digest::SHA1.hexdigest(params[:employee_password])
 
      @business_user = BusinessUser.new(business_user_email: params[:business_user_email],
                       business_user_password: passhash,
@@ -23,17 +22,7 @@ class BusinessUsersController < ApplicationController
                       business_user_cap: params[:business_user_cap])
 
     if @business_user.save
-      @employee_user = @business_user.employee_users.new(employee_email: params[:employee_email],
-                      employee_pin: params[:employee_pin],
-                      employee_password: passhash2,
-                      employee_first_name: params[:employee_first_name],
-                      employee_last_name: params[:employee_last_name],
-                      employee_number: params[:employee_number])
-      if @employee_user.save
-        render json: {business_user: @business_user.as_json(include: :employee_users)}
-      else
-        render json: {errors: @employee_user.errors.full_messages}, status: :unprocessable_entity
-      end
+        render json: { business_user: @business_user.as_json }
     else
       render json: { errors: @business_user.errors.full_messages },
         status: :unprocessable_entity
