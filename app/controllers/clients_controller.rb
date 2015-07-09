@@ -46,7 +46,7 @@ class ClientsController < ApplicationController
                                 client_email: params[:client_email])
 
         render json: {client: @client.as_json},
-        status: :ok
+        status: :created
     end
 
     def  client_destroy
