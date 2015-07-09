@@ -64,7 +64,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "business_user": [
@@ -123,7 +123,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "business_user": {
@@ -173,7 +173,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "business_user": {
@@ -207,7 +207,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "employee_user": [
@@ -269,7 +269,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "employee_user": {
@@ -298,7 +298,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "employee_user": {
@@ -330,7 +330,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "employee_user": {
@@ -362,7 +362,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "client": [
@@ -420,7 +420,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "client": [
@@ -453,7 +453,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "client": {
@@ -484,7 +484,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "client": {
@@ -516,7 +516,7 @@ Params:
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:  
+Example success:
 ```json
 {
   "client": {
@@ -539,31 +539,161 @@ Example success:
 
 
 #Inventory Items
+##Reques all Inventory Items
 
 Path: GET '/inventory_items'
 Params: none
-Status:
+Status: 200 OK
 Response:
+```{
+  "inv_item": [
+    {
+      "id": 2,
+      "business_user_id": 1,
+      "part_number": "1234567",
+      "business_part_number": "24234762873468237",
+      "category": "Motor",
+      "inventory_item_location": "Hall 10",
+      "inventory_item_supplier": "Distributor Inc",
+      "reorder_alert": 3,
+      "order_to_quantity": 10,
+      "inventory_item_billable": true,
+      "inventory_item_taxable": false,
+      "inventory_item_cost": 12,
+      "inventory_item_markup": 10,
+      "inventory_count": 20,
+      "created_at": "2015-07-09T11:59:41.669Z",
+      "updated_at": "2015-07-09T11:59:41.669Z",
+      "tool": false
+    },
+    {
+      "id": 3,
+      "business_user_id": 1,
+      "part_number": "29874327",
+      "business_part_number": "234872kjj243423",
+      "category": "Transmission",
+      "inventory_item_location": "Shelf 20, Bottom",
+      "inventory_item_supplier": "Amazon Inc",
+      "reorder_alert": 30,
+      "order_to_quantity": 20,
+      "inventory_item_billable": false,
+      "inventory_item_taxable": false,
+      "inventory_item_cost": 50,
+      "inventory_item_markup": 6,
+      "inventory_count": 10,
+      "created_at": "2015-07-09T12:20:31.560Z",
+      "updated_at": "2015-07-09T12:20:31.560Z",
+      "tool": true
+    }
+  ]
+}```
 
 Path: POST '/inventory_items'
 Params: none
-Status:
+Status: 201 Created
 Response:
+```{
+  "inv_item": {
+    "id": 14,
+    "business_user_id": 1,
+    "part_number": "\"234242342\"",
+    "business_part_number": "\"2342423423424234\"",
+    "category": "\"Sensor\"",
+    "inventory_item_location": "\"3rd Hall\"",
+    "inventory_item_supplier": "\"eBay\"",
+    "reorder_alert": 4,
+    "order_to_quantity": 2,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": false,
+    "inventory_item_cost": null,
+    "inventory_item_markup": 10,
+    "inventory_count": 40,
+    "created_at": "2015-07-09T12:39:01.507Z",
+    "updated_at": "2015-07-09T12:39:01.507Z",
+    "tool": false
+  }
+}```
+
+
 
 Path: GET '/inventory_items/:id'
 Params: :id
-Status:
+Status: 200 OK
 Response:
+```{
+  "inv_item": {
+    "id": 2,
+    "business_user_id": 2,
+    "part_number": "1234567",
+    "business_part_number": "24234762873468237",
+    "category": "Motor",
+    "inventory_item_location": "Hall 10",
+    "inventory_item_supplier": "Distributor Inc",
+    "reorder_alert": 3,
+    "order_to_quantity": 10,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": false,
+    "inventory_item_cost": 12,
+    "inventory_item_markup": 10,
+    "inventory_count": 20,
+    "created_at": "2015-07-09T11:59:41.669Z",
+    "updated_at": "2015-07-09T11:59:41.669Z",
+    "tool": false
+  }
+}```
+
 
 Path: PATCH '/inventory_item/:id'
 Params: :id
-Status:
+Status: 201 Created
 Response:
+```{
+  "inv_item": {
+    "id": 2,
+    "business_user_id": 1,
+    "part_number": "\"23a23323234\"",
+    "business_part_number": "\"2342423423424234\"",
+    "category": "\"Sensor\"",
+    "inventory_item_location": "\"3rd Hall\"",
+    "inventory_item_supplier": "\"eBay\"",
+    "reorder_alert": 4,
+    "order_to_quantity": 2,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": false,
+    "inventory_item_cost": null,
+    "inventory_item_markup": 10,
+    "inventory_count": 40,
+    "created_at": "2015-07-09T12:29:59.038Z",
+    "updated_at": "2015-07-09T13:00:33.532Z",
+    "tool": false
+  }
+}```
 
 Path: DELETE '/inventory_item/:id'
 Params: :id
-Status:
+Status: 410 Gone
 Response:
+```{
+  "inv_item": {
+    "id": 5,
+    "business_user_id": null,
+    "part_number": "\"23a23323234\"",
+    "business_part_number": "\"2342423423424234\"",
+    "category": "\"Sensor\"",
+    "inventory_item_location": "\"3rd Hall\"",
+    "inventory_item_supplier": "\"eBay\"",
+    "reorder_alert": 4,
+    "order_to_quantity": 2,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": false,
+    "inventory_item_cost": null,
+    "inventory_item_markup": 10,
+    "inventory_count": 40,
+    "created_at": "2015-07-09T12:29:23.836Z",
+    "updated_at": "2015-07-09T12:57:50.802Z",
+    "tool": false
+  }
+}```
 
 #Vehicles
 
