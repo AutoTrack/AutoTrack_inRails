@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  skip_before_filter :verify_authenticity_token, :authenticate_business_user_with_token!
+  skip_before_filter :verify_authenticity_token
 
   def current_business_user
     token = request.headers['Access-Token']
