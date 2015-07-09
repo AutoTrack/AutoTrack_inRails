@@ -1,6 +1,6 @@
 class EmployeeUsersController < ApplicationController
 
-  before_action :authenticate_business_user_with_token!
+  # before_action :authenticate_business_user_with_token!
   def index
     @employee_users = EmployeeUser.all
     render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
