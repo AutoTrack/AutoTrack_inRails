@@ -17,11 +17,16 @@ class EmployeeUsersController < ApplicationController
                                        employee_first_name: params[:employee_first_name],
                                        employee_last_name: params[:employee_last_name],
                                        employee_access_rights: params[:employee_access_rights],
-                                       super_user: params[:super_user])
+                                       employee_number: params[:employee_number])
      if @employee_user.save
        # render json "register.json.jbuilder", status: :created
        render json: { employee_user: @employee_user.as_json(only: [:id, :employee_first_name,
                                                             :employee_last_name,
+                                                            :employee_email,
+                                                            :employee_password,
+                                                            :employee_pin,
+                                                            :employee_access_rights,
+                                                            :employee_number,
                                                             :access_token2]) },
          status: :created
      else
@@ -45,7 +50,7 @@ class EmployeeUsersController < ApplicationController
   end
 
   def employee_pin_login
-    @employee_user = EmployeeUser.find_by(params[:employee_pin])
+    @employee_user = EmployeeUser.find_by(employee_pin: params[:employee_pin])
     if @employee_user
 
       render json: { employee_user: @employee_user.as_json },
