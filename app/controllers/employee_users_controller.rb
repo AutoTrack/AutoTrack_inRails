@@ -30,7 +30,7 @@ class EmployeeUsersController < ApplicationController
 
   def employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
-     @employee_user = EmployeeUser.new(employee_email: params[:employee_email],
+     @employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
                                        employee_pin: params[:employee_pin],
                                        employee_password: passhash,
                                        employee_first_name: params[:employee_first_name],
