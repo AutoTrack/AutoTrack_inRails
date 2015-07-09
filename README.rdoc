@@ -162,4 +162,84 @@ Response:
   }
 }```
 
+#Inventory Items
+
+Path: GET '/inventory_items'
+Params: none
+Status:
+Response:
+
+Path: POST '/inventory_items'
+Params: none
+Status:
+Response:
+
+Path: GET '/inventory_items/:id'
+Params: :id
+Status:
+Response:
+
+Path: PATCH '/inventory_item/:id'
+Params: :id
+Status:
+Response:
+
+Path: DELETE '/inventory_item/:id'
+Params: :id
+Status:
+Response:
+
+#Vehicles
+
+Path: GET '/vehicles
+Params: none
+Status:
+Response:
+
+Path: POST '/vehicles'
+Params: none
+Status:
+Response:
+
+Path: GET '/vehicle/:id'
+Params: :id
+Status:
+Response:
+
+Path: PATCH '/vehicle/:id'
+Params: :id
+Status:
+Response:
+
+Path: DELETE '/vehicle/:id'
+Params: :id
+Status:
+Response:
+
+#Repair Order
+
+Path: GET '/repair_orders'
+Params: none
+Status:
+Response:
+
+Path: POST '/repair_orders'
+Params: none
+Status:
+Response:
+
+Path: GET '/repair_order/:id'
+Params: :id
+Status:
+Response:
+
+Path: PATCH '/repair_order/:id'
+Params: :id
+Status:
+Response:
+
+Path: DELETE '/repair_orders/:id'
+Params: :id
+Status:
+Response:
 
