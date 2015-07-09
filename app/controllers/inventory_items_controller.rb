@@ -7,7 +7,7 @@ class InventoryItemsController < ApplicationController
         status: :ok
     end
 
-    def invetory_items_create
+    def inventory_items_create
         @inv_item = InventoryItem.new(part_number: params[:part_number],
                                       business_part_number: params[:business_part_number],
                                       category: params[:category],
@@ -21,10 +21,13 @@ class InventoryItemsController < ApplicationController
                                       inventory_item_markup: params[:inventory_item_markup],
                                       inventory_count: params[:inventory_count],
                                       tool: params[:tool])
-        @inv_item.save
-
-        render json: {inv_item: @inv_item.as_json},
-        status: :create
+        if @inv_item.save
+          render json: {inv_item: @inv_item.as_json},
+          status: :created
+        else
+          render json: { errors: @client.errors.full_messages },
+          status: :unprocessable_entity
+        end
     end
 
     def inventory_item_show
@@ -36,23 +39,23 @@ class InventoryItemsController < ApplicationController
     end
 
     def inventory_item_update
-        @inv_item = InventoryItem.find(part_number: params[:part_number],
-                                       business_part_number: params[:business_part_number],
-                                       category: params[:category],
-                                       inventory_item_location: params[:inventory_item_location],
-                                       inventory_item_supplier: params[:inventory_item_supplier],
-                                       reorder_alert: params[:reorder_alert],
-                                       order_to_quantity: params[:order_to_quantity],
-                                       inventory_item_billable: params[:inventory_item_billable],
-                                       inventory_item_taxable: params[:inventory_item_taxable],
-                                       inventory_item_cost: params[:inventory_item_cost],
-                                       inventory_item_markup: params[:inventory_item_markup],
-                                       inventory_count: params[:inventory_count],
-                                       tool: params[:tool])
-        @inv_item.save
+        @inv_item = InventoryItem.find(params[:id])
+        @inv_item.update(part_number: params[:part_number],
+                                      business_part_number: params[:business_part_number],
+                                      category: params[:category],
+                                      inventory_item_location: params[:inventory_item_location],
+                                      inventory_item_supplier: params[:inventory_item_supplier],
+                                      reorder_alert: params[:reorder_alert],
+                                      order_to_quantity: params[:order_to_quantity],
+                                      inventory_item_billable: params[:inventory_item_billable],
+                                      inventory_item_taxable: params[:inventory_item_taxable],
+                                      inventory_item_cost: params[:inventory_item_cost],
+                                      inventory_item_markup: params[:inventory_item_markup],
+                                      inventory_count: params[:inventory_count],
+                                      tool: params[:tool])
 
         render json: {inv_item: @inv_item.as_json},
-        status: :create
+        status: :created
     end
 
     def inventory_item_destroy
