@@ -37,7 +37,7 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 #--------------------------RepairOrder-Routes--------------------------------#
 
 get 'repair_orders', to: 'repair_orders#repair_orders_index'
-post 'repair_order', to: 'repair_orders#repair_order_create'
+post 'repair_orders', to: 'repair_orders#repair_order_create'
 get 'repair_order/:id', to: 'repair_orders#repair_order_show'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
 delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
