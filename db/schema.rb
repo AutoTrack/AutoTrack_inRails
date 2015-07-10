@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708163835) do
+ActiveRecord::Schema.define(version: 20150710113058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150708163835) do
     t.boolean  "super_user",             default: false
     t.string   "access_token2"
     t.string   "employee_number"
+    t.string   "role"
   end
 
   create_table "inventory_items", force: :cascade do |t|

@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
-  skip_before_filter :verify_authenticity_token
+  protect_from_forgery with: :null_session
+
+  #CanCan---------------------------------------------------------------
+  check_authorization
+  # Renames curent_user to current_employee_user.
+  # alias_method :current_user, :current_employee_user
+  def current_ability
+    @current_ability ||= Ability.new(current_employee_user)
+  end
+  #---------------------------------------------------------------------
 
   def current_business_user
     token = request.headers['Access-Token']
@@ -24,7 +32,7 @@ class ApplicationController < ActionController::Base
   def authenticate_employee_user_with_token!
     unless current_employee_user
       render json: { message: "Employee Access Token Not Found." },
-        status: :unauthenticated
+        status: :unauthorized
     end
   end
 end

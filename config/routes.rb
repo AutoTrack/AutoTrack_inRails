@@ -39,7 +39,7 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 
 get 'repair_orders', to: 'repair_orders#repair_orders_index'
 post 'repair_orders', to: 'repair_orders#repair_order_create'
-get 'repair_order/:id', to: 'repair_orders#repair_order_show'
+get 'repair_order/:id', to: 'repair_orders#employee_repair_orders_index'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
 delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
   # The priority is based upon order of creation: first created -> highest priority.
