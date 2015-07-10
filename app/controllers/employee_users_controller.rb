@@ -41,7 +41,7 @@ class EmployeeUsersController < ApplicationController
                                        employee_last_name: params[:employee_last_name],
                                        employee_access_rights: params[:employee_access_rights],
                                        employee_number: params[:employee_number],
-                                       role: params[:role] )
+                                       role: params[:role])
      if @employee_user.save
 
        render json: { employee_user: @employee_user.as_json },
