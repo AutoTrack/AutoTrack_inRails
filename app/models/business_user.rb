@@ -7,7 +7,7 @@ class BusinessUser < ActiveRecord::Base
 
 
   validates :business_user_password, :access_token, presence: true
-  validates :business_user_name, uniqueness: true, presence: true
+  validates :business_username, uniqueness: true, presence: true
 
 
   before_validation :ensure_access_token
