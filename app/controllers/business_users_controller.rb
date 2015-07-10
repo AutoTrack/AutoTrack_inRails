@@ -11,8 +11,8 @@ class BusinessUsersController < ApplicationController
   def business_register
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
 
-     @business_user = BusinessUser.new(business_user_name: params[:business_user_name],
-                      business_username: params[:business_username],
+     @business_user = BusinessUser.new(business_username: params[:business_username],
+                      business_user_name: params[:business_user_name],
                       business_user_password: passhash,
                       business_user_email: params[:business_user_email],
                       business_user_street: params[:business_user_street],
