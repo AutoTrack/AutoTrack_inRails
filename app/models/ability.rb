@@ -1,9 +1,11 @@
 class Ability
+
   include CanCan::Ability
 
   def initialize user, options = {}
 
     alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create, :read, :update, :to => :cru
     alias_action :read, :update, :destroy, :to => :rud
     alias_action :read, :update, :to => :ru
 
@@ -24,7 +26,8 @@ class Ability
     can :manage, :all
   end
 
-  # Provides user the additonal ability to adjust Inventory, including cost.
+  # Provides user the additonal ability to adjust Inventory, including cost. Cannot
+  # create or destroy repair orders and invoices. 
   def level2_rules
     can :manage, [ InventoryItem, RepairItem, Vehicle, Client ]
     can :ru, [ RepairOrder, Invoice ]
@@ -33,14 +36,14 @@ class Ability
 
   # Provides user the ability to do everything accept handle inventory.
   def level3_rules
-    can :
+
     can :manage, [ RepairOrder, RepairItem, Vehicle, Client ]
-    can :ru, [ Invoice ]
+    can :cru, [ Invoice ]
   end
 
   # Provides user  with ability to only update a repair order with a repair item.
   def level4_rules
-    can :read, [ Vehicle ]
+    can :read, [ Vehicle, InventoryItem ]
     can :ru, [ RepairOrder ]
     can :crud, [ RepairItem ]
   end
