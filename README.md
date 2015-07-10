@@ -72,27 +72,27 @@ Example success:
   "business_user": [
     {
       "id": 1,
-      "business_user_email": "autotrak1@autotrak.com",
+      "business_user_name": "autotrak1@autotrak.com",
       "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff4"
     },
     {
       "id": 2,
-      "business_user_email": "autotrak2@autotrak.com",
+      "business_user_name": "autotrak2@autotrak.com",
       "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff5"
     },
     {
       "id": 3,
-      "business_user_email": "autotrak3@autotrak.com",
+      "business_user_name": "autotrak3@autotrak.com",
       "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff6"
     },
     {
       "id": 4,
-      "business_user_email": "autotrak4@autotrak.com",
+      "business_user_name": "autotrak4@autotrak.com",
       "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff7"
     },
     {
       "id": 5,
-      "business_user_email": "autotrak5@autotrak.com",
+      "business_user_name": "autotrak5@autotrak.com",
       "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff8"
     }
   ]
@@ -145,7 +145,7 @@ Example success:
 `POST 'business_user/login'`
 
 Params:
-  * business_user_email:string
+  * business_user_name:string
   * business_user_password:string
 
 Response:
