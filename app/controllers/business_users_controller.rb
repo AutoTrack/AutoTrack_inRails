@@ -22,7 +22,8 @@ class BusinessUsersController < ApplicationController
                       business_user_cap: params[:business_user_cap])
 
     if @business_user.save
-        render json: { business_user: @business_user.as_json }
+      render json: { business_user: @business_user.as_json },
+        status: :created
     else
       render json: { errors: @business_user.errors.full_messages },
         status: :unprocessable_entity

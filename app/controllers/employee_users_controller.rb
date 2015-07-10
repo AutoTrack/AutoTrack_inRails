@@ -1,6 +1,7 @@
 class EmployeeUsersController < ApplicationController
 
   before_action :authenticate_business_user_with_token!
+
   def index
     @employee_users = EmployeeUser.all
     render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
@@ -54,7 +55,6 @@ class EmployeeUsersController < ApplicationController
     @employee_user = current_business_user.employee_users.find_by(employee_password: passhash,
                      employee_email: params[:employee_email])
     if @employee_user
-
       render json: { employee_user: @employee_user.as_json },
         status: :ok
     else
