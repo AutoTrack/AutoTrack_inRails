@@ -1,6 +1,7 @@
 class EmployeeUsersController < ApplicationController
-
+  skip_authorization_check
   before_action :authenticate_business_user_with_token!
+
   def index
     @employee_users = EmployeeUser.all
     render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
@@ -12,7 +13,6 @@ class EmployeeUsersController < ApplicationController
 
   def super_employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
-  
      @employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
                                        employee_pin: params[:employee_pin],
                                        employee_password: passhash,
@@ -52,10 +52,9 @@ class EmployeeUsersController < ApplicationController
 
   def employee_login
     passhash = Digest::SHA1.hexdigest(params[:employee_password])
-    @employee_user = EmployeeUser.find_by(employee_password: passhash,
+    @employee_user = current_business_user.employee_users.find_by(employee_password: passhash,
                      employee_email: params[:employee_email])
     if @employee_user
-
       render json: { employee_user: @employee_user.as_json },
         status: :ok
     else
@@ -65,7 +64,7 @@ class EmployeeUsersController < ApplicationController
   end
 
   def employee_pin_login
-    @employee_user = EmployeeUser.find_by(employee_pin: params[:employee_pin])
+    @employee_user = current_business_user.employee_users.find_by(employee_pin: params[:employee_pin])
     if @employee_user
 
       render json: { employee_user: @employee_user.as_json },

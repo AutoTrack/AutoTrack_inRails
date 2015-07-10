@@ -1,5 +1,5 @@
 class BusinessUsersController < ApplicationController
-
+  skip_authorization_check
   def index
     @business_users = BusinessUser.all
     render json: { business_user: @business_users.as_json(only: [:id,
@@ -22,7 +22,8 @@ class BusinessUsersController < ApplicationController
                       business_user_cap: params[:business_user_cap])
 
     if @business_user.save
-        render json: { business_user: @business_user.as_json }
+      render json: { business_user: @business_user.as_json },
+        status: :created
     else
       render json: { errors: @business_user.errors.full_messages },
         status: :unprocessable_entity
