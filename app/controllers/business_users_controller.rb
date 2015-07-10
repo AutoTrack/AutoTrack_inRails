@@ -19,7 +19,8 @@ class BusinessUsersController < ApplicationController
                       business_user_state: params[:business_user_state],
                       business_user_zipcode: params[:business_user_zipcode],
                       business_logo_url: params[:business_logo_url],
-                      business_user_cap: params[:business_user_cap])
+                      business_user_cap: params[:business_user_cap],
+                      role: params[:role])
 
     if @business_user.save
       render json: { business_user: @business_user.as_json },
