@@ -7,7 +7,7 @@ class BusinessUser < ActiveRecord::Base
 
 
   validates :business_user_password, :access_token, presence: true
-  validates :business_user_email, uniqueness: true, presence: true
+  validates :business_user_name, uniqueness: true, presence: true
 
 
   before_validation :ensure_access_token
@@ -26,4 +26,3 @@ class BusinessUser < ActiveRecord::Base
     token
   end
 end
-
