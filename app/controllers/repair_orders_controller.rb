@@ -3,7 +3,13 @@ class RepairOrdersController < ApplicationController
   def repair_orders_index
     @repair_orders = RepairOrder.all
     render json: { repair_orders: @repair_orders.as_json },
-     status: :created
+     status: :ok
+  end
+
+  def employee_repair_order_index
+    @repair_orders = current_employee_user.repair_orders.all
+    render json: { repair_orders: @repair_orders.as_json },
+     status: :ok
   end
 
   def repair_order_create
@@ -17,7 +23,10 @@ class RepairOrdersController < ApplicationController
     end
   end
 
+  def add_repair_item_to_ro
 
+    @repair_order = current_employee_user.repair_orders
+  end
   # def repair_order_show
   #   @repair_order = RepairOrder.find(params[:id])
   #

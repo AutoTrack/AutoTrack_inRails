@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
 
   #CanCan---------------------------------------------------------------
   check_authorization
-  #renames curent_user to current_employee_user.
-  alias_method :current_user, :current_employee_user
+  # Renames curent_user to current_employee_user.
+  # alias_method :current_user, :current_employee_user
   def current_ability
-    @current_ability ||= Ability.new(current_user)
+    @current_ability ||= Ability.new(current_employee_user)
   end
   #---------------------------------------------------------------------
 

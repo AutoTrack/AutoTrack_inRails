@@ -14,10 +14,10 @@ class Ability
     end
 
     if user
-      level1_rules if employee_user.roles.include? :level1
-      level2_rules if employee_user.roles.include? :level2
-      level3_rules if employee_user.roles.include? :level3
-      level4_rules if employee_user.roles.include? :level4
+      level1_rules if user.roles.include? :level1
+      level2_rules if user.roles.include? :level2
+      level3_rules if user.roles.include? :level3
+      level4_rules if user.roles.include? :level4
       default_rules
     end
   end
@@ -27,7 +27,7 @@ class Ability
   end
 
   # Provides user the additonal ability to adjust Inventory, including cost. Cannot
-  # create or destroy repair orders and invoices. 
+  # create or delete repair orders and invoices.
   def level2_rules
     can :manage, [ InventoryItem, RepairItem, Vehicle, Client ]
     can :ru, [ RepairOrder, Invoice ]
