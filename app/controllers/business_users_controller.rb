@@ -12,6 +12,7 @@ class BusinessUsersController < ApplicationController
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
 
      @business_user = BusinessUser.new(business_user_name: params[:business_user_name],
+                      business_username: params[:business_username],
                       business_user_password: passhash,
                       business_user_email: params[:business_user_email],
                       business_user_street: params[:business_user_street],
@@ -33,7 +34,7 @@ class BusinessUsersController < ApplicationController
   def business_login
     passhash = Digest::SHA1.hexdigest(params[:business_user_password])
     @business_user = BusinessUser.find_by(business_user_password: passhash,
-                     business_user_name: params[:business_user_name])
+                     business_username: params[:business_username])
     if @business_user
       render json: { business_user: @business_user.as_json },
         status: :ok
