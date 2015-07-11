@@ -1,5 +1,5 @@
 class BusinessUsersController < ApplicationController
-  skip_authorization_check
+  # skip_authorization_check
   def index
     @business_users = BusinessUser.all
     render json: { business_user: @business_users.as_json(only: [:id,
@@ -11,7 +11,7 @@ class BusinessUsersController < ApplicationController
   def business_register
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
 
-     @business_user = BusinessUser.new(business_username: params[:business_username],
+     @business_user = BusinessUser.new( business_username: params[:business_username ],
                       business_user_name: params[:business_user_name],
                       business_user_password: passhash,
                       business_user_email: params[:business_user_email],
@@ -32,6 +32,7 @@ class BusinessUsersController < ApplicationController
   end
 
   def business_login
+
     passhash = Digest::SHA1.hexdigest(params[:business_user_password])
     @business_user = BusinessUser.find_by(business_user_password: passhash,
                      business_username: params[:business_username])
