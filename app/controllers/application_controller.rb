@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   # check_authorization
   # Renames curent_user to current_employee_user.
   # alias_method :current_user, :current_employee_user
-  def current_ability
-    @current_ability ||= Ability.new(current_employee_user)
-  end
+  # def current_ability
+  #   @current_ability ||= Ability.new(current_employee_user)
+  # end
   #---------------------------------------------------------------------
 
   def current_business_user
