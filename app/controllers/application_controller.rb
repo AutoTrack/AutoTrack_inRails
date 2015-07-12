@@ -4,11 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   #CanCan---------------------------------------------------------------
-<<<<<<< HEAD
-  #check_authorization
-=======
   # check_authorization
->>>>>>> master
   # Renames curent_user to current_employee_user.
   # alias_method :current_user, :current_employee_user
   # def current_ability

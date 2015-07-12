@@ -88,7 +88,7 @@ Rails.application.configure do
 
 config.action_mailer.default_url_options = { host: "localhost:3000" }
 
-  MANDRILL_API_KEY = '_tAiWC8MVOT6gkQqwziCJw'
+  MANDRILL_API_KEY = '9Wr_dY_yBCtb_cHGVw6Tnw'
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.mandrillapp.com',
     port: 587,
