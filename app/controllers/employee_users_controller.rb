@@ -2,6 +2,8 @@ class EmployeeUsersController < ApplicationController
 
   before_action :authenticate_business_user_with_token!
   # skip_authorization_check
+
+  # This will provide a list of all employees in existance.
   def index
     @employee_users = EmployeeUser.all
     render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
@@ -11,6 +13,8 @@ class EmployeeUsersController < ApplicationController
      status: :created
   end
 
+
+#This will provide a list of all employees associated with current business user.
   def index_by_business
     @employee_users = current_business_user.employee_users.all
     render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
@@ -21,9 +25,13 @@ class EmployeeUsersController < ApplicationController
   end
 
 
+
+# This allows you to create the first business user super employee with access
+# rights to everything.
   def super_employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
-     @employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
+     @employee_user = current_business_user.employee_users.new(
+                                       employee_email: params[:employee_email],
                                        employee_pin: params[:employee_pin],
                                        employee_password: passhash,
                                        employee_first_name: params[:employee_first_name],
@@ -41,6 +49,7 @@ class EmployeeUsersController < ApplicationController
      end
   end
 
+# This is for the creation of a new employee user.
   def employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
 
@@ -61,6 +70,7 @@ class EmployeeUsersController < ApplicationController
      end
   end
 
+# This is for employee user login.
   def employee_login
     passhash = Digest::SHA1.hexdigest(params[:employee_password])
 
@@ -75,6 +85,8 @@ class EmployeeUsersController < ApplicationController
     end
   end
 
+
+# This is for logging in through pin feature.
   def employee_pin_login
     @employee_user = current_business_user.employee_users.find_by(employee_pin: params[:employee_pin])
     if @employee_user
