@@ -49,13 +49,13 @@ Rails.application.configure do
     }
   }
 
-  MANDRILL_API_KEY = '_tAiWC8MVOT6gkQqwziCJw'
+  MANDRILL_API_KEY = ''
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.mandrillapp.com',
     port: 587,
     enable_starttls_auto: true,
-    user_name: 'juanordaz_2011@icloud.com',
-    password: '_tAiWC8MVOT6gkQqwziCJw',
+    user_name: '',
+    password: '',
     domain: 'autotrak.com',
     authentication: "login"
   }
