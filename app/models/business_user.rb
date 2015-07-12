@@ -13,7 +13,7 @@ after_create :send_notification
 
 
   validates :business_user_password, :access_token, presence: true
-  validates :business_user_email, uniqueness: true, presence: true
+  validates :business_username, uniqueness: true, presence: true
 
 
   before_validation :ensure_access_token
@@ -45,4 +45,3 @@ after_create :send_notification
   end
 
 end
-
