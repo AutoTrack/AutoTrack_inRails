@@ -56,7 +56,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Repair Orders](#request-all-repair-orders)
 `GET '/repair_orders'`
 * [Request All Repair Orders For A Business](#request-all-repair-orders-for-a-business)
-`GET 'repair_orders/:business_id'`
+`GET 'repair_orders/:business_user_id'`
 * [Request All Repair Orders For A Employee](#request-all-repair-orders-for-a-employee)
 `GET 'repair_orders/:id'`
 * [Create A Repair Order Number](#create-a-repair-order-number)
@@ -611,7 +611,7 @@ Example success:
 
 ### **Request All Repair Orders For A Business**
 
-`GET 'repair_orders/:business_id'`
+`GET 'repair_orders/:business_user_id'`
 
 Params:
   * none

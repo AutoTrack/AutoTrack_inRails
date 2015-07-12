@@ -71,19 +71,19 @@ class RepairOrdersController < ApplicationController
   end
 
 # Displays repair order, client info, and vehicle info.
-  # def repair_order_show
-  #   @repair_order = current_business_user.repair_orders.find(params[:id])
-  #
-  #   if @repair_order.save
-  #    render json: { repair_order: @repair_order.as_json(
-  #                                               :include { client: {
-  #                                               :include => { vehicle: }}})},
-  #        status: :ok
-  #    else
-  #      render json: { errors: @post.errors.full_messages },
-  #        status: :not_found
-  #    end
-  # end
+  def repair_order_show
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+
+    if @repair_order.save
+     render json: { repair_order: @repair_order.as_json(
+                                                :include => { client: {
+                                                :include => { vehicle: }}})},
+         status: :ok
+     else
+       render json: { errors: @post.errors.full_messages },
+         status: :not_found
+     end
+  end
 
 
   def repair_order_update
