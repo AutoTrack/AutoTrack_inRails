@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'business_user/login', to: 'business_users#business_login'
 
   get 'employee_user/index', to: 'employee_users#index'
+  get 'employee_user/business_index', to: 'employee_users#index_by_business'
   post 'employee_user/sregister', to: 'employee_users#super_employee_register'
   post 'employee_user/register', to: 'employee_users#employee_register'
   post 'employee_user/login', to: 'employee_users#employee_login'
@@ -40,6 +41,7 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 get 'repair_orders', to: 'repair_orders#repair_orders_index'
 post 'repair_orders', to: 'repair_orders#repair_order_create'
 get 'repair_order/:id', to: 'repair_orders#employee_repair_orders_index'
+get 'repair_order/:business_id', to: 'repair_orders#business_repair_orders_index'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
 delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
   # The priority is based upon order of creation: first created -> highest priority.

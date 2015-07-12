@@ -11,6 +11,16 @@ class EmployeeUsersController < ApplicationController
      status: :created
   end
 
+  def index_by_business
+    @employee_users = current_business_user.employee_users.all
+    render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
+                                                                 :employee_last_name,
+                                                                 :employee_email,
+                                                                 :employee_number]) },
+     status: :created
+  end
+
+
   def super_employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
      @employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],

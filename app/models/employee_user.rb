@@ -1,6 +1,6 @@
 class EmployeeUser < ActiveRecord::Base
   belongs_to :business_user
-  has_many :repair_orders
+  has_and_belongs_to_many :repair_orders
 
   validates :access_token2, presence: true
   validates :employee_email, uniqueness: true, presence: true
