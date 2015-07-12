@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150712192548) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "admin"
+    t.string   "business_username"
   end
 
   create_table "clients", force: :cascade do |t|
