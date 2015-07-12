@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'business_user/login', to: 'business_users#business_login'
 
   get 'employee_user/index', to: 'employee_users#index'
+  get 'employee_user/business_index', to: 'employee_users#index_by_business'
   post 'employee_user/sregister', to: 'employee_users#super_employee_register'
   post 'employee_user/register', to: 'employee_users#employee_register'
   post 'employee_user/login', to: 'employee_users#employee_login'
@@ -19,14 +20,6 @@ get 'client/:id', to: 'clients#client_show'
 patch 'client/:id', to: 'clients#client_update'
 delete 'client/:id', to: 'clients#client_destroy'
 
-#------------------------InvetoryItems-Routes------------------------#
-
-get 'inventory_items', to: 'inventory_items#inventory_items_all'
-post 'inventory_items', to: 'inventory_items#inventory_items_create'
-get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
-patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
-delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
-
 #-------------------------Vehicles-Routes-----------------------------#
 get 'vehicles', to: 'vehicles#vehicles_all'
 post 'vehicles', to: 'vehicles#vehicles_create'
@@ -34,14 +27,29 @@ get 'vehicle/:id', to: 'vehicles#vehicle_show'
 patch 'vehicle/:id', to: 'vehicles#vehicle_update'
 delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 
-
 #--------------------------RepairOrder-Routes--------------------------------#
 
 get 'repair_orders', to: 'repair_orders#repair_orders_index'
-post 'repair_orders', to: 'repair_orders#repair_order_create'
-get 'repair_order/:id', to: 'repair_orders#employee_repair_orders_index'
+post 'repair_order', to: 'repair_orders#repair_order_create'
+post 'repair_order/attach_employee', to: 'repair_orders#repair_order_employees_create'
+get 'repair_orders/:id', to: 'repair_orders#employee_repair_orders_index'
+get 'repair_orders/:business_id', to: 'repair_orders#business_repair_orders_index'
+get 'repair_order/:id', to: 'repair_orders#repair_order_show'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
 delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
+
+#------------------------InventoryItems-Routes------------------------#
+
+get 'inventory_items', to: 'inventory_items#inventory_items_all'
+post 'inventory_items', to: 'inventory_items#inventory_items_create'
+get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
+patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
+delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
