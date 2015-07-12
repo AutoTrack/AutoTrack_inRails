@@ -86,16 +86,24 @@ Rails.application.configure do
   }
 }
 
-config.action_mailer.smtp_settings = {
-    port:           587,
-    address:        'smtp.mandrillapp.com',
-    user_name:      ENV['MANDRILL_USER'],
-    password:       ENV['MANDRILL_API_KEY'],
-    domain:         'heroku.com',
-    authentication: :plain
+config.action_mailer.default_url_options = { host: "localhost:3000" }
+
+  MANDRILL_API_KEY = '_tAiWC8MVOT6gkQqwziCJw'
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    enable_starttls_auto: true,
+    user_name: 'juanordaz_2011@icloud.com',
+    password: 'MANDRILL_API_KEY',
+    domain: 'autotrak.com',
+    authentication: "login"
   }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default charset: "utf-8"
+
+
+  ActionMailer::Base.perform_deliveries = true
+  #ActionMailer::Base.raise_delivery_errors = true
 
 end

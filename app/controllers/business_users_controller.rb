@@ -1,8 +1,8 @@
 class BusinessUsersController < ApplicationController
   skip_authorization_check
   def index
-    @business_users = BusinessUser.all
-    render json: { business_user: @business_users.as_json(only: [:id,
+    @business_user = BusinessUser.all
+    render json: { business_user: @business_user.as_json(only: [:id,
                                                                  :business_user_email,
                                                                  :business_user_password]) },
      status: :ok

@@ -8,6 +8,8 @@ class EmployeeUser < ActiveRecord::Base
 
   before_validation :ensure_access_token2
 
+
+
   def ensure_access_token2
     if self.access_token2.blank?
       self.access_token2 = EmployeeUser.generate_token2

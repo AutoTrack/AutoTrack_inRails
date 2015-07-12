@@ -1,5 +1,5 @@
 class EmployeeUsersController < ApplicationController
-  skip_authorization_check
+  # skip_authorization_check
   before_action :authenticate_business_user_with_token!
 
   def index
