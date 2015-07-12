@@ -77,7 +77,7 @@ class RepairOrdersController < ApplicationController
     if @repair_order.save
      render json: { repair_order: @repair_order.as_json(
                                                 :include { client: {
-                                                :include => { vehicle: }}})
+                                                :include => { vehicle: }}})},
          status: :ok
      else
        render json: { errors: @post.errors.full_messages },
