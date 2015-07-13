@@ -1,7 +1,7 @@
 class BusinessUsersController < ApplicationController
   # skip_authorization_check
   def index
-    @business_users = BusinessUser.all
+    @business_user = BusinessUser.all
     render json: { business_user: @business_users.as_json(only: [:id,
                                                                  :business_user_name,
                                                                  :business_user_password])},
@@ -38,10 +38,10 @@ class BusinessUsersController < ApplicationController
   def business_login
 
     passhash = Digest::SHA1.hexdigest(params[:business_user_password])
-    @business_user_login = BusinessUser.find_by(business_username: params[:business_username],
+    @business_user = BusinessUser.find_by(business_username: params[:business_username],
                                                 business_user_password: passhash)
-    if @business_user_login
-      render json: { business_user: @business_user_login.as_json },
+    if @business_user
+      render json: { business_user: @business_user.as_json },
         status: :ok
     else
       render json: { message: "Invalid Login" },
