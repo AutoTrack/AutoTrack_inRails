@@ -1,9 +1,4 @@
 class BusinessUser < ActiveRecord::Base
-after_create :send_notification
-
-  def send_notification
-      BusinessUserMailer.new_business_user(self).deliver
-  end
 
   has_many :employee_users
   has_many :repair_orders
