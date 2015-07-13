@@ -128,13 +128,15 @@ class EmployeeUsersController < ApplicationController
 
   def show_employee_user
     @show_employee = EmployeeUser.find(params[:id])
-      render json: { employee_user: @show_employee.as_json },
+      render json: { employee_user: @show_employee.as_json(only: [
+                                                               :employee_email,
+                                                               :employee_pin,
+                                                               :employee_password,
+                                                               :employee_first_name,
+                                                               :employee_last_name,
+                                                               :employee_number,
+                                                               :role])
         status: :ok
+
   end
-
-
 end
-# def update
-#     @post = Post.find(params[:id])
-#     if @post.user == current_user
-#       @post.update(post_params)

@@ -1,11 +1,14 @@
 class RepairItemsController < ApplicationController
 
   def add_repair_item
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+    @add_repair_item = @repair_order.repair_items.new(params[:repair_item_id])
 
   end
 
   def remove_repair_item
-
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+    @remove_repair_item = @repair_order.repair_items.destroy(params[:repair_item_id])
   end
 
   def add_repair_item_quantity
@@ -20,6 +23,9 @@ class RepairItemsController < ApplicationController
 
   end
 
+  def show_repair_item
+
+  end
 
 
 
