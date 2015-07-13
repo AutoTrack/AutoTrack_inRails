@@ -41,6 +41,13 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `POST 'employee_user/login'`
 * [Login A Employee With Pin](#login-a-employee-with-pin)
 `POST 'employee_user/pin_login'`
+* [Update Employee Information](#update-employee-information)
+`PATCH 'employee_user/update/:id'`
+* [Delete Employee Information](#delete-employee-information)
+`DELETE 'employee_user/delete/:id'`
+* [Show Employee Information](#show-employee-information)
+`GET 'employee_user/show/:id'`
+
 
 ### **Clients**
 * [Request all Clients](#request-all-clients)

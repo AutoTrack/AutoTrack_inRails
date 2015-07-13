@@ -75,8 +75,8 @@ class RepairOrdersController < ApplicationController
   def repair_order_show
     @repair_order = current_business_user.repair_orders.find(params[:id])
 
-    if @repair_order.save
-     render json: { repair_order: @repair_order.as_json(:include [:employee_user, :client, :vehicle])},
+    if @repair_order
+     render json: { repair_order: @repair_order.as_json(:include [:repair_item, :client, :vehicle])},
 
          status: :ok
      else
@@ -86,11 +86,12 @@ class RepairOrdersController < ApplicationController
   end
 
 
-  def repair_order_update
-
-  end
-
   def repair_order_destroy
+    @delete_repair_order = current_business_user.repair_orders.find(params[:id])
+      @delete_repair_order.destroy
+        render json: { employee_user: @delete_repair_order.as_json },
+          status: :ok
+      flash[:alert] = 'Repair Order has been removed from the system.'
   end
 
 end
