@@ -111,7 +111,7 @@ class EmployeeUsersController < ApplicationController
     if @update_employee.save
       render json: { employee_user: @update_employee.as_json },
         status: :ok
-      flash[:alert] = 'Employee information has been updated in the system.'
+
     else
       render json: { message: "Update employee unsuccessful" },
         status: :unauthenticated
@@ -121,9 +121,8 @@ class EmployeeUsersController < ApplicationController
   def delete_employee_user
     @delete_employee = EmployeeUser.find(params[:id])
     @delete_employee.destroy
-      render json: { employee_user: @update_employee.as_json },
+      render json: { employee_user: @delete_employee.as_json },
         status: :ok
-    flash[:alert] = 'Employee has been removed from the system.'
   end
 
   def show_employee_user
