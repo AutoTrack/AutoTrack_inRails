@@ -21,7 +21,6 @@ class BusinessUsersController < ApplicationController
                       business_user_zipcode: params[:business_user_zipcode],
                       business_logo_url: params[:business_logo_url],
                       business_user_cap: params[:business_user_cap],
-                      role: params[:role],
                       logo_file_name: params[:logo_file_name],
                       logo_content_type: params[:logo_content_type],
                       logo_file_size: params[:logo_file_size])
