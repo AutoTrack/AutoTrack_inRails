@@ -99,4 +99,42 @@ class EmployeeUsersController < ApplicationController
     end
   end
 
+  def update_employee_user
+    @update_employee = EmployeeUser.find(params[:id])
+    @update_employee.update(employee_email: params[:employee_email],
+                            employee_pin: params[:employee_pin],
+                            employee_password: params[:employee_password],
+                            employee_first_name: params[:employee_first_name],
+                            employee_last_name: params[:employee_last_name],
+                            employee_number: params[:employee_number],
+                            role: params[:role])
+    if @update_employee.save
+      render json: { employee_user: @update_employee.as_json },
+        status: :ok
+      flash[:alert] = 'Employee information has been updated in the system.'
+    else
+      render json: { message: "Update employee unsuccessful" },
+        status: :unauthenticated
+    end
+  end
+
+  def delete_employee_user
+    @delete_employee = EmployeeUser.find(params[:id])
+    @delete_employee.destroy
+      render json: { employee_user: @update_employee.as_json },
+        status: :ok
+    flash[:alert] = 'Employee has been removed from the system.'
+  end
+
+  def show_employee_user
+    @show_employee = EmployeeUser.find(params[:id])
+      render json: { employee_user: @show_employee.as_json },
+        status: :ok
+  end
+
+
 end
+# def update
+#     @post = Post.find(params[:id])
+#     if @post.user == current_user
+#       @post.update(post_params)
