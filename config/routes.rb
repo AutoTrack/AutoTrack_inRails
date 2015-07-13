@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post 'employee_user/register', to: 'employee_users#employee_register'
   post 'employee_user/login', to: 'employee_users#employee_login'
   post 'employee_user/pin_login', to: 'employee_users#employee_pin_login'
+  patch 'employee_user/update/:id', to: 'employee_users#update_employee_user'
+  delete 'employee_user/delete/:id', to: 'employee_users#delete_employee_user'
+  get 'employee_user/show/:id', to: 'employee_users#show_employee_user'
 
 #--------------------------Client-Routes--------------------------------#
 
