@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
     end
 
     def business_clients_index
-        @client = current_business_user.clients.all
+        @client = business_user.clients.all
         render json: { client: @client.as_json},
         status: :ok
     end
