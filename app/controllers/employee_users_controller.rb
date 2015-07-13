@@ -135,7 +135,7 @@ class EmployeeUsersController < ApplicationController
                                                                :employee_first_name,
                                                                :employee_last_name,
                                                                :employee_number,
-                                                               :role])
+                                                               :role])},
         status: :ok
 
   end
