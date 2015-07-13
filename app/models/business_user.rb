@@ -3,7 +3,7 @@ class BusinessUser < ActiveRecord::Base
   has_many :repair_orders
 
   has_many :invoices
-  has_many :clients, through: :invoices
+  has_many :clients
 
 
   validates :business_user_password, :access_token, presence: true
