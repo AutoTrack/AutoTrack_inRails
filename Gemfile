@@ -42,6 +42,8 @@ gem 'foreman'
 gem "paperclip", "~> 4.3"
 #Paginations gets easier with Kaminari
 gem 'kaminari'
+#Mandrill api to make out app post a request to mandriill
+gem 'mandrill-api', '~> 1.0.53', require: 'mandrill'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
