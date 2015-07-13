@@ -40,14 +40,14 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: "localhost:3000" }
 
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV['S3_BUCKET_DEV'],
-      access_key_id: ENV['AMAZON_S3_ACCESS_KEY'],
-      secret_access_key: ENV['AMAZON_S3_SECRETE_KEY']
-    }
-  }
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   s3_credentials: {
+  #     bucket: ENV['S3_BUCKET_DEV'],
+  #     access_key_id: ENV['AMAZON_S3_ACCESS_KEY'],
+  #     secret_access_key: ENV['AMAZON_S3_SECRETE_KEY']
+  #   }
+  # }
 
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.mandrillapp.com',
