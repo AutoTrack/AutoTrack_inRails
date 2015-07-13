@@ -5,8 +5,8 @@ class EmployeeUsersController < ApplicationController
 
   # This will provide a list of all employees in existance.
   def index
-    @employee_users = EmployeeUser.all
-    render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
+    @all_employee_users = EmployeeUser.all
+    render json: { employee_user: @all_employee_users.as_json(only: [:id, :employee_first_name,
                                                                  :employee_last_name,
                                                                  :employee_email,
                                                                  :employee_number]) },
@@ -16,8 +16,8 @@ class EmployeeUsersController < ApplicationController
 
 #This will provide a list of all employees associated with current business user.
   def index_by_business
-    @employee_users = current_business_user.employee_users.all
-    render json: { employee_user: @employee_users.as_json(only: [:id, :employee_first_name,
+    @business_employee_users = current_business_user.employee_users.all
+    render json: { employee_user: @business_employee_users.as_json(only: [:id, :employee_first_name,
                                                                  :employee_last_name,
                                                                  :employee_email,
                                                                  :employee_number]) },
@@ -30,7 +30,7 @@ class EmployeeUsersController < ApplicationController
 # rights to everything.
   def super_employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
-     @employee_user = current_business_user.employee_users.new(
+     @super_employee_user = current_business_user.employee_users.new(
                                        employee_email: params[:employee_email],
                                        employee_pin: params[:employee_pin],
                                        employee_password: passhash,
@@ -39,12 +39,12 @@ class EmployeeUsersController < ApplicationController
                                        employee_number: params[:employee_number],
                                        role: params[:role])
 
-     if @employee_user.save
+     if @super_employee_user.save
 
-       render json: { employee_user: @employee_user.as_json },
+       render json: { employee_user: @super_employee_user.as_json },
          status: :created
      else
-       render json: { errors: @employee_user.errors.full_messages },
+       render json: { errors: @super_employee_user.errors.full_messages },
          status: :unprocessable_entity
      end
   end
@@ -53,19 +53,19 @@ class EmployeeUsersController < ApplicationController
   def employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
 
-     @employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
+     @register_employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
                                        employee_pin: params[:employee_pin],
                                        employee_password: passhash,
                                        employee_first_name: params[:employee_first_name],
                                        employee_last_name: params[:employee_last_name],
                                        employee_number: params[:employee_number],
                                        role: params[:role])
-     if @employee_user.save
+     if @register_employee_user.save
 
-       render json: { employee_user: @employee_user.as_json },
+       render json: { employee_user: @register_employee_user.as_json },
          status: :created
      else
-       render json: { errors: @employee_user.errors.full_messages },
+       render json: { errors: @register_employee_user.errors.full_messages },
          status: :unprocessable_entity
      end
   end
@@ -74,10 +74,10 @@ class EmployeeUsersController < ApplicationController
   def employee_login
     passhash = Digest::SHA1.hexdigest(params[:employee_password])
 
-    @employee_user = current_business_user.employee_users.find_by(employee_password: passhash,
+    @login_employee_user = current_business_user.employee_users.find_by(employee_password: passhash,
                      employee_email: params[:employee_email])
-    if @employee_user
-      render json: { employee_user: @employee_user.as_json },
+    if @login_employee_user
+      render json: { employee_user: @login_employee_user.as_json },
         status: :ok
     else
       render json: { message: "Invalid Login" },
@@ -88,10 +88,10 @@ class EmployeeUsersController < ApplicationController
 
 # This is for logging in through pin feature.
   def employee_pin_login
-    @employee_user = current_business_user.employee_users.find_by(employee_pin: params[:employee_pin])
-    if @employee_user
+    @pin_employee_user = current_business_user.employee_users.find_by(employee_pin: params[:employee_pin])
+    if @pin_employee_user
 
-      render json: { employee_user: @employee_user.as_json },
+      render json: { employee_user: @pin_employee_user.as_json },
         status: :ok
     else
       render json: { message: "Invalid Employee Pin" },

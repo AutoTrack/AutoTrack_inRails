@@ -158,15 +158,19 @@ Example success:
 `POST 'business_user/register'`
 
 Params:
+ * business_username:sting
  * business_user_name:string
- * business_user_email:string
  * business_user_password:string
- * business_user_cap:integer
+ * business_user_email:string
  * business_user_street:string
  * business_user_city:string
  * business_user_state:string
  * business_user_zipcode:string
  * business_logo_url:string
+ * business_user_cap:integer
+ * logo_file_name:string
+ * logo_content_type:string
+ * logo_file_size:string
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
