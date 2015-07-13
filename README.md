@@ -46,9 +46,9 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request all Clients](#request-all-clients)
 `GET '/clients'`
 * [Request all Clients By Business](#request-all-clients-by-business)
-`GET '/clients/business_user_id:'`
+`GET '/clients/business_user/:id'`
 * [Request all Clients By Employee](#request-all-clients-by-employee)
-`GET '/clients/employee_user_id:'`
+`GET '/clients/employee_user/:id'`
 * [Create Clients](#create-clients)
 `POST '/clients'`
 * [Show a Client](#show-a-client)
@@ -62,9 +62,9 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Repair Orders](#request-all-repair-orders)
 `GET '/repair_orders'`
 * [Request All Repair Orders For A Business](#request-all-repair-orders-for-a-business)
-`GET 'repair_orders/:business_user_id'`
+`GET 'repair_orders/business_user/:id'`
 * [Request All Repair Orders For A Employee](#request-all-repair-orders-for-a-employee)
-`'repair_orders/:employee_user_id'`
+`'repair_orders/employee_user/:id'`
 * [Create A Repair Order Number](#create-a-repair-order-number)
 `POST 'repair_order'`
 * [Attach Employee To Repair Order](#attach-employee-to-repair-order)
@@ -80,9 +80,9 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Vehicles](#request-all-vehicles)
 `GET '/vehicles'`
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
-`GET '/vehicles/:business_user_id'`
+`GET '/vehicles/business_user/:id'`
 * [Request All Vehicles By Employee](#request-all-vehicles-by-employee)
-`GET '/vehicles/:employee_user_id'`
+`GET '/vehicles/employee_user/:id'`
 * [Create A Vehicle](#create-a-vehicle)
 `POST 'vehicle/'`
 * [Show Vehicle](#show-vehicle)
@@ -96,7 +96,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Inventory Items](#request-all-inventory-items)
 `GET '/inventory_items'`
 * [Request All Inventory Items By Business](#request-all-inventory-items-by-business)
-`GET '/inventory_items/:business_user_id'`
+`GET '/inventory_items/business_user/:id'`
 * [Create Inventory Item](#create-inventory-item)
 `POST '/inventory_items'`
 * [Show Inventory Item](#show-inventory-item)
@@ -198,7 +198,7 @@ Example success:
 `POST 'business_user/login'`
 
 Params:
-  * business_user_name:string
+  * business_username:string
   * business_user_password:string
 
 Response:
@@ -347,7 +347,7 @@ Params:
   * employee_email:string
   * employee_password:string
   * employee_pin:string
-  * employee_access_rights:string
+  * role:string
   * employee_number:string
 
 Response:
@@ -364,7 +364,7 @@ Example success:
     "employee_email": "ppwood1204@gmail.com",
     "employee_password": "08cb824ba9ea8d8fe48f161b263cb68c36c712ed",
     "employee_pin": "1234",
-    "employee_access_rights": level1,
+    "role": level1,
     "created_at": "2015-07-09T15:53:14.610Z",
     "updated_at": "2015-07-09T15:53:14.610Z",
     "super_user": false,
@@ -387,7 +387,7 @@ Params:
   * employee_email:string
   * employee_password:string
   * employee_pin:string
-  * employee_access_rights:string
+  * role:string
   * employee_number:string
 
 Response:
@@ -404,7 +404,7 @@ Example success:
     "employee_email": "pwood2098@gmail.com",
     "employee_password": "8a483dda053b68d3aeef878a3dd64dc2e04516f5",
     "employee_pin": "9930",
-    "employee_access_rights": level3,
+    "role": level3,
     "created_at": "2015-07-09T13:42:52.782Z",
     "updated_at": "2015-07-09T13:42:52.782Z",
     "super_user": false,
@@ -531,7 +531,7 @@ Example success:
 
 ### **Request all Clients By Business**
 
-`GET '/clients/business_user_id:'`
+`GET '/clients/business_user/:id'`
 
 Params:
   * none
@@ -579,7 +579,7 @@ Example success:
 
 ### **Request all Clients By Employee**
 
-`GET '/clients/employee_user_id:'`
+`GET '/clients/employee_user/:id'`
 
 Params:
   * none
@@ -797,7 +797,7 @@ Example success:
 
 ### **Request All Repair Orders For A Business**
 
-`GET 'repair_orders/:business_user_id'`
+`GET 'repair_orders/business_user/:id'`
 
 Params:
   * none
@@ -831,7 +831,7 @@ Example success:
 
 ### **Request All Repair Orders For A Employee**
 
-`GET 'repair_orders/:employee_user_id'`
+`GET 'repair_orders/employee_user/:id'`
 
 Params:
   * none
@@ -1068,7 +1068,7 @@ Example success:
 
 ### **Request All Vehicles By Business**
 
-`GET '/vehicles/:business_user_id'`
+`GET '/vehicles/business_user/:id'`
 
 Params:
   * none
@@ -1102,7 +1102,7 @@ Example success:
 
 ### **Request All Vehicles By Employee**
 
-`GET '/vehicles/:employee_user_id'`
+`GET '/vehicles/employee_user/:id'`
 
 Params:
   * none
@@ -1305,7 +1305,7 @@ Example success:
 
 ### **Request All Inventory Items By Business**
 
-`GET '/inventory_items/:business_user_id'`
+`GET '/inventory_items/business_user/:id'`
 
 Params:
   * none
