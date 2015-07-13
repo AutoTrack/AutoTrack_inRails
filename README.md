@@ -31,6 +31,8 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 ### **Employee User**
 * [Request All Employee Users](#request-all-employee-users)
 `GET 'employee_user/index'`
+* [Request All Employees By Business](#request-all-employees-by-business)
+`GET 'employee_user/business_index'`
 * [Register A Super Employee](#register-a-super-employee)
 `POST 'employee_user/sregister'`
 * [Register A New Employee](#register-a-new-employee)
@@ -43,6 +45,10 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 ### **Clients**
 * [Request all Clients](#request-all-clients)
 `GET '/clients'`
+* [Request all Clients By Business](#request-all-clients-by-business)
+`GET '/clients/business_user_id:'`
+* [Request all Clients By Employee](#request-all-clients-by-employee)
+`GET '/clients/employee_user_id:'`
 * [Create Clients](#create-clients)
 `POST '/clients'`
 * [Show a Client](#show-a-client)
@@ -58,16 +64,47 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Repair Orders For A Business](#request-all-repair-orders-for-a-business)
 `GET 'repair_orders/:business_user_id'`
 * [Request All Repair Orders For A Employee](#request-all-repair-orders-for-a-employee)
-`GET 'repair_orders/:id'`
+`'repair_orders/:employee_user_id'`
 * [Create A Repair Order Number](#create-a-repair-order-number)
 `POST 'repair_order'`
 * [Attach Employee To Repair Order](#attach-employee-to-repair-order)
 `POST` 'repair_order/attach_employee'`
 * [Show A Repair Order](#show-a-repair-order)
 `GET 'repair_order/:id'`
+* [Update A Repair Order](#update-a-repair-order)
+`PATCH 'repair_order/:id'`
+* [Delete A Repair Order](#show-a-repair-order)
+`DELETE 'repair_order/:id'`
 
-patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
-delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
+### **Vehicles**
+* [Request All Vehicles](#request-all-vehicles)
+`GET '/vehicles'`
+* [Request All Vehicles By Business](#request-all-vehicles-by-business)
+`GET '/vehicles/:business_user_id'`
+* [Request All Vehicles By Employee](#request-all-vehicles-by-employee)
+`GET '/vehicles/:employee_user_id'`
+* [Create A Vehicle](#create-a-vehicle)
+`POST 'vehicle/'`
+* [Show Vehicle](#show-vehicle)
+`GET 'vehicle/:id'`
+* [Update Vehicle](#update-vehicle)
+`PATCH 'vehicle/:id'`
+* [Delete Vehicle](#delete-vehicle)
+`DELETE 'vehicle/:id'`
+
+### **InventoryItems**
+* [Request All Inventory Items](#request-all-inventory-items)
+`GET '/inventory_items'`
+* [Request All Inventory Items By Business](#request-all-inventory-items-by-business)
+`GET '/inventory_items/:business_user_id'`
+* [Create Inventory Item](#create-inventory-item)
+`POST '/inventory_items'`
+* [Show Inventory Item](#show-inventory-item)
+`GET '/inventory_item/:id'`
+* [Update Inventory Item](#update-inventory-item)
+`PATCH '/inventory_item/:id'`
+* [Delete Inventory Item](#delete-inventory-item)
+`DELETE '/inventory_item/:id'`
 
 
 ### **Request all Business Users**

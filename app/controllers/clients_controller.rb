@@ -6,6 +6,18 @@ class ClientsController < ApplicationController
         status: :ok
     end
 
+    def business_clients_index
+        @client = current_business_user.clients.all
+        render json: { client: @client.as_json},
+        status: :ok
+    end
+
+    def employee_clients_index
+        @client = current_employee_user.clients.all
+        render json: { client: @client.as_json},
+        status: :ok
+    end
+
     def clients_create
         @client = current_business_user.clients.new(client_first_name: params[:client_first_name],
                              client_last_name: params[:client_last_name],

@@ -44,10 +44,11 @@ class RepairOrdersController < ApplicationController
 
 # This will attach employee to RO after the RO has been created.
   def repair_order_employees_create
-    @repair_order = current_business_user.repair_orders.find(params[:repair_order_number])
-    @repair_order_employee = @repair_order.employee_users.new(params[:employee_number])
+    @vehicle = @client.vehicles.create
+    @repair_order = Repair_orders.find(params[:repair_order_id])
+    @repair_order_employee = @repair_order.employee_users_repair_orders.new(params[:employee_number])
     if @repair_order_employee.save
-      render json: {repair_order_employee: @repair_order_employee.as_json },
+      render json: {repair_order_employee: @repair_order_employee.as_json(include:[:employee_user, :client, :vehicle])},
       status: :created
     else
       render json: { errors: @repair_order_employee.errors.full_messages },
@@ -75,8 +76,7 @@ class RepairOrdersController < ApplicationController
     @repair_order = current_business_user.repair_orders.find(params[:id])
 
     if @repair_order.save
-     render json: { repair_order: @repair_order.as_json(:include => { :client => {
-                                                        :include => { :vehicle => {}}}})},
+     render json: { repair_order: @repair_order.as_json(:include [:employee_user, :client, :vehicle])},
 
          status: :ok
      else
