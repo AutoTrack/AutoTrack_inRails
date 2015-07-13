@@ -1,7 +1,14 @@
 class InventoryItemsController < ApplicationController
 
-    def inventory_items_all
+    def inventory_items_index
         @inv_item = InventoryItem.all
+
+        render json: {inv_item: @inv_item.as_json},
+        status: :ok
+    end
+
+    def business_inventory_items_index
+        @inv_item = current_business_user.inventory_items.all
 
         render json: {inv_item: @inv_item.as_json},
         status: :ok

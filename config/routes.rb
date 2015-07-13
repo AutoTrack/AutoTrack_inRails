@@ -15,32 +15,39 @@ Rails.application.routes.draw do
 #--------------------------Client-Routes--------------------------------#
 
 get 'clients', to: 'clients#clients_index'
+get 'clients/business_user/:id', to: 'clients#business_clients_index'
+get 'clients/employee_user/:id', to: 'clients#employee_clients_index'
 post 'clients', to: 'clients#clients_create'
 get 'client/:id', to: 'clients#client_show'
 patch 'client/:id', to: 'clients#client_update'
 delete 'client/:id', to: 'clients#client_destroy'
 
+#--------------------------RepairOrder-Routes--------------------------------#
+
+get 'repair_orders', to: 'repair_orders#repair_orders_index'
+get 'repair_orders/business_user/:id', to: 'repair_orders#business_repair_orders_index'
+get 'repair_orders/employee_user/:id', to: 'repair_orders#employee_repair_orders_index'
+post 'repair_order', to: 'repair_orders#repair_order_create'
+post 'repair_order/attach_employee', to: 'repair_orders#repair_order_employees_create'
+get 'repair_order/:id', to: 'repair_orders#repair_order_show'
+patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
+delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
+
 #-------------------------Vehicles-Routes-----------------------------#
-get 'vehicles', to: 'vehicles#vehicles_all'
+
+get 'vehicles', to: 'vehicles#vehicles_index'
+get 'vehicles/business_user/:id', to: 'vehicles#business_vehicles_index'
+get 'vehicles/employee_user/:id', to: 'vehicles#employee_vehicles_index'
 post 'vehicles', to: 'vehicles#vehicles_create'
 get 'vehicle/:id', to: 'vehicles#vehicle_show'
 patch 'vehicle/:id', to: 'vehicles#vehicle_update'
 delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 
-#--------------------------RepairOrder-Routes--------------------------------#
-
-get 'repair_orders', to: 'repair_orders#repair_orders_index'
-post 'repair_order', to: 'repair_orders#repair_order_create'
-post 'repair_order/attach_employee', to: 'repair_orders#repair_order_employees_create'
-get 'repair_orders/:id', to: 'repair_orders#employee_repair_orders_index'
-get 'repair_orders/:business_id', to: 'repair_orders#business_repair_orders_index'
-get 'repair_order/:id', to: 'repair_orders#repair_order_show'
-patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
-delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
 
 #------------------------InventoryItems-Routes------------------------#
 
-get 'inventory_items', to: 'inventory_items#inventory_items_all'
+get 'inventory_items', to: 'inventory_items#inventory_items_index'
+get 'inventory_items/business_user/:id', to: 'inventory_items#business_inventory_items_index'
 post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
 patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
