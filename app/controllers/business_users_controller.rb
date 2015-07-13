@@ -26,7 +26,7 @@ class BusinessUsersController < ApplicationController
                       logo_file_size: params[:logo_file_size])
 
     if @business_user.save
-      BusinessUserMailer.new_business_user(@business_user).deliver
+      # BusinessUserMailer.new_business_user(@business_user).deliver
       render json: { business_user: @business_user.as_json },
         status: :created
     else
