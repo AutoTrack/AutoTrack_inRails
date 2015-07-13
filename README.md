@@ -281,6 +281,60 @@ Example success:
 }
 ```
 
+### **Request All Employees By Business**
+
+`GET 'employee_user/business_index'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 2,
+      "employee_first_name": "Mike",
+      "employee_last_name": "Ordaz",
+      "employee_email": mordaz@autotrak.com,
+      "employee_number": 34525
+    },
+    {
+      "id": 3,
+      "employee_first_name": "Mike",
+      "employee_last_name": "Wood",
+      "employee_email": mwood@autotrak.com,
+      "employee_number": 34524
+    },
+    {
+      "id": 4,
+      "employee_first_name": "Phil",
+      "employee_last_name": "Ordaz",
+      "employee_email": pordaz@autotrak.com,
+      "employee_number": 34523
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
 
 
 ### **Register A Super Employee**
@@ -475,6 +529,101 @@ Example success:
 ```
 
 
+### **Request all Clients By Business**
+
+`GET '/clients/business_user_id:'`
+
+Params:
+  * none
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "client": [
+    {
+      "id": 1,
+      "client_first_name": "Juan",
+      "client_last_name": "Woods",
+      "client_street_address": "2210 Street Road",
+      "client_city": "New York",
+      "client_state": null,
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    },
+    {
+      "id": 2,
+      "client_first_name": "John",
+      "client_last_name": "Madera",
+      "client_street_address": "2200 Working Road",
+      "client_city": "Mars",
+      "client_state": "Pluto",
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    }
+  ]
+}
+```
+
+### **Request all Clients By Employee**
+
+`GET '/clients/employee_user_id:'`
+
+Params:
+  * none
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "client": [
+    {
+      "id": 1,
+      "client_first_name": "Juan",
+      "client_last_name": "Woods",
+      "client_street_address": "2210 Street Road",
+      "client_city": "New York",
+      "client_state": null,
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    },
+    {
+      "id": 2,
+      "client_first_name": "John",
+      "client_last_name": "Madera",
+      "client_street_address": "2200 Working Road",
+      "client_city": "Mars",
+      "client_state": "Pluto",
+      "client_zipcode": "20394",
+      "client_primary_phone": "123-123-2123",
+      "client_secondary_phone": "324-234-3234",
+      "client_email": "juan_woods@yahoo.com",
+      "created_at": "2015-07-08T23:09:38.000Z",
+      "updated_at": "2015-07-08T23:09:38.000Z",
+      "business_user_id": 1
+    }
+  ]
+}
+```
 ### **Create Clients**
 
 `POST '/clients'`
@@ -682,7 +831,7 @@ Example success:
 
 ### **Request All Repair Orders For A Employee**
 
-`GET 'repair_orders/:id'`
+`GET 'repair_orders/:employee_user_id'`
 
 Params:
   * none
@@ -815,10 +964,514 @@ Example success:
 }
 ```
 
-patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
-delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
+
+### **Update A Repair Order**
+
+`PATCH 'repair_order/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
 
 
+### **Delete A Repair Order**
+
+`DELETE 'repair_order/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+### **Request All Vehicles**
+
+`GET '/vehicles'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Request All Vehicles By Business**
+
+`GET '/vehicles/:business_user_id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Request All Vehicles By Employee**
+
+`GET '/vehicles/:employee_user_id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Create A Vehicle**
+
+`POST 'vehicle/'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Show Vehicle**
+
+`GET 'vehicle/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Update Vehicle**
+
+`PATCH 'vehicle/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+### **Delete Vehicle**
+
+`DELETE 'vehicle/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Request All Inventory Items**
+
+`GET '/inventory_items'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Request All Inventory Items By Business**
+
+`GET '/inventory_items/:business_user_id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Create Inventory Item**
+
+`POST '/inventory_items'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Show Inventory Item**
+
+`GET '/inventory_item/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Update Inventory Item**
+
+`PATCH '/inventory_item/:id'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Delete Inventory Item**
+
+`DELETE '/inventory_item/:id'`
+
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
 #Inventory Items
 ##Request all Inventory Items
 
