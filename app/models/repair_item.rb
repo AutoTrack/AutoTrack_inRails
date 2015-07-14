@@ -1,4 +1,7 @@
 class RepairItem < ActiveRecord::Base
   belongs_to :repair_order
-  belongs_to :inventory_item
+  has_many :inventory_items
+
+  validates :access_token, presence: true
+  validates :access_token2, presence: true
 end
