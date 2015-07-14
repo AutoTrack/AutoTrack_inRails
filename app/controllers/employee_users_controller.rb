@@ -128,14 +128,7 @@ class EmployeeUsersController < ApplicationController
 
   def show_employee_user
     @show_employee = current_business_user.employee_users.find(params[:id])
-      render json: { employee_user: @show_employee.as_json(only: [
-                                                               :employee_email,
-                                                               :employee_pin,
-                                                               :employee_password,
-                                                               :employee_first_name,
-                                                               :employee_last_name,
-                                                               :employee_number,
-                                                               :role])},
+      render json: { employee_user: @show_employee.as_json },
         status: :ok
 
   end
