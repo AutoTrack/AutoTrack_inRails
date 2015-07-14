@@ -41,23 +41,15 @@ class RepairItemsController < ApplicationController
         status: :ok
   end
 
-  def checkout_repair_items
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_items = @repair_order.repair_items.find(paramas[:id])
-    @repair_item_quantity = @repair_order.repair_items.find_by(params[:repair_item_quantity])
-    @checkout_items = @repair_order_items.inventory_items.find_by(params[:inventory_id])
-    @inventory_item_quantity = current_business_user.inventory_items.find_by(
-                                                                    params[:inventory_item_quantity])
-      if @checkout_items
-        @inventory_count_update = @inventory_item_quantity - @repair_item_quantity
+  # def checkout_repair_items
+  #   @repair_order = current_business_user.repair_orders.find(params[:id])
+  #   @repair_order_items = @repair_order.repair_items.find(paramas[:id])
+  #   @repair_item_quantity = @repair_order.repair_items.find_by(params[:repair_item_quantity])
+  #   @checkout_items = @repair_order_items.inventory_items.find_by(params[:inventory_id])
+  #   @inventory_item_quantity = current_business_user.inventory_items.find_by(
+  #                                                                   params[:inventory_item_quantity])
+  #     if @checkout_items
+  #       @inventory_count_update = @inventory_item_quantity - @repair_item_quantity
 
 
 end
-
-# create_table "repair_items", force: :cascade do |t|
-#   t.integer  "inventory_item_id"
-#   t.integer  "repair_order_id"
-#   t.integer  "repair_item_quantity"
-#   t.datetime "created_at",           null: false
-#   t.datetime "updated_at",           null: false
-# end
