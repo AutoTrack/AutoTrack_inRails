@@ -1,4 +1,6 @@
 class VehiclesController < ApplicationController
+  before_action :authenticate_business_user_with_token!
+  before_action :authenticate_employee_user_with_token!
 
     def vehicles_index
         @vehicles = Vehicle.all
@@ -22,15 +24,15 @@ class VehiclesController < ApplicationController
     end
 
     def vehicles_create
-        @client = Client.find(params[:client_id])
-        @create_vehicle = @client.vehicles.create(client_id: @client.id,
-                               vehicle_type: params[:vehicle_type],
-                               vehicle_year: params[:vehicle_year],
-                               vehicle_model: params[:vehicle_model],
-                               vehicle_vin_number: params[:vehicle_vin_number],
-                               vehicle_color: params[:vehicle_color],
-                               vehicle_liscense_plate: params[:vehicle_liscense_plate],
-                               vehicle_comment: params[:vehicle_comment])
+        @client = current_business_user.clients.find(params[:client_id])
+        @create_vehicle = @client.vehicles.find_or_create_by(
+                                                   vehicle_type: params[:vehicle_type],
+                                                   vehicle_year: params[:vehicle_year],
+                                                   vehicle_model: params[:vehicle_model],
+                                                   vehicle_vin_number: params[:vehicle_vin_number],
+                                                   vehicle_color: params[:vehicle_color],
+                                                   vehicle_liscense_plate: params[:vehicle_liscense_plate],
+                                                   vehicle_comment: params[:vehicle_comment])
         @create_vehicle.save
 
         render json: {vehicle: @create_vehicle.as_json(include: :client)},
@@ -38,14 +40,14 @@ class VehiclesController < ApplicationController
     end
 
     def vehicle_show
-        @vehicle = Vehicle.find(params[:id])
+        @vehicle = current_business_user.vehicles.find(params[:id])
 
         render json: {vehicle: @vehicle.as_json(include: :client)},
         status: :ok
     end
 
     def vehicle_update
-        @vehicle = Vehicle.find(params[:id])
+        @vehicle = current_business_user.vehicles.find(params[:id])
         @vehicle.update(vehicle_type: params[:vehicle_type],
                         vehicle_year: params[:vehicle_year],
                         vehicle_model: params[:vehicle_model],
@@ -59,7 +61,7 @@ class VehiclesController < ApplicationController
     end
 
     def vehicle_destroy
-        @vehicle  = Vehicle.find(params[:id])
+        @vehicle  = current_business_user.vehicles.find(params[:id])
         @vehicle.destroy
 
         render json: {vehicle: @vehicle.as_json}

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post 'employee_user/register', to: 'employee_users#employee_register'
   post 'employee_user/login', to: 'employee_users#employee_login'
   post 'employee_user/pin_login', to: 'employee_users#employee_pin_login'
+  patch 'employee_user/update/:id', to: 'employee_users#update_employee_user'
+  delete 'employee_user/delete/:id', to: 'employee_users#delete_employee_user'
+  get 'employee_user/show/:id', to: 'employee_users#show_employee_user'
 
 #--------------------------Client-Routes--------------------------------#
 
@@ -57,7 +60,14 @@ delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
 get 'invoices_index', to: 'invoices#invoices_index'
 
 
+#------------------------RepairItems-Routes------------------------#
 
+post 'repair_item', to: 'repair_items#add_repair_item'
+delete 'repair_item/:id', to: 'repair_items#remove_repair_item'
+post 'repair_item/quantity', to: 'repair_items#add_repair_item_quantity'
+patch 'repair_item/quantity', to: 'repair_items#update_repair_item_quantity'
+get 'repair_items/:id', to: 'repair_items#show_repair_items'
+get 'repair_item/:id', to: 'repair_items#show_repair_item'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
-
+  before_action :authenticate_business_user_with_token!
+  before_action :authenticate_employee_user_with_token!
     def clients_index
         @client = Client.all
         render json: { client: @client.as_json},
@@ -20,14 +21,14 @@ class ClientsController < ApplicationController
 
     def clients_create
         @client = current_business_user.clients.new(client_first_name: params[:client_first_name],
-                             client_last_name: params[:client_last_name],
-                             client_street_address: params[:client_street_address],
-                             client_city: params[:client_city],
-                             client_state: params[:client_state],
-                             client_zipcode: params[:client_zipcode],
-                             client_primary_phone: params[:client_primary_phone],
-                             client_secondary_phone: params[:client_secondary_phone],
-                             client_email: params[:client_email])
+                                                    client_last_name: params[:client_last_name],
+                                                    client_street_address: params[:client_street_address],
+                                                    client_city: params[:client_city],
+                                                    client_state: params[:client_state],
+                                                    client_zipcode: params[:client_zipcode],
+                                                    client_primary_phone: params[:client_primary_phone],
+                                                    client_secondary_phone: params[:client_secondary_phone],
+                                                    client_email: params[:client_email])
         if @client.save
             render json: {client: @client.as_json},
                 status: :created
@@ -38,7 +39,7 @@ class ClientsController < ApplicationController
     end
 
     def client_show
-        @client = Client.find(params[:id])
+        @client = current_business_user.clients.find(params[:id])
 
         render json: {client: @client.as_json},
         status: :ok
@@ -46,23 +47,23 @@ class ClientsController < ApplicationController
     end
 
     def client_update
-        @client = Client.find(params[:id])
+        @client = current_business_users.clients.find(params[:id])
         @client.update(client_first_name: params[:client_first_name],
-                                client_last_name: params[:client_last_name],
-                                client_street_address: params[:client_street_address],
-                                client_city: params[:client_city],
-                                client_state: params[:client_state],
-                                client_zipcode: params[:client_zipcode],
-                                client_primary_phone: params[:client_primary_phone],
-                                client_secondary_phone: params[:client_secondary_phone],
-                                client_email: params[:client_email])
+                       client_last_name: params[:client_last_name],
+                       client_street_address: params[:client_street_address],
+                       client_city: params[:client_city],
+                       client_state: params[:client_state],
+                       client_zipcode: params[:client_zipcode],
+                       client_primary_phone: params[:client_primary_phone],
+                       client_secondary_phone: params[:client_secondary_phone],
+                       client_email: params[:client_email])
 
         render json: {client: @client.as_json},
         status: :created
     end
 
     def  client_destroy
-        @client = Client.find(params[:id])
+        @client = current_business_user.find(params[:id])
         @client.destroy
 
         render json: {client: @client.as_json},

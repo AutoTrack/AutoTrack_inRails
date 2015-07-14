@@ -1,5 +1,8 @@
 class Vehicle < ActiveRecord::Base
   belongs_to :client
   has_many :repair_orders
-  has_many :invoices
+
+
+  validates :access_token, presence: true
+  validates :access_token2, presence: true
 end
