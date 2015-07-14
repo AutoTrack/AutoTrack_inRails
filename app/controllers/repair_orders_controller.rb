@@ -83,7 +83,6 @@ class RepairOrdersController < ApplicationController
      render json: { repair_order: @repair_order_items.as_json(:include [:repair_order,
                                                                         :client,
                                                                         :vehicle])},
-
          status: :ok
      else
        render json: { errors: @repair_order_items.errors.full_messages },

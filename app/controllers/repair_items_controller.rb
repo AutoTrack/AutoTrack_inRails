@@ -1,5 +1,6 @@
 class RepairItemsController < ApplicationController
-
+  before_action :authenticate_business_user_with_token!
+  before_action :authenticate_employee_user_with_token!
   def add_repair_item
     @repair_order = current_business_user.repair_orders.find(params[:id])
     @add_repair_item = @repair_order.repair_items.new(params[:repair_item])
@@ -41,15 +42,18 @@ class RepairItemsController < ApplicationController
         status: :ok
   end
 
-  # def checkout_repair_items
-  #   @repair_order = current_business_user.repair_orders.find(params[:id])
-  #   @repair_order_items = @repair_order.repair_items.find(paramas[:id])
-  #   @repair_item_quantity = @repair_order.repair_items.find_by(params[:repair_item_quantity])
-  #   @checkout_items = @repair_order_items.inventory_items.find_by(params[:inventory_id])
-  #   @inventory_item_quantity = current_business_user.inventory_items.find_by(
-  #                                                                   params[:inventory_item_quantity])
-  #     if @checkout_items
-  #       @inventory_count_update = @inventory_item_quantity - @repair_item_quantity
-
+  def checkout_repair_items
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+    @repair_order_items = @repair_order.repair_items.find(paramas[:id])
+    @repair_item_quantity = @repair_order.repair_items.find_by(params[:repair_item_quantity])
+    @checkout_items = @repair_order_items.inventory_items.find_by(params[:inventory_id])
+    @inventory_item_quantity = current_business_user.inventory_items.find_by(
+                                                                    params[:inventory_item_quantity])
+      if @checkout_items
+        @inventory_count_update = @inventory_item_quantity - @repair_item_quantity
+        @inventory_item_quantity = @inventory_count_update
+        @inventory_item_quantity.save
+      end
+  end
 
 end

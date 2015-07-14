@@ -2,25 +2,25 @@ class ClientsController < ApplicationController
   before_action :authenticate_business_user_with_token!
   before_action :authenticate_employee_user_with_token!
     def clients_index
-        @client = Client.all
-        render json: { client: @client.as_json},
+        @clients = Client.all
+        render json: { client: @clients.as_json},
         status: :ok
     end
 
     def business_clients_index
-        @client = business_user.clients.all
-        render json: { client: @client.as_json},
+        @business_clients = current_business_user.clients.all
+        render json: { client: @business_clients.as_json},
         status: :ok
     end
 
     def employee_clients_index
-        @client = current_employee_user.clients.all
-        render json: { client: @client.as_json},
+        @employee_clients = current_employee_user.clients.all
+        render json: { client: @employee_clients.as_json},
         status: :ok
     end
 
     def clients_create
-        @client = current_business_user.clients.new(client_first_name: params[:client_first_name],
+        @new_client = current_business_user.clients.new(client_first_name: params[:client_first_name],
                                                     client_last_name: params[:client_last_name],
                                                     client_street_address: params[:client_street_address],
                                                     client_city: params[:client_city],
@@ -29,26 +29,26 @@ class ClientsController < ApplicationController
                                                     client_primary_phone: params[:client_primary_phone],
                                                     client_secondary_phone: params[:client_secondary_phone],
                                                     client_email: params[:client_email])
-        if @client.save
-            render json: {client: @client.as_json},
+        if @new_client.save
+            render json: {client: @new_client.as_json},
                 status: :created
         else
-            render json: { errors: @client.errors.full_messages },
+            render json: { errors: @new_client.errors.full_messages },
                 status: :unprocessable_entity # 422 code, something wrong with data
         end
     end
 
     def client_show
-        @client = current_business_user.clients.find(params[:id])
+        @show_client = current_business_user.clients.find(params[:id])
 
-        render json: {client: @client.as_json},
+        render json: {client: @show_client.as_json},
         status: :ok
 
     end
 
     def client_update
-        @client = current_business_users.clients.find(params[:id])
-        @client.update(client_first_name: params[:client_first_name],
+        @update_client = current_business_users.clients.find(params[:id])
+        @update_client.update(client_first_name: params[:client_first_name],
                        client_last_name: params[:client_last_name],
                        client_street_address: params[:client_street_address],
                        client_city: params[:client_city],
@@ -58,15 +58,15 @@ class ClientsController < ApplicationController
                        client_secondary_phone: params[:client_secondary_phone],
                        client_email: params[:client_email])
 
-        render json: {client: @client.as_json},
+        render json: {client: @update_client.as_json},
         status: :created
     end
 
     def  client_destroy
-        @client = current_business_user.find(params[:id])
-        @client.destroy
+        @destroy_client = current_business_user.find(params[:id])
+        @destroy_client.destroy
 
-        render json: {client: @client.as_json},
+        render json: {client: @destroy_client.as_json},
         status: :gone
     end
 end

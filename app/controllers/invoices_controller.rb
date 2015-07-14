@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
-# before_action :authenticate_employee_user_with_token!
-# before_action :authenticate_business_user_with_token!
+before_action :authenticate_employee_user_with_token!
+before_action :authenticate_business_user_with_token!
 
 
     def invoices_index
