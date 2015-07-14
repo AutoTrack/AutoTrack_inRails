@@ -40,7 +40,8 @@ class EmployeeUsersController < ApplicationController
                                        role: params[:role])
 
      if @super_employee_user.save
-        BusinessUserMailer.new_business_user(@business_user).deliver_now
+        # BusinessUserMailer.new_business_user(@super_employee_user).deliver_now
+
        render json: { employee_user: @super_employee_user.as_json },
          status: :created
      else
