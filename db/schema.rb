@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20150714124412) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "access_token"
+    t.string   "business_username"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "admin"
-    t.string   "business_username"
   end
 
   create_table "clients", force: :cascade do |t|
