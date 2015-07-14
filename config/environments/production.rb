@@ -77,30 +77,30 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-#   config.paperclip_defaults = {
-#   :storage => :s3,
-#   :s3_credentials => {
-#     :bucket => ENV['S3_BUCKET'],
-#     :access_key_id => ENV['AMAZON_S3_ACCESS_KEY'],
-#     :secret_access_key => ENV['AMAZON_S3_SECRETE_KEY']
-#   }
-# }
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['S3_BUCKET'],
+    :access_key_id => ENV['AMAZON_S3_ACCESS_KEY'],
+    :secret_access_key => ENV['AMAZON_S3_SECRETE_KEY']
+  }
+}
 
-  # ActionMailer::Base.smtp_settings = {
-  #   address: 'smtp.mandrillapp.com',
-  #   port: 587,
-  #   enable_starttls_auto: true,
-  #   user_name: ENV['MANDRILL_USERNAME'],
-  #   password: ENV['MANDRILL_API_KEY'],
-  #   domain: 'autotrak.com',
-  #   authentication: "login"
-  # }
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    enable_starttls_auto: true,
+    user_name: ENV['MANDRILL_USERNAME'],
+    password: ENV['MANDRILL_API_KEY'],
+    domain: 'autotrak.com',
+    authentication: "login"
+  }
 
-  # ActionMailer::Base.delivery_method = :smtp
-  # ActionMailer::Base.default charset: "utf-8"
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default charset: "utf-8"
 
 
-  # ActionMailer::Base.perform_deliveries = true
-  # #ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.perform_deliveries = true
+  #ActionMailer::Base.raise_delivery_errors = true
 
 end

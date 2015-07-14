@@ -53,6 +53,9 @@ get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
 patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
 delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
 
+#----------------------Invoices-Routes---------------------------------#
+get 'invoices_index', to: 'invoices#invoices_index'
+
 
 
 

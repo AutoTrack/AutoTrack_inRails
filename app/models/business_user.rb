@@ -2,15 +2,14 @@ class BusinessUser < ActiveRecord::Base
 
   has_many :employee_users
   has_many :repair_orders
-
   has_many :invoices
   has_many :clients
 
-
+#---Validations----
   validates :business_user_password, :access_token, presence: true
   validates :business_username, uniqueness: true, presence: true
 
-
+#----Callbacks----
   before_validation :ensure_access_token
 
 # This method associates the attribute ":avatar" with a file attachment
@@ -20,7 +19,7 @@ class BusinessUser < ActiveRecord::Base
     medium: '300x300>'
   },
   #if default url is needed.
-  :default_url => "/images/:style/missing.png"
+  default_url: "/images/:style/missing.png"
 
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/

@@ -1,12 +1,18 @@
 class BusinessUsersController < ApplicationController
   # skip_authorization_check
+
   def index
     @business_user = BusinessUser.all
-    render json: { business_user: @business_users.as_json(only: [:id,
+    if business_user_id == current_business_user
+      render json: { business_user: @business_users.as_json(only: [:id,
                                                                  :business_user_name,
                                                                  :business_user_password])},
      status: :ok
+    else
+      authanticate_business_user_with_token!
+    end
   end
+
 
   def business_register
      passhash = Digest::SHA1.hexdigest(params[:business_user_password])
@@ -26,7 +32,7 @@ class BusinessUsersController < ApplicationController
                       logo_file_size: params[:logo_file_size])
 
     if @business_user.save
-      # BusinessUserMailer.new_business_user(@business_user).deliver
+       BusinessUserMailer.new_business_user(@business_user).deliver_now
       render json: { business_user: @business_user.as_json },
         status: :created
     else
@@ -36,7 +42,6 @@ class BusinessUsersController < ApplicationController
   end
 
   def business_login
-
     passhash = Digest::SHA1.hexdigest(params[:business_user_password])
     @business_user = BusinessUser.find_by(business_username: params[:business_username],
                                                 business_user_password: passhash)
