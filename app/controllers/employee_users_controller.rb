@@ -100,7 +100,7 @@ class EmployeeUsersController < ApplicationController
   end
 
   def update_employee_user
-    @update_employee = EmployeeUser.find(params[:id])
+    @update_employee = current_business_user.employee_users.find(params[:id])
     @update_employee.update(employee_email: params[:employee_email],
                             employee_pin: params[:employee_pin],
                             employee_password: params[:employee_password],
@@ -119,14 +119,14 @@ class EmployeeUsersController < ApplicationController
   end
 
   def delete_employee_user
-    @delete_employee = EmployeeUser.find(params[:id])
+    @delete_employee = current_business_user.employee_users.find(params[:id])
     @delete_employee.destroy
       render json: { employee_user: @delete_employee.as_json },
         status: :ok
   end
 
   def show_employee_user
-    @show_employee = EmployeeUser.find(params[:id])
+    @show_employee = current_business_user.employee_users.find(params[:id])
       render json: { employee_user: @show_employee.as_json(only: [
                                                                :employee_email,
                                                                :employee_pin,
