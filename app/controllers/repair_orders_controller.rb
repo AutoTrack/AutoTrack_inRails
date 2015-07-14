@@ -34,7 +34,7 @@ class RepairOrdersController < ApplicationController
 
 # This will be used in the creation of a RO Number page.
   def repair_order_create
-    @repair_order = current_business_user.repair_orders.new(repair_order_number: params[:repair_order_number])
+    @repair_order = current_business_user.repair_orders.new(params[:repair_order])
     if @repair_order.save
       render json: { repair_order: @repair_order.as_json },
       status: :created
