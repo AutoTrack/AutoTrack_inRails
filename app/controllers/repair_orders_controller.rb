@@ -1,4 +1,6 @@
 class RepairOrdersController < ApplicationController
+  before_action :authenticate_business_user_with_token!
+  before_action :authenticate_employee_user_with_token!
 # This retrieves all repair orders in existance.
   def repair_orders_index
     @repair_orders_index = RepairOrder.all
@@ -44,12 +46,11 @@ class RepairOrdersController < ApplicationController
 
 # This will attach employee to RO after the RO has been created.
   def repair_order_employees_create
-    @vehicle = @client.vehicles.create
-    @repair_order = Repair_orders.find(params[:repair_order_id])
-    @repair_order_employee = @repair_order.employee_users_repair_orders.new(params[:employee_number])
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+    @repair_order_employee = @repair_order.employee_users_repair_orders.new(
+                                                            params[:employee_users_repair_orders])
     if @repair_order_employee.save
-      render json: {repair_order_employee: @repair_order_employee.as_json(include:[:employee_user,
-                                                                                   :client,
+      render json: {repair_order_employee: @repair_order_employee.as_json(include:[:client,
                                                                                    :vehicle])},
       status: :created
     else

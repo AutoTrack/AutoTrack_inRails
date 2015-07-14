@@ -7,5 +7,6 @@ class RepairOrder < ActiveRecord::Base
   has_many :inventory_items, through: :repair_items
 
 
-
+  validates :access_token, presence: true
+  validates :access_token2, presence: true
 end
