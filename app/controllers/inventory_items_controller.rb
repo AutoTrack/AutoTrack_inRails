@@ -17,7 +17,9 @@ class InventoryItemsController < ApplicationController
     end
 
     def inventory_items_create
-        @inv_item = current_business_user.inventory_items.find_or_create_by(part_number: params[:part_number],
+        @inv_item = current_business_user.inventory_items.find_or_create_by(
+                                      part_number: params[:part_number],
+                                      part_name: params[:part_name],
                                       business_part_number: params[:business_part_number],
                                       category: params[:category],
                                       inventory_item_location: params[:inventory_item_location],
@@ -50,6 +52,7 @@ class InventoryItemsController < ApplicationController
     def inventory_item_update
         @inv_item = current_business_user.inventoryitem.find(params[:id])
         @inv_item.update(part_number: params[:part_number],
+                         part_name: params[:part_name],
                          business_part_number: params[:business_part_number],
                          category: params[:category],
                          inventory_item_location: params[:inventory_item_location],

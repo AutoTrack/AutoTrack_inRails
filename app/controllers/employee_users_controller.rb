@@ -16,6 +16,7 @@ class EmployeeUsersController < ApplicationController
 
 #This will provide a list of all employees associated with current business user.
   def index_by_business
+
     @business_employee_users = current_business_user.employee_users.all
     render json: { employee_user: @business_employee_users.as_json(only: [:id, :employee_first_name,
                                                                  :employee_last_name,

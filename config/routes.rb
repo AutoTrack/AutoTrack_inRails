@@ -38,7 +38,7 @@ delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
 #---------------------Repair_Orders_Employee_Users--------------------#
 
 post 'employee_users_repair_order/attach_employee', to: 'employee_users_repair_orders#repair_order_employees_create'
-get 'employee_users_repair_order/show_employees', to: 'employee_users_repair_orders#repair_order_employees_show'
+get 'employee_users_repair_order/show_employees/:id', to: 'employee_users_repair_orders#repair_order_employees_show'
 
 #-------------------------Vehicles-Routes-----------------------------#
 
