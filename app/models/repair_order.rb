@@ -5,6 +5,7 @@ class RepairOrder < ActiveRecord::Base
   has_and_belongs_to_many :employee_users
   belongs_to :client
   has_many :inventory_items, through: :repair_items
+  has_many :employee_users_repair_orders
 
 
 

@@ -32,6 +32,7 @@ get 'repair_orders/business_user/:id', to: 'repair_orders#business_repair_orders
 get 'repair_orders/employee_user/:id', to: 'repair_orders#employee_repair_orders_index'
 post 'repair_order', to: 'repair_orders#repair_order_create'
 post 'repair_order/attach_employee', to: 'repair_orders#repair_order_employees_create'
+get 'repair_order/show_employees', to: 'repair_orders#repair_order_employees_show'
 get 'repair_order/:id', to: 'repair_orders#repair_order_show'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
 delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'

@@ -34,7 +34,8 @@ class RepairOrdersController < ApplicationController
 
 # This will be used in the creation of a RO Number page.
   def repair_order_create
-    @repair_order = current_business_user.repair_orders.new(params[:repair_order])
+    @repair_order = current_business_user.repair_orders.new(repair_order_number:
+                                                            params[:repair_order_number])
     if @repair_order.save
       render json: { repair_order: @repair_order.as_json },
       status: :created
@@ -44,35 +45,6 @@ class RepairOrdersController < ApplicationController
     end
   end
 
-# This will attach employee to RO after the RO has been created.
-  def repair_order_employees_create
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_employee = @repair_order.employee_users_repair_orders.new(
-                                                            params[:employee_users_repair_orders])
-    if @repair_order_employee.save
-      render json: {repair_order_employee: @repair_order_employee.as_json(include:[:client,
-                                                                                   :vehicle])},
-      status: :created
-    else
-      render json: { errors: @repair_order_employee.errors.full_messages },
-      status: :unprocessable_entity
-    end
-  end
-
-# This will remove employee from repair order.
-  def repair_order_employees_delete
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_employee = current_business_user.employee_users.where(
-                                                :id => params[:employee_number])
-    @repair_order.employee_users.delete
-    if @repair_order.employee_users.save
-      render json: { repair_order_employees: @repair_order_employee.as_json },
-      status: :ok
-    else
-      render json: { errors: @repair_order_employee.errors.full_messages },
-      status: :unprocessable_entity
-    end
-  end
 
 # Displays repair order, client info, and vehicle info.
   def repair_order_show
