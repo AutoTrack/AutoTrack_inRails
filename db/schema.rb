@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714124412) do
+ActiveRecord::Schema.define(version: 20150715141906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,17 +60,19 @@ ActiveRecord::Schema.define(version: 20150714124412) do
     t.string   "employee_password"
     t.string   "employee_pin"
     t.string   "employee_access_rights"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "super_user",             default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.boolean  "super_user",                     default: false
     t.string   "access_token2"
     t.string   "employee_number"
     t.string   "role"
+    t.integer  "employee_users_repair_order_id"
   end
 
   create_table "employee_users_repair_orders", force: :cascade do |t|
     t.integer "employee_user_id"
     t.integer "repair_order_id"
+    t.integer "business_user_id"
   end
 
   create_table "inventory_items", force: :cascade do |t|
@@ -118,9 +120,10 @@ ActiveRecord::Schema.define(version: 20150714124412) do
     t.string   "repair_order_number"
     t.integer  "vehicle_id"
     t.integer  "repair_type_id"
-    t.boolean  "repair_status",       default: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "repair_status",                  default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.integer  "employee_users_repair_order_id"
   end
 
   create_table "vehicles", force: :cascade do |t|

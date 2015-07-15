@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
   #   @current_ability ||= Ability.new(current_employee_user)
   # end
   #---------------------------------------------------------------------
+  rescue_from ActiveRecord::RecordNotFound do
+      render json: { error: "No such item: #{request.path} " },
+        status: :not_found
+    end
 
   def current_business_user
     token = request.headers['Access-Token']
