@@ -54,15 +54,18 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 #------------------------InventoryItems-Routes------------------------#
 
 get 'inventory_items', to: 'inventory_items#inventory_items_index'
-get 'inventory_items/business_user/:id', to: 'inventory_items#business_inventory_items_index'
+get 'inventory_items/business_user', to: 'inventory_items#business_inventory_items_index'
 post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
 patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
 delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
 
 #----------------------Invoices-Routes---------------------------------#
-get 'invoices_index', to: 'invoices#invoices_index'
-
+get 'invoices_all', to: 'invoices#invoices_all'
+post 'invoices', to: 'invoices#invoices_create'
+get 'invoice/:id', to:'invoices#invoice_show'
+patch 'invoice/:id', to: 'invoices#invoice_update'
+delete 'invoice/:id', to: 'invoices#invoices_delete'
 
 #------------------------RepairItems-Routes------------------------#
 
