@@ -751,21 +751,7 @@ Response:
 Example success:
 ```json
 {
-  "client": {
-    "id": 3,
-    "client_first_name": null,
-    "client_last_name": null,
-    "client_street_address": null,
-    "client_city": null,
-    "client_state": null,
-    "client_zipcode": null,
-    "client_primary_phone": null,
-    "client_secondary_phone": null,
-    "client_email": null,
-    "created_at": "2015-07-08T23:23:51.272Z",
-    "updated_at": "2015-07-08T23:23:51.272Z",
-    "business_user_id": null
-  }
+  "message": "Client id: 8 has been removed from inventory"
 }
 ```
 
