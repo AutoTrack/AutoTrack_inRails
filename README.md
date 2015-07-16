@@ -555,34 +555,34 @@ Example success:
 {
   "client": [
     {
-      "id": 1,
-      "client_first_name": "Juan",
-      "client_last_name": "Woods",
-      "client_street_address": "2210 Street Road",
-      "client_city": "New York",
-      "client_state": null,
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
+      "id": 7,
+      "client_first_name": "Tom",
+      "client_last_name": "Jackson",
+      "client_street_address": "123 Long Street",
+      "client_city": "Atlanta",
+      "client_state": "Georgia",
+      "client_zipcode": "30303",
+      "client_primary_phone": 555-345-2345,
+      "client_secondary_phone": 555-678-4856,
+      "client_email": tjackson@blah.com,
+      "created_at": "2015-07-14T21:10:23.327Z",
+      "updated_at": "2015-07-14T21:10:23.327Z",
+      "business_user_id": 50
     },
     {
-      "id": 2,
-      "client_first_name": "John",
-      "client_last_name": "Madera",
-      "client_street_address": "2200 Working Road",
-      "client_city": "Mars",
-      "client_state": "Pluto",
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
+      "id": 8,
+      "client_first_name": "Harry",
+      "client_last_name": "Jenkins",
+      "client_street_address": "123 Main Street",
+      "client_city": "Roswell",
+      "client_state": "Georgia",
+      "client_zipcode": "30005",
+      "client_primary_phone": 555-364-4658,
+      "client_secondary_phone": 555-345-5667,
+      "client_email": hjenkins@blah.com,
+      "created_at": "2015-07-14T21:15:55.928Z",
+      "updated_at": "2015-07-14T21:15:55.928Z",
+      "business_user_id": 50
     }
   ]
 }
