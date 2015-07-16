@@ -10,15 +10,14 @@ class EmployeeUsersRepairOrdersController < ApplicationController
 
     @repair_order.employee_users << @employee_user
 
-
-    if @repair_order_employee.save
-      render json: { repair_order: @repair_order.as_json,
-                     employee_users: @repair_order.employee_users.as_json },
-      status: :created
-    else
-      render json: { errors: @repair_order_employee.errors.full_messages },
-      status: :unprocessable_entity
-    end
+      if @repair_order.save
+        render json: { repair_order: @repair_order.as_json,
+                       employee_users: @repair_order.employee_users_repair_orders.as_json },
+        status: :created
+      else
+        render json: { errors: @repair_order_employee.errors.full_messages },
+        status: :unprocessable_entity
+      end
   end
 
   def repair_order_employees_show
@@ -26,12 +25,16 @@ class EmployeeUsersRepairOrdersController < ApplicationController
 
     @repair_order_employee = @repair_order.employee_users_repair_orders.find(params[:id])
     if @repair_order_employee.save
-      render json: { repair_order_employee: @repair_order_employee.as_json },
-      status: :created
-    else
-      render json: { errors: @repair_order_employee.errors.full_messages },
-      status: :unprocessable_entity
     end
+  end
+
+  def repair_order_employees_show_all
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+
+    @repair_order_employees = @repair_order.employee_users_repair_orders.all
+
+      render json: { employee_users: @repair_order_employees.employee_users_repair_orders.as_json },
+      status: :ok
   end
 
 # This will remove employee from repair order.
@@ -39,7 +42,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
     @repair_order = current_business_user.repair_orders.find(params[:id])
     @repair_order_employee = current_business_user.employee_users.where(
                                                 :id => params[:employee_number])
-    @repair_order.employee_users.delete
+    @repair_order.employee_users.destroy
     if @repair_order.employee_users.save
       render json: { repair_order_employees: @repair_order_employee.as_json },
       status: :ok
