@@ -2,8 +2,6 @@ class RepairItemsController < ApplicationController
   before_action :authenticate_business_user_with_token!
   before_action :authenticate_employee_user_with_token!
 
-  respond_to :json
-
 
   def add_repair_item_quantity
     @repair_order = current_business_user.repair_orders.find(params[:id])
