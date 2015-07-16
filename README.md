@@ -657,23 +657,21 @@ Response:
 Example success:
 ```json
 {
-  "client": [
-    {
-      "id": 1,
-      "client_first_name": "Juan",
-      "client_last_name": "Woods",
-      "client_street_address": "2210 Street Road",
-      "client_city": "New York",
-      "client_state": null,
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
-    }
-  ]
+  "client": {
+    "id": 9,
+    "client_first_name": "Jimmy",
+    "client_last_name": "Page",
+    "client_street_address": "123 Hello Street",
+    "client_city": "Cape Coral",
+    "client_state": "Florid",
+    "client_zipcode": "23423",
+    "client_primary_phone": 555-668-5885,
+    "client_secondary_phone": 555-455-7567,
+    "client_email": jpage@blah.com,
+    "created_at": "2015-07-16T13:20:38.694Z",
+    "updated_at": "2015-07-16T13:20:38.694Z",
+    "business_user_id": 50
+  }
 }
 ```
 
@@ -691,19 +689,19 @@ Example success:
 ```json
 {
   "client": {
-    "id": 1,
-    "client_first_name": "Juan",
-    "client_last_name": "Woods",
-    "client_street_address": "2210 Street Road",
-    "client_city": "New York",
-    "client_state": null,
-    "client_zipcode": "20394",
-    "client_primary_phone": "123-123-2123",
-    "client_secondary_phone": "324-234-3234",
-    "client_email": "juan_woods@yahoo.com",
-    "created_at": "2015-07-08T23:09:38.000Z",
-    "updated_at": "2015-07-08T23:09:38.000Z",
-    "business_user_id": 1
+    "id": 9,
+    "client_first_name": "Jimmy",
+    "client_last_name": "Page",
+    "client_street_address": "123 Hello Street",
+    "client_city": "Cape Coral",
+    "client_state": "Florid",
+    "client_zipcode": "23423",
+    "client_primary_phone": 555-668-5885,
+    "client_secondary_phone": 555-455-7567,
+    "client_email": jpage@blah.com,
+    "created_at": "2015-07-16T13:20:38.694Z",
+    "updated_at": "2015-07-16T13:20:38.694Z",
+    "business_user_id": 50
   }
 }
 ```
