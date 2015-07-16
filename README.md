@@ -1319,8 +1319,8 @@ Example success:
 `GET '/inventory_items/business_user/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+  * Returns array of all inventory items for a business.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1328,22 +1328,48 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
+  "inv_item": [
     {
       "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "business_user_id": 50,
+      "part_number": "bh23456",
+      "business_part_number": "xh45679944",
+      "category": "Body Materials",
+      "inventory_item_location": "A12",
+      "inventory_item_supplier": "3M",
+      "reorder_alert": 6,
+      "order_to_quantity": 12,
+      "inventory_item_billable": true,
+      "inventory_item_taxable": true,
+      "inventory_item_cost": 35.99,
+      "inventory_item_markup": 0.25,
+      "inventory_count": 6,
+      "created_at": "2015-07-16T12:15:01.754Z",
+      "updated_at": "2015-07-16T12:15:01.754Z",
+      "tool": false,
+      "part_name": "Seam Sealer"
     },
     {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+      "id": 2,
+      "business_user_id": 50,
+      "part_number": "bh23457",
+      "business_part_number": "xh456799444",
+      "category": "Body Materials",
+      "inventory_item_location": "A13",
+      "inventory_item_supplier": "3M",
+      "reorder_alert": 6,
+      "order_to_quantity": 12,
+      "inventory_item_billable": true,
+      "inventory_item_taxable": true,
+      "inventory_item_cost": 45.99,
+      "inventory_item_markup": 0.25,
+      "inventory_count": 6,
+      "created_at": "2015-07-16T12:30:19.437Z",
+      "updated_at": "2015-07-16T12:30:19.437Z",
+      "tool": false,
+      "part_name": "Sprayable Seam Sealer"
+    }
+  ]
 }
 ```
 
@@ -1353,31 +1379,47 @@ Example success:
 `POST '/inventory_items'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * part_number:string
+  * part_name:string
+  * business_part_number:string
+  * category:string
+  * inventory_item_location:string
+  * inventory_item_supplier:string
+  * reorder_alert:integer
+  * order_to_quantity:integer
+  * inventory_item_billable:boolean
+  * inventory_item_taxable:boolean
+  * inventory_item_cost:float
+  * inventory_item_markup:float
+  * inventory_count:integer
+  * tool:boolean
+
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:
-```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+Response:
+```{
+  "inv_item": {
+    "id": 1,
+    "business_user_id": 50,
+    "part_number": "bh23456",
+    "business_part_number": "xh45679944",
+    "category": "Body Materials",
+    "inventory_item_location": "A12",
+    "inventory_item_supplier": "3M",
+    "reorder_alert": 6,
+    "order_to_quantity": 12,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": true,
+    "inventory_item_cost": 35.99,
+    "inventory_item_markup": 0.25,
+    "inventory_count": 6,
+    "created_at": "2015-07-16T12:15:01.754Z",
+    "updated_at": "2015-07-16T12:15:01.754Z",
+    "tool": false,
+    "part_name": "Seam Sealer"
   }
- ]
 }
 ```
 
@@ -1388,7 +1430,7 @@ Example success:
 
 Params:
   * none
-  * Returns array of all employee users.
+  * Returns inventory item.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1396,22 +1438,26 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "inv_item": {
+    "id": 1,
+    "business_user_id": 50,
+    "part_number": "bh23456",
+    "business_part_number": "xh45679944",
+    "category": "Body Materials",
+    "inventory_item_location": "A12",
+    "inventory_item_supplier": "3M",
+    "reorder_alert": 6,
+    "order_to_quantity": 12,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": true,
+    "inventory_item_cost": 35.99,
+    "inventory_item_markup": 0.25,
+    "inventory_count": 6,
+    "created_at": "2015-07-16T12:15:01.754Z",
+    "updated_at": "2015-07-16T12:15:01.754Z",
+    "tool": false,
+    "part_name": "Seam Sealer"
   }
- ]
 }
 ```
 
@@ -1421,8 +1467,21 @@ Example success:
 `PATCH '/inventory_item/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * part_number:string
+  * part_name:string
+  * business_part_number:string
+  * category:string
+  * inventory_item_location:string
+  * inventory_item_supplier:string
+  * reorder_alert:integer
+  * order_to_quantity:integer
+  * inventory_item_billable:boolean
+  * inventory_item_taxable:boolean
+  * inventory_item_cost:float
+  * inventory_item_markup:float
+  * inventory_count:integer
+  * tool:boolean
+  * Returns an update record for an inventory item.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1430,22 +1489,26 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "inv_item": {
+    "id": 1,
+    "business_user_id": 50,
+    "part_number": "bh23457",
+    "business_part_number": "xh456799444",
+    "category": "Body Materials",
+    "inventory_item_location": "A65",
+    "inventory_item_supplier": "3M",
+    "reorder_alert": 6,
+    "order_to_quantity": 12,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": true,
+    "inventory_item_cost": 40.99,
+    "inventory_item_markup": 0.25,
+    "inventory_count": 6,
+    "created_at": "2015-07-16T12:15:01.754Z",
+    "updated_at": "2015-07-16T12:36:06.875Z",
+    "tool": false,
+    "part_name": "Sprayable Seam Sealer"
   }
- ]
 }
 ```
 
@@ -1456,8 +1519,8 @@ Example success:
 
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1465,22 +1528,7 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+  "message": "Inventory Item Self Etch Primer has been removed from inventory"
 }
 ```
 #Inventory Items
@@ -1531,32 +1579,6 @@ Response:
       "tool": true
     }
   ]
-}```
-
-Path: POST '/inventory_items'
-Params: none
-Status: 201 Created
-Response:
-```{
-  "inv_item": {
-    "id": 14,
-    "business_user_id": 1,
-    "part_number": "\"234242342\"",
-    "business_part_number": "\"2342423423424234\"",
-    "category": "\"Sensor\"",
-    "inventory_item_location": "\"3rd Hall\"",
-    "inventory_item_supplier": "\"eBay\"",
-    "reorder_alert": 4,
-    "order_to_quantity": 2,
-    "inventory_item_billable": true,
-    "inventory_item_taxable": false,
-    "inventory_item_cost": null,
-    "inventory_item_markup": 10,
-    "inventory_count": 40,
-    "created_at": "2015-07-09T12:39:01.507Z",
-    "updated_at": "2015-07-09T12:39:01.507Z",
-    "tool": false
-  }
 }```
 
 

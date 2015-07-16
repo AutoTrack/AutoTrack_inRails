@@ -50,7 +50,7 @@ class InventoryItemsController < ApplicationController
     end
 
     def inventory_item_update
-        @inv_item = current_business_user.inventoryitem.find(params[:id])
+        @inv_item = current_business_user.inventory_items.find(params[:id])
         @inv_item.update(part_number: params[:part_number],
                          part_name: params[:part_name],
                          business_part_number: params[:business_part_number],
@@ -68,13 +68,14 @@ class InventoryItemsController < ApplicationController
 
         render json: {inv_item: @inv_item.as_json},
         status: :created
+
     end
 
     def inventory_item_destroy
         @inv_item = current_business_user.inventory_items.find(params[:id])
         @inv_item.destroy
 
-        render json: {inv_item: @inv_item.as_json},
+        render json: { message: "Inventory Item #{@inv_item.part_name} has been removed from inventory" },
         status: :gone
     end
 
