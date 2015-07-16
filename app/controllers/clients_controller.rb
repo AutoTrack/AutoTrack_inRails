@@ -63,10 +63,10 @@ class ClientsController < ApplicationController
     end
 
     def  client_destroy
-        @destroy_client = current_business_user.find(params[:id])
+        @destroy_client = current_business_user.clients.find(params[:id])
         @destroy_client.destroy
 
-        render json: {client: @destroy_client.as_json},
+        render json: { message: "Client id: #{@destroy_client.id} has been removed from inventory" },
         status: :gone
     end
 end

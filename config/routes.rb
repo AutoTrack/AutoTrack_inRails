@@ -43,7 +43,7 @@ get 'employee_users_repair_order/show_employees/:id', to: 'employee_users_repair
 #-------------------------Vehicles-Routes-----------------------------#
 
 get 'vehicles', to: 'vehicles#vehicles_index'
-get 'vehicles/business_user/:id', to: 'vehicles#business_vehicles_index'
+get 'vehicles/business_user', to: 'vehicles#business_vehicles_index'
 get 'vehicles/employee_user/:id', to: 'vehicles#employee_vehicles_index'
 post 'vehicles', to: 'vehicles#vehicles_create'
 get 'vehicle/:id', to: 'vehicles#vehicle_show'
@@ -54,7 +54,7 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 #------------------------InventoryItems-Routes------------------------#
 
 get 'inventory_items', to: 'inventory_items#inventory_items_index'
-get 'inventory_items/business_user/:id', to: 'inventory_items#business_inventory_items_index'
+get 'inventory_items/business_user', to: 'inventory_items#business_inventory_items_index'
 post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
 patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
