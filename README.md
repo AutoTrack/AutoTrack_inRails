@@ -1300,7 +1300,7 @@ Example success:
 
 ### **Request All Inventory Items By Business**
 
-`GET '/inventory_items/business_user/:id'`
+`GET '/inventory_items/business_user'`
 
 Params:
   * id
