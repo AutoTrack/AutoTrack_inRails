@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 #--------------------------Client-Routes--------------------------------#
 
 get 'clients', to: 'clients#clients_index'
-get 'clients/business_user/:id', to: 'clients#business_clients_index'
+get 'clients/business_user', to: 'clients#business_clients_index'
 get 'clients/employee_user/:id', to: 'clients#employee_clients_index'
 post 'clients', to: 'clients#clients_create'
 get 'client/:id', to: 'clients#client_show'
