@@ -32,11 +32,11 @@ class InventoryItemsController < ApplicationController
                                       inventory_item_markup: params[:inventory_item_markup],
                                       inventory_count: params[:inventory_count],
                                       tool: params[:tool])
-        if @inv_item.save
+        if @inv_item
           render json: {inv_item: @inv_item.as_json},
           status: :created
         else
-          render json: { errors: @client.errors.full_messages },
+          render json: { errors: @inv_item.errors.full_messages },
           status: :unprocessable_entity
         end
     end

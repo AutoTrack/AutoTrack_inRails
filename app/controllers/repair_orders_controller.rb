@@ -53,7 +53,7 @@ class RepairOrdersController < ApplicationController
     @repair_order_items = @repair_order.repair_items.all
 
     if @repair_order_items
-     render json: { repair_order: @repair_order_items},
+     render json: { repair_order: @repair_order_items },
          status: :ok
      else
        render json: { errors: @repair_order_items.errors.full_messages },
