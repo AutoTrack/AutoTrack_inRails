@@ -11,6 +11,7 @@ class RepairOrdersController < ApplicationController
 # This retrieves all repair orders for the current business user.
   def business_repair_orders_index
     @business_repair_orders = current_business_user.repair_orders.all
+
     if @business_repair_orders
     render json: { repair_orders: @business_repair_orders.as_json },
      status: :ok
