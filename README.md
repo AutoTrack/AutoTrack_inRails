@@ -49,7 +49,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 
 ### **Clients**
 * [Request all Clients By Business](#request-all-clients-by-business)
-`GET '/clients/business_user/:id'`
+`GET '/clients/business_user'`
 * [Request all Clients By Employee](#request-all-clients-by-employee)
 `GET '/clients/employee_user/:id'`
 * [Create Clients](#create-clients)
@@ -65,7 +65,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Repair Orders](#request-all-repair-orders)
 `GET '/repair_orders'`
 * [Request All Repair Orders For A Business](#request-all-repair-orders-for-a-business)
-`GET 'repair_orders/business_user/:id'`
+`GET 'repair_orders/business_user'`
 * [Request All Repair Orders For A Employee](#request-all-repair-orders-for-a-employee)
 `'repair_orders/employee_user/:id'`
 * [Create A Repair Order Number](#create-a-repair-order-number)
@@ -80,8 +80,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `DELETE 'repair_order/:id'`
 
 ### **Vehicles**
-* [Request All Vehicles](#request-all-vehicles)
-`GET '/vehicles'`
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
 `GET '/vehicles/business_user'`
 * [Request All Vehicles By Employee](#request-all-vehicles-by-employee)
@@ -97,7 +95,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 
 ### **InventoryItems**
 * [Request All Inventory Items By Business](#request-all-inventory-items-by-business)
-`GET '/inventory_items/business_user/:id'`
+`GET '/inventory_items/business_user'`
 * [Create Inventory Item](#create-inventory-item)
 `POST '/inventory_items'`
 * [Show Inventory Item](#show-inventory-item)
@@ -601,43 +599,9 @@ Example success:
 ```
 
 
-### **Request All Repair Orders**
-
-`GET '/repair_orders'`
-
-Params:
-  * none
-  * Returns array of all employee users.
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
-```
-
-
 ### **Request All Repair Orders For A Business**
 
-`GET 'repair_orders/business_user/:id'`
+`GET 'repair_orders/business_user'`
 
 Params:
   * none
@@ -991,8 +955,8 @@ Example success:
 `GET '/vehicles/employee_user/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+  * Returns array of all vehicles assigned to employee.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
