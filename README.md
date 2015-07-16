@@ -542,7 +542,7 @@ Example success:
 
 ### **Request all Clients By Business**
 
-`GET '/clients/business_user/:id'`
+`GET '/clients/business_user'`
 
 Params:
   * none
