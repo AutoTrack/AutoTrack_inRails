@@ -1,22 +1,30 @@
 class ClientsController < ApplicationController
   before_action :authenticate_business_user_with_token!
   before_action :authenticate_employee_user_with_token!
+
     def clients_index
         @clients = Client.all
+        # render 'client_index.json.jbuilder', status: :ok
         render json: { client: @clients.as_json},
         status: :ok
     end
 
     def business_clients_index
         @business_clients = current_business_user.clients.all
-        render json: { client: @business_clients.as_json},
-        status: :ok
+
+        render json: { business_cliets: @business_clients.as_json},
+            status: :ok
+
+            # render 'business_clients_index.json.jbuilder',
+            #     status: :ok
+
     end
 
     def employee_clients_index
         @employee_clients = current_employee_user.clients.all
         render json: { client: @employee_clients.as_json},
         status: :ok
+        # render 'employee_clients_index.json.jbuilder', status: :ok
     end
 
     def clients_create
@@ -32,6 +40,7 @@ class ClientsController < ApplicationController
         if @new_client.save
             render json: {client: @new_client.as_json},
                 status: :created
+            # render 'clients_create.json.jbuilder', status: :created
         else
             render json: { errors: @new_client.errors.full_messages },
                 status: :unprocessable_entity # 422 code, something wrong with data
@@ -40,14 +49,14 @@ class ClientsController < ApplicationController
 
     def client_show
         @show_client = current_business_user.clients.find(params[:id])
-
         render json: {client: @show_client.as_json},
         status: :ok
+        # render 'client_show.json.jbuilder', status: :ok
 
     end
 
     def client_update
-        @update_client = current_business_users.clients.find(params[:id])
+        @update_client = current_business_user.clients.find(params[:id])
         @update_client.update(client_first_name: params[:client_first_name],
                        client_last_name: params[:client_last_name],
                        client_street_address: params[:client_street_address],
@@ -65,6 +74,7 @@ class ClientsController < ApplicationController
     def  client_destroy
         @destroy_client = current_business_user.clients.find(params[:id])
         @destroy_client.destroy
+
 
         render json: { message: "Client id: #{@destroy_client.id} has been removed from inventory" },
         status: :gone
