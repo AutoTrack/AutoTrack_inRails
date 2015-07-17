@@ -8,7 +8,6 @@ class BusinessUser < ActiveRecord::Base
 
   has_many :clients
   has_many :vehicles
-  # has_many :vehicles, through: :clients
   has_many :invoices
 
   has_many :employee_users_repair_orders
