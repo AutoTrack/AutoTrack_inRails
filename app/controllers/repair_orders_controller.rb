@@ -66,9 +66,9 @@ class RepairOrdersController < ApplicationController
   def repair_order_destroy
     @delete_repair_order = current_business_user.repair_orders.find(params[:id])
     @delete_repair_order.destroy
-      render json: { employee_user: @delete_repair_order.as_json },
-        status: :ok
-    flash[:alert] = 'Repair Order has been removed from the system.'
+    render json: { message: "Repair Order #{@delete_repair_order.id} has been removed from database" },
+    status: :gone
+
   end
 
 end
