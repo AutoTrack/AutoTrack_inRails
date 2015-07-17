@@ -1,0 +1,3 @@
+json.id business_user.id
+json.business_username business_user.business_username
+json.business_user_password business_user.business_user_password

@@ -7,6 +7,7 @@ class BusinessUser < ActiveRecord::Base
   has_many :repair_items
 
   has_many :clients
+
   has_many :vehicles
   has_many :invoices
 

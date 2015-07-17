@@ -1,0 +1,1 @@
+json.(employee_user_repair_order, :id, :employee_user_id, :repair_order_id)

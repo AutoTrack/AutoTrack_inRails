@@ -2,6 +2,14 @@ class RepairItemsController < ApplicationController
   before_action :authenticate_business_user_with_token!
   before_action :authenticate_employee_user_with_token!
 
+  def remove_repair_item
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+    @remove_repair_item = @repair_order.repair_items.destroy(params[:id])
+    @remove_repair_item.save
+      render json: { repair_items: @repair_order.as_json },
+        status: :gone
+  end
+
 
   def add_repair_item_quantity
     @repair_order = current_business_user.repair_orders.find(params[:id])

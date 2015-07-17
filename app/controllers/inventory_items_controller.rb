@@ -1,17 +1,19 @@
 class InventoryItemsController < ApplicationController
-  before_action :authenticate_business_user_with_token!
-  before_action :authenticate_employee_user_with_token!
+  # before_action :authenticate_business_user_with_token!
+  # before_action :authenticate_employee_user_with_token!
 
     def inventory_items_index
-        @inv_item = InventoryItem.all
+          @inv_item = InventoryItem.all
+          render json: {inv_item: @inv_item.as_json}, status: :ok
 
-        render json: {inv_item: @inv_item.as_json},
-        status: :ok
+          # render 'inventory_items_index.json.jbuilder', status: :ok
     end
 
     def business_inventory_items_index
+
         @inv_item = current_business_user.inventory_items.all
 
+          # render 'business_inventory_items_index.json.jbuilder', status: :ok
         render json: {inv_item: @inv_item.as_json},
         status: :ok
     end
@@ -46,6 +48,7 @@ class InventoryItemsController < ApplicationController
 
         render json: {inv_item: @inv_item.as_json},
         status: :ok
+        # render 'inventory_item_show.json.jbuilder', status: :ok
 
     end
 

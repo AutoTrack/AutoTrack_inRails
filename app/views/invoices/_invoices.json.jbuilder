@@ -1,0 +1,1 @@
+json.(invoices, :id, :invoice_url, :invoice_status)

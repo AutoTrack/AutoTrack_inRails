@@ -7,6 +7,10 @@ class BusinessUsersController < ApplicationController
                                                                  :business_user_name,
                                                                  :business_user_password])},
      status: :ok
+
+     # render 'index.json.jbuilder', status: :ok
+
+
   end
 
 
@@ -28,9 +32,10 @@ class BusinessUsersController < ApplicationController
                       logo_file_size: params[:logo_file_size])
 
     if @business_user.save
-       # BusinessUserMailer.new_business_user(@business_user).deliver_now
+       BusinessUserMailer.new_business_user(@business_user).deliver_now
       render json: { business_user: @business_user.as_json },
         status: :created
+      # render 'business_register.json.jbuilder', locals: { business_user: @business_user }, status: :created
     else
       render json: { errors: @business_user.errors.full_messages },
         status: :unprocessable_entity
@@ -44,6 +49,8 @@ class BusinessUsersController < ApplicationController
     if @login_business_user
       render json: { business_user: @login_business_user.as_json },
         status: :ok
+      # render 'business_login.json.jbuilder', locals: {business_user: @business_user}, status: :created
+
     else
       render json: { message: "Invalid Login" },
         status: :unauthenticated

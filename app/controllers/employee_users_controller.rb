@@ -55,19 +55,19 @@ class EmployeeUsersController < ApplicationController
   def employee_register
      passhash = Digest::SHA1.hexdigest(params[:employee_password])
 
-     @register_employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
+     @employee_user = current_business_user.employee_users.new(employee_email: params[:employee_email],
                                        employee_pin: params[:employee_pin],
                                        employee_password: passhash,
                                        employee_first_name: params[:employee_first_name],
                                        employee_last_name: params[:employee_last_name],
                                        employee_number: params[:employee_number],
                                        role: params[:role])
-     if @register_employee_user.save
+     if @employee_user.save
 
-       render json: { employee_user: @register_employee_user.as_json },
+       render json: { employee_user: @employee_user.as_json },
          status: :created
      else
-       render json: { errors: @register_employee_user.errors.full_messages },
+       render json: { errors: @employee_user.errors.full_messages },
          status: :unprocessable_entity
      end
   end
