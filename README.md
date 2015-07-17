@@ -605,7 +605,7 @@ Example success:
 
 Params:
   * none
-  * Returns array of all employee users.
+  * Returns array of all repair orders for the currently logged in business user.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -613,23 +613,31 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "id": 23,
+      "business_user_id": 52,
+      "employee_user_id": null,
+      "client_id": null,
+      "repair_order_number": "555557",
+      "vehicle_id": null,
+      "repair_type_id": null,
+      "repair_status": false,
+      "created_at": "2015-07-12T21:13:51.668Z",
+      "updated_at": "2015-07-12T21:13:51.668Z",
+      "employee_users_repair_order_id": null
     },
     {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
+      "id": 24,
+      "business_user_id": 52,
+      "employee_user_id": null,
+      "client_id": null,
+      "repair_order_number": null,
+      "vehicle_id": null,
+      "repair_type_id": null,
+      "repair_status": false,
+      "created_at": "2015-07-12T21:15:47.638Z",
+      "updated_at": "2015-07-12T21:15:47.638Z",
+      "employee_users_repair_order_id": null
+    }
 ```
 
 
@@ -638,8 +646,8 @@ Example success:
 `GET 'repair_orders/employee_user/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+  * Returns array of all employee users repair orders.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -647,23 +655,31 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "id": 23,
+      "business_user_id": 52,
+      "employee_user_id": null,
+      "client_id": null,
+      "repair_order_number": "555557",
+      "vehicle_id": null,
+      "repair_type_id": null,
+      "repair_status": false,
+      "created_at": "2015-07-12T21:13:51.668Z",
+      "updated_at": "2015-07-12T21:13:51.668Z",
+      "employee_users_repair_order_id": null
     },
     {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
+      "id": 24,
+      "business_user_id": 52,
+      "employee_user_id": null,
+      "client_id": null,
+      "repair_order_number": null,
+      "vehicle_id": null,
+      "repair_type_id": null,
+      "repair_status": false,
+      "created_at": "2015-07-12T21:15:47.638Z",
+      "updated_at": "2015-07-12T21:15:47.638Z",
+      "employee_users_repair_order_id": null
+    }
 ```
 
 
@@ -672,8 +688,8 @@ Example success:
 `POST 'repair_order'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * Repair_order_number:string
+  * Create a repair order number
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -681,22 +697,19 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "repair_order": {
+    "id": 54,
+    "business_user_id": 50,
+    "employee_user_id": null,
+    "client_id": null,
+    "repair_order_number": null,
+    "vehicle_id": null,
+    "repair_type_id": null,
+    "repair_status": false,
+    "created_at": "2015-07-17T02:04:32.213Z",
+    "updated_at": "2015-07-17T02:04:32.213Z",
+    "employee_users_repair_order_id": null
   }
- ]
 }
 ```
 
@@ -740,7 +753,7 @@ Example success:
 `GET 'repair_order/:id'`
 
 Params:
-  * none
+  * id
   * Returns array of all employee users.
 
 Response:
@@ -819,19 +832,8 @@ Example success:
 {
   "employee_user": [
     {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
+      "Repair Order 1 has been removed from the database"
+    }
  ]
 }
 ```
