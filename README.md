@@ -79,6 +79,25 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Delete A Repair Order](#show-a-repair-order)
 `DELETE 'repair_order/:id'`
 
+### **Repair Items**
+* [Show Repair Item](#show-repair-item)
+`GET 'repair_item/:id'`
+* [Show Repair Items](#show-repair-items)
+`GET 'repair_items/:id'`
+* [Add Repair Item](#add-repair-item)
+`POST 'repair_item/:id'`
+* [Add Repair Item Quantity](#add-repair-item-quantity)
+`POST '/repair_item/quantity'`
+* [Remove Repair Item](#remove-repair-item)
+`DELETE 'repair_item/:id'`
+* [Update Repair Item Quantity](#update-repair-item-quantity)
+`PATCH 'repair_item/quantity'`
+* [Checkout Repair Items](#check-out-repair-items)
+`PATCH 'repair_items/checkout'`
+
+
+
+
 ### **Vehicles**
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
 `GET '/vehicles/business_user'`
@@ -838,6 +857,8 @@ Example success:
 }
 ```
 
+
+### **Add Repair Item Quantity**
 
 
 ### **Request All Vehicles By Business**
