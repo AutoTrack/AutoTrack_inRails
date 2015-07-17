@@ -6,10 +6,12 @@ class BusinessUser < ActiveRecord::Base
 #   end
 
   has_many :employee_users
+  has_many :inventory_items
   has_many :repair_orders
   has_many :invoices
   has_many :clients
   has_many :inventory_items
+  has_many :employee_users_repair_orders
 
 #---Validations----
   validates :business_user_password, :access_token, presence: true

@@ -19,7 +19,9 @@ class InventoryItemsController < ApplicationController
     end
 
     def inventory_items_create
-        @inv_item = current_business_user.inventory_items.find_or_create_by(part_number: params[:part_number],
+        @inv_item = current_business_user.inventory_items.find_or_create_by(
+                                      part_number: params[:part_number],
+                                      part_name: params[:part_name],
                                       business_part_number: params[:business_part_number],
                                       category: params[:category],
                                       inventory_item_location: params[:inventory_item_location],
@@ -32,11 +34,11 @@ class InventoryItemsController < ApplicationController
                                       inventory_item_markup: params[:inventory_item_markup],
                                       inventory_count: params[:inventory_count],
                                       tool: params[:tool])
-        if @inv_item.save
+        if @inv_item
           render json: {inv_item: @inv_item.as_json},
           status: :created
         else
-          render json: { errors: @client.errors.full_messages },
+          render json: { errors: @inv_item.errors.full_messages },
           status: :unprocessable_entity
         end
     end
@@ -51,8 +53,9 @@ class InventoryItemsController < ApplicationController
     end
 
     def inventory_item_update
-        @inv_item = current_business_user.inventoryitem.find(params[:id])
+        @inv_item = current_business_user.inventory_items.find(params[:id])
         @inv_item.update(part_number: params[:part_number],
+                         part_name: params[:part_name],
                          business_part_number: params[:business_part_number],
                          category: params[:category],
                          inventory_item_location: params[:inventory_item_location],
@@ -68,14 +71,15 @@ class InventoryItemsController < ApplicationController
 
         render json: {inv_item: @inv_item.as_json},
         status: :created
+
     end
 
     def inventory_item_destroy
         @inv_item = current_business_user.inventory_items.find(params[:id])
         @inv_item.destroy
 
-        render json: {message: "Inventory Item does not exist"},
-          status: :gone
+        render json: { message: "Inventory Item #{@inv_item.part_name} has been removed from inventory" },
+        status: :gone
     end
 
 end

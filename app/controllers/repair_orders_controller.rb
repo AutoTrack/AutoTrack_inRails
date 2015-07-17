@@ -48,13 +48,12 @@ class RepairOrdersController < ApplicationController
 
 # Displays repair order, client info, and vehicle info.
   def repair_order_show
+
     @repair_order = current_business_user.repair_orders.find(params[:id])
     @repair_order_items = @repair_order.repair_items.all
 
     if @repair_order_items
-     render json: { repair_order: @repair_order_items.as_json(:include [:repair_order,
-                                                                        :client,
-                                                                        :vehicle])},
+     render json: { repair_order: @repair_order_items },
          status: :ok
      else
        render json: { errors: @repair_order_items.errors.full_messages },

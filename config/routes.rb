@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 #--------------------------Client-Routes--------------------------------#
 
 get 'clients', to: 'clients#clients_index'
-get 'clients/business_user/:id', to: 'clients#business_clients_index'
+get 'clients/business_user', to: 'clients#business_clients_index'
 get 'clients/employee_user/:id', to: 'clients#employee_clients_index'
 post 'clients', to: 'clients#clients_create'
 get 'client/:id', to: 'clients#client_show'
@@ -38,12 +38,12 @@ delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
 #---------------------Repair_Orders_Employee_Users--------------------#
 
 post 'employee_users_repair_order/attach_employee', to: 'employee_users_repair_orders#repair_order_employees_create'
-get 'employee_users_repair_order/show_employees', to: 'employee_users_repair_orders#repair_order_employees_show'
+get 'employee_users_repair_order/show_employees/:id', to: 'employee_users_repair_orders#repair_order_employees_show'
 
 #-------------------------Vehicles-Routes-----------------------------#
 
 get 'vehicles', to: 'vehicles#vehicles_index'
-get 'vehicles/business_user/:id', to: 'vehicles#business_vehicles_index'
+get 'vehicles/business_user', to: 'vehicles#business_vehicles_index'
 get 'vehicles/employee_user/:id', to: 'vehicles#employee_vehicles_index'
 post 'vehicles', to: 'vehicles#vehicles_create'
 get 'vehicle/:id', to: 'vehicles#vehicle_show'
@@ -54,7 +54,8 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 #------------------------InventoryItems-Routes------------------------#
 
 get 'inventory_items', to: 'inventory_items#inventory_items_index'
-get 'inventory_items/business_user/', to: 'inventory_items#business_inventory_items_index'
+
+get 'inventory_items/business_user', to: 'inventory_items#business_inventory_items_index'
 post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
 patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'

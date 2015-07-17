@@ -21,16 +21,14 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 
 
 ### **Business User**
-* [Request all Business Users](#request-all-business-users)
-`GET 'business_user/index'`
+
 * [Register A New Business](#register-a-new-business)
 `POST 'business_user/register'`
 * [Login A Business](#login-a-business)
 `POST 'business_user/login'`
 
 ### **Employee User**
-* [Request All Employee Users](#request-all-employee-users)
-`GET 'employee_user/index'`
+
 * [Request All Employees By Business](#request-all-employees-by-business)
 `GET 'employee_user/business_index'`
 * [Register A Super Employee](#register-a-super-employee)
@@ -50,8 +48,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 
 
 ### **Clients**
-* [Request all Clients](#request-all-clients)
-`GET '/clients'`
 * [Request all Clients By Business](#request-all-clients-by-business)
 `GET '/clients/business_user/:id'`
 * [Request all Clients By Employee](#request-all-clients-by-employee)
@@ -87,7 +83,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Vehicles](#request-all-vehicles)
 `GET '/vehicles'`
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
-`GET '/vehicles/business_user/:id'`
+`GET '/vehicles/business_user'`
 * [Request All Vehicles By Employee](#request-all-vehicles-by-employee)
 `GET '/vehicles/employee_user/:id'`
 * [Create A Vehicle](#create-a-vehicle)
@@ -100,8 +96,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `DELETE 'vehicle/:id'`
 
 ### **InventoryItems**
-* [Request All Inventory Items](#request-all-inventory-items)
-`GET '/inventory_items'`
 * [Request All Inventory Items By Business](#request-all-inventory-items-by-business)
 `GET '/inventory_items/business_user/:id'`
 * [Create Inventory Item](#create-inventory-item)
@@ -112,52 +106,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `PATCH '/inventory_item/:id'`
 * [Delete Inventory Item](#delete-inventory-item)
 `DELETE '/inventory_item/:id'`
-
-
-### **Request all Business Users**
-
-`GET 'business_user/index'`
-
-Params:
-  * none
-  * Returns and array of all business users
-
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "business_user": [
-    {
-      "id": 1,
-      "business_user_name": "autotrak1@autotrak.com",
-      "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff4"
-    },
-    {
-      "id": 2,
-      "business_user_name": "autotrak2@autotrak.com",
-      "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff5"
-    },
-    {
-      "id": 3,
-      "business_user_name": "autotrak3@autotrak.com",
-      "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff6"
-    },
-    {
-      "id": 4,
-      "business_user_name": "autotrak4@autotrak.com",
-      "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff7"
-    },
-    {
-      "id": 5,
-      "business_user_name": "autotrak5@autotrak.com",
-      "business_user_password": "350c7518f320c75a3c12f91030a499fc13676ff8"
-    }
-  ]
-}
-```
 
 
 ### **Register A New Business**
@@ -236,61 +184,6 @@ Example success:
 }
 ```
 
-
-
-### **Request All Employee Users**
-
-`GET 'employee_user/index'`
-
-Params:
-  * none
-  * Returns array of all employee users.
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 2,
-      "employee_first_name": "Mike",
-      "employee_last_name": "Ordaz",
-      "employee_email": mordaz@autotrak.com,
-      "employee_number": 34525
-    },
-    {
-      "id": 3,
-      "employee_first_name": "Mike",
-      "employee_last_name": "Wood",
-      "employee_email": mwood@autotrak.com,
-      "employee_number": 34524
-    },
-    {
-      "id": 4,
-      "employee_first_name": "Phil",
-      "employee_last_name": "Ordaz",
-      "employee_email": pordaz@autotrak.com,
-      "employee_number": 34523
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
-```
 
 ### **Request All Employees By Business**
 
@@ -491,58 +384,10 @@ Example success:
 ```
 
 
-### **Request all Clients**
-
-`GET '/clients'`
-
-Params:
-  * none
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "client": [
-    {
-      "id": 1,
-      "client_first_name": "Juan",
-      "client_last_name": "Woods",
-      "client_street_address": "2210 Street Road",
-      "client_city": "New York",
-      "client_state": null,
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
-    },
-    {
-      "id": 2,
-      "client_first_name": "John",
-      "client_last_name": "Madera",
-      "client_street_address": "2200 Working Road",
-      "client_city": "Mars",
-      "client_state": "Pluto",
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
-    }
-  ]
-}
-```
-
 
 ### **Request all Clients By Business**
 
-`GET '/clients/business_user/:id'`
+`GET '/clients/business_user'`
 
 Params:
   * none
@@ -555,34 +400,34 @@ Example success:
 {
   "client": [
     {
-      "id": 1,
-      "client_first_name": "Juan",
-      "client_last_name": "Woods",
-      "client_street_address": "2210 Street Road",
-      "client_city": "New York",
-      "client_state": null,
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
+      "id": 7,
+      "client_first_name": "Tom",
+      "client_last_name": "Jackson",
+      "client_street_address": "123 Long Street",
+      "client_city": "Atlanta",
+      "client_state": "Georgia",
+      "client_zipcode": "30303",
+      "client_primary_phone": 555-345-2345,
+      "client_secondary_phone": 555-678-4856,
+      "client_email": tjackson@blah.com,
+      "created_at": "2015-07-14T21:10:23.327Z",
+      "updated_at": "2015-07-14T21:10:23.327Z",
+      "business_user_id": 50
     },
     {
-      "id": 2,
-      "client_first_name": "John",
-      "client_last_name": "Madera",
-      "client_street_address": "2200 Working Road",
-      "client_city": "Mars",
-      "client_state": "Pluto",
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
+      "id": 8,
+      "client_first_name": "Harry",
+      "client_last_name": "Jenkins",
+      "client_street_address": "123 Main Street",
+      "client_city": "Roswell",
+      "client_state": "Georgia",
+      "client_zipcode": "30005",
+      "client_primary_phone": 555-364-4658,
+      "client_secondary_phone": 555-345-5667,
+      "client_email": hjenkins@blah.com,
+      "created_at": "2015-07-14T21:15:55.928Z",
+      "updated_at": "2015-07-14T21:15:55.928Z",
+      "business_user_id": 50
     }
   ]
 }
@@ -657,23 +502,21 @@ Response:
 Example success:
 ```json
 {
-  "client": [
-    {
-      "id": 1,
-      "client_first_name": "Juan",
-      "client_last_name": "Woods",
-      "client_street_address": "2210 Street Road",
-      "client_city": "New York",
-      "client_state": null,
-      "client_zipcode": "20394",
-      "client_primary_phone": "123-123-2123",
-      "client_secondary_phone": "324-234-3234",
-      "client_email": "juan_woods@yahoo.com",
-      "created_at": "2015-07-08T23:09:38.000Z",
-      "updated_at": "2015-07-08T23:09:38.000Z",
-      "business_user_id": 1
-    }
-  ]
+  "client": {
+    "id": 9,
+    "client_first_name": "Jimmy",
+    "client_last_name": "Page",
+    "client_street_address": "123 Hello Street",
+    "client_city": "Cape Coral",
+    "client_state": "Florid",
+    "client_zipcode": "23423",
+    "client_primary_phone": 555-668-5885,
+    "client_secondary_phone": 555-455-7567,
+    "client_email": jpage@blah.com,
+    "created_at": "2015-07-16T13:20:38.694Z",
+    "updated_at": "2015-07-16T13:20:38.694Z",
+    "business_user_id": 50
+  }
 }
 ```
 
@@ -691,19 +534,19 @@ Example success:
 ```json
 {
   "client": {
-    "id": 1,
-    "client_first_name": "Juan",
-    "client_last_name": "Woods",
-    "client_street_address": "2210 Street Road",
-    "client_city": "New York",
-    "client_state": null,
-    "client_zipcode": "20394",
-    "client_primary_phone": "123-123-2123",
-    "client_secondary_phone": "324-234-3234",
-    "client_email": "juan_woods@yahoo.com",
-    "created_at": "2015-07-08T23:09:38.000Z",
-    "updated_at": "2015-07-08T23:09:38.000Z",
-    "business_user_id": 1
+    "id": 9,
+    "client_first_name": "Jimmy",
+    "client_last_name": "Page",
+    "client_street_address": "123 Hello Street",
+    "client_city": "Cape Coral",
+    "client_state": "Florid",
+    "client_zipcode": "23423",
+    "client_primary_phone": 555-668-5885,
+    "client_secondary_phone": 555-455-7567,
+    "client_email": jpage@blah.com,
+    "created_at": "2015-07-16T13:20:38.694Z",
+    "updated_at": "2015-07-16T13:20:38.694Z",
+    "business_user_id": 50
   }
 }
 ```
@@ -753,21 +596,7 @@ Response:
 Example success:
 ```json
 {
-  "client": {
-    "id": 3,
-    "client_first_name": null,
-    "client_last_name": null,
-    "client_street_address": null,
-    "client_city": null,
-    "client_state": null,
-    "client_zipcode": null,
-    "client_primary_phone": null,
-    "client_secondary_phone": null,
-    "client_email": null,
-    "created_at": "2015-07-08T23:23:51.272Z",
-    "updated_at": "2015-07-08T23:23:51.272Z",
-    "business_user_id": null
-  }
+  "message": "Client id: 8 has been removed from inventory"
 }
 ```
 
@@ -1043,47 +872,14 @@ Example success:
 }
 ```
 
-### **Request All Vehicles**
-
-`GET '/vehicles'`
-
-Params:
-  * none
-  * Returns array of all employee users.
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
-```
 
 
 ### **Request All Vehicles By Business**
 
-`GET '/vehicles/business_user/:id'`
+`GET '/vehicles/business_user'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * Returns array of all vehicles associated with a business.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1091,22 +887,101 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
+  "vehicle": [
     {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "id": 11,
+      "client_id": 7,
+      "vehicle_type": "Honda",
+      "vehicle_year": "2010",
+      "vehicle_model": "Accord",
+      "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
+      "vehicle_color": "black",
+      "vehicle_liscense_plate": "RYDE1",
+      "vehicle_comment": "There was a scratch on the bumper",
+      "created_at": "2015-07-16T14:55:20.259Z",
+      "updated_at": "2015-07-16T14:55:20.259Z",
+      "invoice_id": null,
+      "business_user_id": null,
+      "vehicle_sub_model": "LX",
+      "client": {
+        "id": 9,
+        "client_first_name": "Jimmy",
+        "client_last_name": "Page",
+        "client_street_address": "123 Hello Street",
+        "client_city": "Cape Coral",
+        "client_state": "Florida",
+        "client_zipcode": "23423",
+        "client_primary_phone": 555-668-5885,
+        "client_secondary_phone": 555-455-7567,
+        "client_email": jpage@blah.com,
+        "created_at": "2015-07-16T13:20:38.694Z",
+        "updated_at": "2015-07-16T13:20:38.694Z",
+        "business_user_id": 50
+      }
     },
     {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+      "id": 12,
+      "client_id": 7,
+      "vehicle_type": "Honda",
+      "vehicle_year": "2010",
+      "vehicle_model": "Accord",
+      "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
+      "vehicle_color": "black",
+      "vehicle_liscense_plate": "RYDE1",
+      "vehicle_comment": "There was a scratch on the bumper",
+      "created_at": "2015-07-16T14:55:20.259Z",
+      "updated_at": "2015-07-16T14:55:20.259Z",
+      "invoice_id": null,
+      "business_user_id": null,
+      "vehicle_sub_model": "LX",
+      "client": {
+        "id": 9,
+        "client_first_name": "Rod",
+        "client_last_name": "Stewart",
+        "client_street_address": "123 Hello Street",
+        "client_city": "Cape Coral",
+        "client_state": "Florida",
+        "client_zipcode": "23423",
+        "client_primary_phone": 555-668-5885,
+        "client_secondary_phone": 555-455-7567,
+        "client_email": jpage@blah.com,
+        "created_at": "2015-07-16T13:20:38.694Z",
+        "updated_at": "2015-07-16T13:20:38.694Z",
+        "business_user_id": 50
+      }
+    },
+    {
+      "id": 13,
+      "client_id": 7,
+      "vehicle_type": "Honda",
+      "vehicle_year": "2010",
+      "vehicle_model": "Accord",
+      "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
+      "vehicle_color": "black",
+      "vehicle_liscense_plate": "RYDE1",
+      "vehicle_comment": "There was a scratch on the bumper",
+      "created_at": "2015-07-16T14:55:20.259Z",
+      "updated_at": "2015-07-16T14:55:20.259Z",
+      "invoice_id": null,
+      "business_user_id": null,
+      "vehicle_sub_model": "LX",
+      "client": {
+        "id": 9,
+        "client_first_name": "Tom",
+        "client_last_name": "Brady",
+        "client_street_address": "123 Hello Street",
+        "client_city": "Cape Coral",
+        "client_state": "Florida",
+        "client_zipcode": "23423",
+        "client_primary_phone": 555-668-5885,
+        "client_secondary_phone": 555-455-7567,
+        "client_email": jpage@blah.com,
+        "created_at": "2015-07-16T13:20:38.694Z",
+        "updated_at": "2015-07-16T13:20:38.694Z",
+        "business_user_id": 50
+      }
+    }
+  ]
 }
 ```
 
@@ -1147,11 +1022,17 @@ Example success:
 
 ### **Create A Vehicle**
 
-`POST 'vehicle/'`
+`POST 'vehicles'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * vehicle_type:string
+  * vehicle_year:string
+  * vehicle_model:string
+  * vehicle_sub_model:string
+  * vehicle_vin_number:string
+  * vehicle_color:string
+  * vehicle_liscense_plate:string
+  * vehicle_comment:text
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1159,22 +1040,37 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "vehicle": {
+    "id": 11,
+    "client_id": 7,
+    "vehicle_type": "Honda",
+    "vehicle_year": "2010",
+    "vehicle_model": "Accord",
+    "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
+    "vehicle_color": "black",
+    "vehicle_liscense_plate": "RYDE1",
+    "vehicle_comment": "There was a scratch on the bumper",
+    "created_at": "2015-07-16T14:55:20.259Z",
+    "updated_at": "2015-07-16T14:55:20.259Z",
+    "invoice_id": null,
+    "business_user_id": null,
+    "vehicle_sub_model": "LX",
+    "client": {
+      "id": 9,
+      "client_first_name": "Jimmy",
+      "client_last_name": "Page",
+      "client_street_address": "123 Hello Street",
+      "client_city": "Cape Coral",
+      "client_state": "Florida",
+      "client_zipcode": "23423",
+      "client_primary_phone": 555-668-5885,
+      "client_secondary_phone": 555-455-7567,
+      "client_email": jpage@blah.com,
+      "created_at": "2015-07-16T13:20:38.694Z",
+      "updated_at": "2015-07-16T13:20:38.694Z",
+      "business_user_id": 50
+    }
   }
- ]
 }
 ```
 
@@ -1193,22 +1089,37 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "vehicle": {
+    "id": 11,
+    "client_id": 7,
+    "vehicle_type": "Honda",
+    "vehicle_year": "2010",
+    "vehicle_model": "Accord",
+    "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
+    "vehicle_color": "black",
+    "vehicle_liscense_plate": "RYDE1",
+    "vehicle_comment": "There was a scratch on the bumper",
+    "created_at": "2015-07-16T14:55:20.259Z",
+    "updated_at": "2015-07-16T14:55:20.259Z",
+    "invoice_id": null,
+    "business_user_id": null,
+    "vehicle_sub_model": "LX",
+    "client": {
+      "id": 9,
+      "client_first_name": "Jimmy",
+      "client_last_name": "Page",
+      "client_street_address": "123 Hello Street",
+      "client_city": "Cape Coral",
+      "client_state": "Florida",
+      "client_zipcode": "23423",
+      "client_primary_phone": 555-668-5885,
+      "client_secondary_phone": 555-455-7567,
+      "client_email": jpage@blah.com,
+      "created_at": "2015-07-16T13:20:38.694Z",
+      "updated_at": "2015-07-16T13:20:38.694Z",
+      "business_user_id": 50
+    }
   }
- ]
 }
 ```
 
@@ -1218,8 +1129,14 @@ Example success:
 `PATCH 'vehicle/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+* vehicle_type:string
+* vehicle_year:string
+* vehicle_model:string
+* vehicle_sub_model:string
+* vehicle_vin_number:string
+* vehicle_color:string
+* vehicle_liscense_plate:string
+* vehicle_comment:text
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1227,22 +1144,37 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "vehicle": {
+    "id": 11,
+    "client_id": 7,
+    "vehicle_type": "Honda",
+    "vehicle_year": "2010",
+    "vehicle_model": "Accord",
+    "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
+    "vehicle_color": "purple",
+    "vehicle_liscense_plate": "RYDE1",
+    "vehicle_comment": "There was a scratch on the bumper",
+    "created_at": "2015-07-16T14:55:20.259Z",
+    "updated_at": "2015-07-16T14:55:20.259Z",
+    "invoice_id": null,
+    "business_user_id": null,
+    "vehicle_sub_model": "LX",
+    "client": {
+      "id": 9,
+      "client_first_name": "Jimmy",
+      "client_last_name": "Page",
+      "client_street_address": "123 Hello Street",
+      "client_city": "Cape Coral",
+      "client_state": "Florida",
+      "client_zipcode": "23423",
+      "client_primary_phone": 555-668-5885,
+      "client_secondary_phone": 555-455-7567,
+      "client_email": jpage@blah.com,
+      "created_at": "2015-07-16T13:20:38.694Z",
+      "updated_at": "2015-07-16T13:20:38.694Z",
+      "business_user_id": 50
+    }
   }
- ]
 }
 ```
 
@@ -1260,67 +1192,18 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
-```
-
-
-### **Request All Inventory Items**
-
-`GET '/inventory_items'`
-
-Params:
-  * none
-  * Returns array of all employee users.
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+  "message": "Vehicle 13 has been removed from client profile"
 }
 ```
 
 
 ### **Request All Inventory Items By Business**
 
-`GET '/inventory_items/business_user/:id'`
+`GET '/inventory_items/business_user'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+  * Returns array of all inventory items for a business.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1328,22 +1211,48 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
+  "inv_item": [
     {
       "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "business_user_id": 50,
+      "part_number": "bh23456",
+      "business_part_number": "xh45679944",
+      "category": "Body Materials",
+      "inventory_item_location": "A12",
+      "inventory_item_supplier": "3M",
+      "reorder_alert": 6,
+      "order_to_quantity": 12,
+      "inventory_item_billable": true,
+      "inventory_item_taxable": true,
+      "inventory_item_cost": 35.99,
+      "inventory_item_markup": 0.25,
+      "inventory_count": 6,
+      "created_at": "2015-07-16T12:15:01.754Z",
+      "updated_at": "2015-07-16T12:15:01.754Z",
+      "tool": false,
+      "part_name": "Seam Sealer"
     },
     {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+      "id": 2,
+      "business_user_id": 50,
+      "part_number": "bh23457",
+      "business_part_number": "xh456799444",
+      "category": "Body Materials",
+      "inventory_item_location": "A13",
+      "inventory_item_supplier": "3M",
+      "reorder_alert": 6,
+      "order_to_quantity": 12,
+      "inventory_item_billable": true,
+      "inventory_item_taxable": true,
+      "inventory_item_cost": 45.99,
+      "inventory_item_markup": 0.25,
+      "inventory_count": 6,
+      "created_at": "2015-07-16T12:30:19.437Z",
+      "updated_at": "2015-07-16T12:30:19.437Z",
+      "tool": false,
+      "part_name": "Sprayable Seam Sealer"
+    }
+  ]
 }
 ```
 
@@ -1353,31 +1262,48 @@ Example success:
 `POST '/inventory_items'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * part_number:string
+  * part_name:string
+  * business_part_number:string
+  * category:string
+  * inventory_item_location:string
+  * inventory_item_supplier:string
+  * reorder_alert:integer
+  * order_to_quantity:integer
+  * inventory_item_billable:boolean
+  * inventory_item_taxable:boolean
+  * inventory_item_cost:float
+  * inventory_item_markup:float
+  * inventory_count:integer
+  * tool:boolean
+
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
-Example success:
+Response:
 ```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  {
+  "inv_item": {
+    "id": 1,
+    "business_user_id": 50,
+    "part_number": "bh23456",
+    "business_part_number": "xh45679944",
+    "category": "Body Materials",
+    "inventory_item_location": "A12",
+    "inventory_item_supplier": "3M",
+    "reorder_alert": 6,
+    "order_to_quantity": 12,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": true,
+    "inventory_item_cost": 35.99,
+    "inventory_item_markup": 0.25,
+    "inventory_count": 6,
+    "created_at": "2015-07-16T12:15:01.754Z",
+    "updated_at": "2015-07-16T12:15:01.754Z",
+    "tool": false,
+    "part_name": "Seam Sealer"
   }
- ]
 }
 ```
 
@@ -1387,8 +1313,8 @@ Example success:
 `GET '/inventory_item/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+  * Returns inventory item.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1396,22 +1322,26 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "inv_item": {
+    "id": 1,
+    "business_user_id": 50,
+    "part_number": "bh23456",
+    "business_part_number": "xh45679944",
+    "category": "Body Materials",
+    "inventory_item_location": "A12",
+    "inventory_item_supplier": "3M",
+    "reorder_alert": 6,
+    "order_to_quantity": 12,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": true,
+    "inventory_item_cost": 35.99,
+    "inventory_item_markup": 0.25,
+    "inventory_count": 6,
+    "created_at": "2015-07-16T12:15:01.754Z",
+    "updated_at": "2015-07-16T12:15:01.754Z",
+    "tool": false,
+    "part_name": "Seam Sealer"
   }
- ]
 }
 ```
 
@@ -1421,8 +1351,22 @@ Example success:
 `PATCH '/inventory_item/:id'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id:integer
+  * part_number:string
+  * part_name:string
+  * business_part_number:string
+  * category:string
+  * inventory_item_location:string
+  * inventory_item_supplier:string
+  * reorder_alert:integer
+  * order_to_quantity:integer
+  * inventory_item_billable:boolean
+  * inventory_item_taxable:boolean
+  * inventory_item_cost:float
+  * inventory_item_markup:float
+  * inventory_count:integer
+  * tool:boolean
+  * Returns an update record for an inventory item.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1430,22 +1374,26 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+  "inv_item": {
+    "id": 1,
+    "business_user_id": 50,
+    "part_number": "bh23457",
+    "business_part_number": "xh456799444",
+    "category": "Body Materials",
+    "inventory_item_location": "A65",
+    "inventory_item_supplier": "3M",
+    "reorder_alert": 6,
+    "order_to_quantity": 12,
+    "inventory_item_billable": true,
+    "inventory_item_taxable": true,
+    "inventory_item_cost": 40.99,
+    "inventory_item_markup": 0.25,
+    "inventory_count": 6,
+    "created_at": "2015-07-16T12:15:01.754Z",
+    "updated_at": "2015-07-16T12:36:06.875Z",
+    "tool": false,
+    "part_name": "Sprayable Seam Sealer"
   }
- ]
 }
 ```
 
@@ -1456,8 +1404,8 @@ Example success:
 
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * id
+
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1465,231 +1413,6 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+  "message": "Inventory Item Self Etch Primer has been removed from inventory"
 }
 ```
-#Inventory Items
-##Request all Inventory Items
-
-Path: GET '/inventory_items'
-Params: none
-Status: 200 OK
-Response:
-```{
-  "inv_item": [
-    {
-      "id": 2,
-      "business_user_id": 1,
-      "part_number": "1234567",
-      "business_part_number": "24234762873468237",
-      "category": "Motor",
-      "inventory_item_location": "Hall 10",
-      "inventory_item_supplier": "Distributor Inc",
-      "reorder_alert": 3,
-      "order_to_quantity": 10,
-      "inventory_item_billable": true,
-      "inventory_item_taxable": false,
-      "inventory_item_cost": 12,
-      "inventory_item_markup": 10,
-      "inventory_count": 20,
-      "created_at": "2015-07-09T11:59:41.669Z",
-      "updated_at": "2015-07-09T11:59:41.669Z",
-      "tool": false
-    },
-    {
-      "id": 3,
-      "business_user_id": 1,
-      "part_number": "29874327",
-      "business_part_number": "234872kjj243423",
-      "category": "Transmission",
-      "inventory_item_location": "Shelf 20, Bottom",
-      "inventory_item_supplier": "Amazon Inc",
-      "reorder_alert": 30,
-      "order_to_quantity": 20,
-      "inventory_item_billable": false,
-      "inventory_item_taxable": false,
-      "inventory_item_cost": 50,
-      "inventory_item_markup": 6,
-      "inventory_count": 10,
-      "created_at": "2015-07-09T12:20:31.560Z",
-      "updated_at": "2015-07-09T12:20:31.560Z",
-      "tool": true
-    }
-  ]
-}```
-
-Path: POST '/inventory_items'
-Params: none
-Status: 201 Created
-Response:
-```{
-  "inv_item": {
-    "id": 14,
-    "business_user_id": 1,
-    "part_number": "\"234242342\"",
-    "business_part_number": "\"2342423423424234\"",
-    "category": "\"Sensor\"",
-    "inventory_item_location": "\"3rd Hall\"",
-    "inventory_item_supplier": "\"eBay\"",
-    "reorder_alert": 4,
-    "order_to_quantity": 2,
-    "inventory_item_billable": true,
-    "inventory_item_taxable": false,
-    "inventory_item_cost": null,
-    "inventory_item_markup": 10,
-    "inventory_count": 40,
-    "created_at": "2015-07-09T12:39:01.507Z",
-    "updated_at": "2015-07-09T12:39:01.507Z",
-    "tool": false
-  }
-}```
-
-
-
-Path: GET '/inventory_items/:id'
-Params: :id
-Status: 200 OK
-Response:
-```{
-  "inv_item": {
-    "id": 2,
-    "business_user_id": 2,
-    "part_number": "1234567",
-    "business_part_number": "24234762873468237",
-    "category": "Motor",
-    "inventory_item_location": "Hall 10",
-    "inventory_item_supplier": "Distributor Inc",
-    "reorder_alert": 3,
-    "order_to_quantity": 10,
-    "inventory_item_billable": true,
-    "inventory_item_taxable": false,
-    "inventory_item_cost": 12,
-    "inventory_item_markup": 10,
-    "inventory_count": 20,
-    "created_at": "2015-07-09T11:59:41.669Z",
-    "updated_at": "2015-07-09T11:59:41.669Z",
-    "tool": false
-  }
-}```
-
-
-Path: PATCH '/inventory_item/:id'
-Params: :id
-Status: 201 Created
-Response:
-```{
-  "inv_item": {
-    "id": 2,
-    "business_user_id": 1,
-    "part_number": "\"23a23323234\"",
-    "business_part_number": "\"2342423423424234\"",
-    "category": "\"Sensor\"",
-    "inventory_item_location": "\"3rd Hall\"",
-    "inventory_item_supplier": "\"eBay\"",
-    "reorder_alert": 4,
-    "order_to_quantity": 2,
-    "inventory_item_billable": true,
-    "inventory_item_taxable": false,
-    "inventory_item_cost": null,
-    "inventory_item_markup": 10,
-    "inventory_count": 40,
-    "created_at": "2015-07-09T12:29:59.038Z",
-    "updated_at": "2015-07-09T13:00:33.532Z",
-    "tool": false
-  }
-}```
-
-Path: DELETE '/inventory_item/:id'
-Params: :id
-Status: 410 Gone
-Response:
-```{
-  "inv_item": {
-    "id": 5,
-    "business_user_id": null,
-    "part_number": "\"23a23323234\"",
-    "business_part_number": "\"2342423423424234\"",
-    "category": "\"Sensor\"",
-    "inventory_item_location": "\"3rd Hall\"",
-    "inventory_item_supplier": "\"eBay\"",
-    "reorder_alert": 4,
-    "order_to_quantity": 2,
-    "inventory_item_billable": true,
-    "inventory_item_taxable": false,
-    "inventory_item_cost": null,
-    "inventory_item_markup": 10,
-    "inventory_count": 40,
-    "created_at": "2015-07-09T12:29:23.836Z",
-    "updated_at": "2015-07-09T12:57:50.802Z",
-    "tool": false
-  }
-}```
-
-#Vehicles
-
-Path: GET '/vehicles
-Params: none
-Status:
-Response:
-
-Path: POST '/vehicles'
-Params: none
-Status:
-Response:
-
-Path: GET '/vehicle/:id'
-Params: :id
-Status:
-Response:
-
-Path: PATCH '/vehicle/:id'
-Params: :id
-Status:
-Response:
-
-Path: DELETE '/vehicle/:id'
-Params: :id
-Status:
-Response:
-
-#Repair Order
-
-Path: GET '/repair_orders'
-Params: none
-Status:
-Response:
-
-Path: POST '/repair_orders'
-Params: none
-Status:
-Response:
-
-Path: GET '/repair_order/:id'
-Params: :id
-Status:
-Response:
-
-Path: PATCH '/repair_order/:id'
-Params: :id
-Status:
-Response:
-
-Path: DELETE '/repair_orders/:id'
-Params: :id
-Status:
-Response:
