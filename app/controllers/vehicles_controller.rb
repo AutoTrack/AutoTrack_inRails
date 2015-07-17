@@ -25,7 +25,7 @@ class VehiclesController < ApplicationController
 
     def vehicles_create
 
-        @client = current_business_user.clients.find(params[:client_id])
+        @client = current_business_user.clients.find(params[:id])
         @create_vehicle = @client.vehicles.create(
                                                    vehicle_type: params[:vehicle_type],
                                                    vehicle_year: params[:vehicle_year],
@@ -37,7 +37,7 @@ class VehiclesController < ApplicationController
                                                    vehicle_comment: params[:vehicle_comment])
         @create_vehicle
 
-        render json: {vehicle: @create_vehicle.as_json(include: :client)},
+        render json: {vehicle: @create_vehicle.as_json },
         status: :create
     end
 

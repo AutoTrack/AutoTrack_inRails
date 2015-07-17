@@ -1012,6 +1012,7 @@ Example success:
 `POST 'vehicles'`
 
 Params:
+  * id (for client)
   * vehicle_type:string
   * vehicle_year:string
   * vehicle_model:string
@@ -1028,35 +1029,21 @@ Example success:
 ```json
 {
   "vehicle": {
-    "id": 11,
-    "client_id": 7,
-    "vehicle_type": "Honda",
+    "id": 15,
+    "client_id": 10,
+    "vehicle_type": "Acura",
     "vehicle_year": "2010",
-    "vehicle_model": "Accord",
-    "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
-    "vehicle_color": "black",
-    "vehicle_liscense_plate": "RYDE1",
-    "vehicle_comment": "There was a scratch on the bumper",
-    "created_at": "2015-07-16T14:55:20.259Z",
-    "updated_at": "2015-07-16T14:55:20.259Z",
+    "vehicle_model": "Integra",
+    "vehicle_vin_number": "kjsdaflajsg34rt34",
+    "vehicle_color": "gray",
+    "vehicle_liscense_plate": "2334effds",
+    "vehicle_comment": "Scrap on hood",
+    "created_at": "2015-07-17T15:08:49.701Z",
+    "updated_at": "2015-07-17T15:08:49.701Z",
     "invoice_id": null,
     "business_user_id": null,
-    "vehicle_sub_model": "LX",
-    "client": {
-      "id": 9,
-      "client_first_name": "Jimmy",
-      "client_last_name": "Page",
-      "client_street_address": "123 Hello Street",
-      "client_city": "Cape Coral",
-      "client_state": "Florida",
-      "client_zipcode": "23423",
-      "client_primary_phone": 555-668-5885,
-      "client_secondary_phone": 555-455-7567,
-      "client_email": jpage@blah.com,
-      "created_at": "2015-07-16T13:20:38.694Z",
-      "updated_at": "2015-07-16T13:20:38.694Z",
-      "business_user_id": 50
-    }
+    "vehicle_sub_model": "lx",
+    "repair_order_id": null
   }
 }
 ```
