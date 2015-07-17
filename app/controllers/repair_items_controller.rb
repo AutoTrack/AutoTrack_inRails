@@ -24,11 +24,18 @@ class RepairItemsController < ApplicationController
         status: :ok
   end
 
-  def update
-    @repair_order = current_user.repair_orders.find(params[:id])
-    @repair_order.substract_inventory
-    respond_to @repair_order
+  def show_repair_items
+    @repair_order = current_business_user.repair_orders.find(params[:id])
+    @show_repair_items = @repair_order.repair_items.all
+      render json: { repair_items: @show_repair_items.as_json },
+        status: :ok
   end
+
+  # def update
+  #   @repair_order = current_user.repair_orders.find(params[:id])
+  #   @repair_order.substract_inventory
+  #   respond_to @repair_order
+  # end
 
   def checkout_repair_items
 
