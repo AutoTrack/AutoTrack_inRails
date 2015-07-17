@@ -1,5 +1,4 @@
 class InvoicesController < ApplicationController
-require 'jbuilder'
 # before_action :authenticate_employee_user_with_token!
 # before_action :authenticate_business_user_with_token!
 
@@ -7,10 +6,10 @@ require 'jbuilder'
     def invoices_all
         @invoice = Invoice.all
 
-            # render json: {invoice: @invoice.as_json},
-            #     status: :ok
+            render json: {invoice: @invoice.as_json},
+                status: :ok
 
-            render 'invoices_all.json.jbuilder', status: :ok
+            # render 'invoices_all.json.jbuilder', status: :ok
     end
 
     def business_invoices_index
@@ -30,7 +29,7 @@ require 'jbuilder'
     end
 
     def invoice_show
-        @invoice = Invoice.find(params[ :id ] )
+        @invoice = current_business_user.invoices.find(params[ :id ] )
             render json: {invoice: @invoice.as_json },
                 status: :ok
     end
@@ -58,8 +57,13 @@ require 'jbuilder'
 
 
 protected
-    def taxes
+    def amout
 
+        #
 
     end
+
+    #current_business_user.
+    #customer name and info
+    #
 end

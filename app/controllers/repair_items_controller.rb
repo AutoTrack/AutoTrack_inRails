@@ -14,7 +14,7 @@ class RepairItemsController < ApplicationController
     @remove_repair_item = @repair_order.repair_items.destroy(params[:id])
     @remove_repair_item.save
       render json: { repair_items: @repair_order.as_json },
-        status: :ok
+        status: :gone
   end
 
   def add_repair_item_quantity
