@@ -16,9 +16,8 @@ class RepairOrdersController < ApplicationController
     # render json: { repair_orders: @business_repair_orders.as_json(include:=>{ [:client, :vehicle])} },
     render json: {business_repair_orders: @business_repair_orders.as_json},
     status: :ok
-   end
    else
-     render json: { repair_orders: @business_repair_orders.error.full_messages },
+     render json: { business_repair_orders: @business_repair_orders.error.full_messages },
      status: :unprocessable_entity
    end
   end
