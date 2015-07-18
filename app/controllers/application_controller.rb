@@ -65,4 +65,16 @@ class ApplicationController < ActionController::Base
         status: :unauthorized
     end
   end
+
+  def current_repair_order
+    token5 = request.headers['Access-Token5']
+    token5 && RepairOrder.find_by(access_token5: token5)
+  end
+
+  def authenticate_repair_order_with_token!
+    unless current_repair_order
+      render json: { message: "Repair Order Access Token Not Found." },
+        status: :unauthorized
+    end
+  end
 end

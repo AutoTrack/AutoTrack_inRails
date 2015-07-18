@@ -13,6 +13,24 @@ class RepairOrder < ActiveRecord::Base
   has_one :invoice
   #----------------------------------------------------------------
 
+  validates :access_token5, presence: true
+
+
+  before_validation :ensure_access_token5
+
+  def ensure_access_token5
+    if self.access_token5.blank?
+      self.access_token5 = RepairOrder.generate_token5
+    end
+  end
+
+  def self.generate_token5
+    token5 = SecureRandom.hex
+    while RepairOrder.exists?(access_token5: token5)
+      token5 = SecureRandom.hex
+    end
+    token5
+  end
 
 
 

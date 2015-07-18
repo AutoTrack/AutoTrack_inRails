@@ -25,7 +25,7 @@ class VehiclesController < ApplicationController
 
     def vehicles_create
       @business_id = current_business_user.id
-      @create_vehicle = current_client.vehicles.create(
+      @new_vehicle = current_client.vehicles.new(
                                                    business_user_id: @business_id,
                                                    vehicle_type: params[:vehicle_type],
                                                    vehicle_year: params[:vehicle_year],
@@ -35,10 +35,13 @@ class VehiclesController < ApplicationController
                                                    vehicle_color: params[:vehicle_color],
                                                    vehicle_liscense_plate: params[:vehicle_liscense_plate],
                                                    vehicle_comment: params[:vehicle_comment])
-        @create_vehicle
-
-        render json: {vehicle: @create_vehicle.as_json },
-        status: :create
+      if @new_vehicle.save
+        render json: {vehicle: @new_vehicle.as_json },
+          status: :create
+      else
+        render json: { errors: @new_vehicle.errors.full_messages },
+          status: :unprocessable_entity # 422 code, something wrong with data
+      end
     end
 
     def vehicle_show
