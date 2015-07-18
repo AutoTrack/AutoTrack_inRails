@@ -38,7 +38,7 @@ class VehiclesController < ApplicationController
                                                    vehicle_comment: params[:vehicle_comment])
       if @new_vehicle.save
         render json: {vehicle: @new_vehicle.as_json },
-          status: :create
+          status: :created
       else
         render json: { errors: @new_vehicle.errors.full_messages },
           status: :unprocessable_entity # 422 code, something wrong with data
