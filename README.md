@@ -71,7 +71,9 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Create A Repair Order Number](#create-a-repair-order-number)
 `POST 'repair_order'`
 * [Attach Employee To Repair Order](#attach-employee-to-repair-order)
-`POST` 'repair_order/attach_employee'`
+`POST` 'employee_users_repair_order/attach_employee'`
+* [Repair Order Employees Show](#repair-order-employees-show)
+`GET` 'employee_users_repair_order/show_employees/:id'`
 * [Show A Repair Order](#show-a-repair-order)
 `GET 'repair_order/:id'`
 * [Update A Repair Order](#update-a-repair-order)
@@ -735,7 +737,41 @@ Example success:
 
 ### **Attach Employee To Repair Order**
 
-`POST` 'repair_order/attach_employee'`
+`POST` 'employee_users_repair_order/attach_employee'`
+
+Params:
+  * none
+  * Returns array of all employee users.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "employee_user": [
+    {
+      "id": 1,
+      "employee_first_name": "Philip",
+      "employee_last_name": "Marcinek",
+      "employee_email": pmarcinek@autotrak.com,
+      "employee_number": 34526
+    },
+    {
+      "id": 5,
+      "employee_first_name": "Juan",
+      "employee_last_name": "Wood",
+      "employee_email": jwood@autotrak.com,
+      "employee_number": 34522
+  }
+ ]
+}
+```
+
+
+### **Repair Order Employees Show**
+
+`GET` 'employee_users_repair_order/show_employees/:id'`
 
 Params:
   * none
@@ -858,7 +894,38 @@ Example success:
 ```
 
 
+### **Show Repair Item**
+
+`GET 'repair_item/:id'`
+
+
+### **Show Repair Items**
+
+`GET 'repair_items/:id'`
+
+
+### **Add Repair Item**
+
+`POST 'repair_item/:id'`
+
+
 ### **Add Repair Item Quantity**
+
+`POST '/repair_item/quantity'`
+
+### **Remove Repair Item**
+
+`DELETE 'repair_item/:id'`
+
+
+### **Update Repair Item Quantity**
+
+`PATCH 'repair_item/quantity'`
+
+
+### **Checkout Repair Items**
+
+`PATCH 'repair_items/checkout'`
 
 
 ### **Request All Vehicles By Business**

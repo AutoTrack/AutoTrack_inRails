@@ -54,7 +54,6 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 #------------------------InventoryItems-Routes------------------------#
 
 get 'inventory_items', to: 'inventory_items#inventory_items_index'
-
 get 'inventory_items/business_user', to: 'inventory_items#business_inventory_items_index'
 post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
