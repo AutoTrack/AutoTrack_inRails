@@ -73,7 +73,7 @@ post 'repair_item', to: 'repair_items#add_repair_item'
 delete 'repair_item/:id', to: 'repair_items#remove_repair_item'
 post 'repair_item/quantity', to: 'repair_items#add_repair_item_quantity'
 patch 'repair_item/quantity', to: 'repair_items#update_repair_item_quantity'
-get 'repair_items', to: 'repair_items#show_repair_items'
+get 'repair_items/:id', to: 'repair_items#show_repair_items'
 get 'repair_item/:id', to: 'repair_items#show_repair_item'
 patch 'repair_items/checkout', to: 'repair_items#checkout_repair_items'
 

@@ -24,10 +24,9 @@ class VehiclesController < ApplicationController
     end
 
     def vehicles_create
-
-        @client = current_business_user.clients.find(params[:id])
-        @create_vehicle = @client.vehicles.create( business_user_id: params[:business_user_id],
-                                                   client_id: params[:client_id],
+      @business_id = current_business_user.id
+      @create_vehicle = current_client.vehicles.create(
+                                                   business_user_id: @business_id,
                                                    vehicle_type: params[:vehicle_type],
                                                    vehicle_year: params[:vehicle_year],
                                                    vehicle_model: params[:vehicle_model],
