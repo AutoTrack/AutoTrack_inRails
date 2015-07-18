@@ -35,10 +35,13 @@ class RepairOrdersController < ApplicationController
 
 # This will be used in the creation of a RO Number page.
   def repair_order_create
-    @repair_order = current_business_user.repair_orders.new(repair_order_number:
-                                                            params[:repair_order_number])
+    @repair_order = current_business_user.repair_orders.new(
+                                 repair_order_number: params[:repair_order_number],
+                                 vehicle_id: params[:vehicle_id],
+                                 client_id: params[:client_id],
+                                 business_user_id: params[:business_user_id])
     if @repair_order.save
-      render json: { repair_order: @repair_order.as_json },
+      render json: { repair_order: @repair_order.as_json(include: :vehicle, :client) },
       status: :created
     else
       render json: { errors: @repair_order.errors.full_messages },
@@ -54,7 +57,7 @@ class RepairOrdersController < ApplicationController
     @repair_order_items = @repair_order.repair_items.all
 
     if @repair_order_items
-     render json: { repair_order: @repair_order_items },
+     render json: { repair_order: @repair_order_items(include: :repair_order) },
          status: :ok
      else
        render json: { errors: @repair_order_items.errors.full_messages },

@@ -12,7 +12,7 @@ class VehiclesController < ApplicationController
     def business_vehicles_index
         @business_vehicles = current_business_user.vehicles.all
 
-        render json: {vehicle: @business_vehicles.as_json(include: :client)},
+        render json: {vehicle: @business_vehicles.as_json },
         status: :ok
     end
 
@@ -26,7 +26,8 @@ class VehiclesController < ApplicationController
     def vehicles_create
 
         @client = current_business_user.clients.find(params[:id])
-        @create_vehicle = @client.vehicles.create( client_id: params[:client_id],
+        @create_vehicle = @client.vehicles.create( business_user_id: params[:business_user_id],
+                                                   client_id: params[:client_id],
                                                    vehicle_type: params[:vehicle_type],
                                                    vehicle_year: params[:vehicle_year],
                                                    vehicle_model: params[:vehicle_model],
@@ -63,7 +64,7 @@ class VehiclesController < ApplicationController
     end
 
     def vehicle_destroy
-        @vehicle  = current_business_user.vehicles.find(params[:id])
+        @vehicle = current_business_user.vehicles.find(params[:id])
         @vehicle.destroy
 
         render json: { message: "Vehicle #{@vehicle.id} has been removed from client profile" },
