@@ -85,7 +85,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Show Repair Item](#show-repair-item)
 `GET 'repair_item/:id'`
 * [Show Repair Items](#show-repair-items)
-`GET 'repair_items/:id'`
+`GET 'repair_items'`
 * [Add Repair Item](#add-repair-item)
 `POST 'repair_item/:id'`
 * [Add Repair Item Quantity](#add-repair-item-quantity)
@@ -901,7 +901,7 @@ Example success:
 
 ### **Show Repair Items**
 
-`GET 'repair_items/:id'`
+`GET 'repair_items'`
 
 
 ### **Add Repair Item**
