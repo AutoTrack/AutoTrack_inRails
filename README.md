@@ -749,22 +749,48 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+  "employee_repair_order": {
+    "id": 7,
+    "employee_user_id": 2,
+    "repair_order_id": 60,
+    "business_user_id": 50,
+    "client_id": 12,
+    "vehicle_id": 27,
+    "vehicle": {
+      "id": 27,
+      "client_id": 12,
+      "vehicle_type": "Mazda",
+      "vehicle_year": "2016",
+      "vehicle_model": "Protege",
+      "vehicle_vin_number": "lasfj345k3j4kdklffasf",
+      "vehicle_color": "Black",
+      "vehicle_liscense_plate": "4k5h64",
+      "vehicle_comment": "Dent on rear fender",
+      "created_at": "2015-07-18T16:54:24.106Z",
+      "updated_at": "2015-07-18T16:54:24.106Z",
+      "invoice_id": null,
+      "business_user_id": 50,
+      "vehicle_sub_model": "626",
+      "repair_order_id": null,
+      "access_token4": "38f1fba916fafedd0b1fc67069915e89"
     },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+    "client": {
+      "id": 12,
+      "client_first_name": "Johnny ",
+      "client_last_name": "Depp",
+      "client_street_address": "123 Colony Springs St",
+      "client_city": "Roswell",
+      "client_state": "GA",
+      "client_zipcode": "23423",
+      "client_primary_phone": null,
+      "client_secondary_phone": null,
+      "client_email": null,
+      "created_at": "2015-07-18T15:41:49.435Z",
+      "updated_at": "2015-07-18T15:41:49.435Z",
+      "business_user_id": 50,
+      "access_token3": "1cfcfe088772af034628ae17ef2332b6"
+    }
   }
- ]
 }
 ```
 
