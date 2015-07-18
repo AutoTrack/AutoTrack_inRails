@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150718183240) do
   create_table "employee_users_repair_orders", force: :cascade do |t|
     t.integer "employee_user_id"
     t.integer "repair_order_id"
+    t.integer "business_user_id"
   end
 
   create_table "inventory_items", force: :cascade do |t|

@@ -6,7 +6,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
     @business_id = current_business_user.id
     @client_id = current_client.id
     @vehicle_id = current_vehicle.id
-    @repair_order = current_repair_order.employee_users_repair_orders.new(
+    @employee_repair_order = current_repair_order.employee_users_repair_orders.new(
                  business_user_id: @business_id,
                  client_id: @client_id,
                  vehicle_id: @vehicle_id,
@@ -17,12 +17,11 @@ class EmployeeUsersRepairOrdersController < ApplicationController
     #
     # @repair_order.employee_users << @employee_user
 
-      if @repair_order.save
-        render json: { repair_order: @repair_order.as_json,
-                       employee_users: @repair_order.employee_users_repair_orders.as_json },
+      if @employee_repair_order.save
+        render json: {employee_repair_order: @employee_repair_order.as_json(include: [:vehicle, :client])},
         status: :created
       else
-        render json: { errors: @repair_order.errors.full_messages },
+        render json: { errors: @employee_repair_order.errors.full_messages },
         status: :unprocessable_entity
       end
   end
