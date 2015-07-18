@@ -23,6 +23,7 @@ class VehiclesController < ApplicationController
         status: :ok
     end
 
+
     def vehicles_create
       @business_id = current_business_user.id
       @new_vehicle = current_client.vehicles.new(
