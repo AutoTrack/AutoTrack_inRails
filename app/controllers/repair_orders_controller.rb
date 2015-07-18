@@ -12,9 +12,12 @@ class RepairOrdersController < ApplicationController
   def business_repair_orders_index
     @business_repair_orders = current_business_user.repair_orders.all
 
-    if @business_repair_orders
-    render json: { repair_orders: @business_repair_orders.as_json },
-     status: :ok
+   if @business_repair_orders
+    # render json: { repair_orders: @business_repair_orders.as_json(include:=>{ [:client, :vehicle])} },
+    respond_to do |format|
+     format.json  { render :json => :client }
+     format.json  { render :json => :vehicle }
+   end
    else
      render json: { repair_orders: @business_repair_orders.error.full_messages },
      status: :unprocessable_entity
@@ -41,7 +44,7 @@ class RepairOrdersController < ApplicationController
                                  client_id: params[:client_id],
                                  business_user_id: params[:business_user_id])
     if @repair_order.save
-      render json: { repair_order: @repair_order.as_json(include: :vehicle, :client) },
+      render json: { repair_order: @repair_order.as_json(include: :vehicle) },
       status: :created
     else
       render json: { errors: @repair_order.errors.full_messages },
@@ -57,7 +60,7 @@ class RepairOrdersController < ApplicationController
     @repair_order_items = @repair_order.repair_items.all
 
     if @repair_order_items
-     render json: { repair_order: @repair_order_items(include: :repair_order) },
+     render json: { repair_order: @repair_order_items },
          status: :ok
      else
        render json: { errors: @repair_order_items.errors.full_messages },
