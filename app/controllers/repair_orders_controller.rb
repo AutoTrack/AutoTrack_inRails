@@ -14,9 +14,8 @@ class RepairOrdersController < ApplicationController
 
    if @business_repair_orders
     # render json: { repair_orders: @business_repair_orders.as_json(include:=>{ [:client, :vehicle])} },
-    respond_to do |format|
-     format.json  { render :json => :client }
-     format.json  { render :json => :vehicle }
+    render json: {business_repair_orders: @business_repair_orders.as_json},
+    status: :ok
    end
    else
      render json: { repair_orders: @business_repair_orders.error.full_messages },
