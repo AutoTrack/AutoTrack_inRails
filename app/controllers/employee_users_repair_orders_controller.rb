@@ -22,7 +22,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
                        employee_users: @repair_order.employee_users_repair_orders.as_json },
         status: :created
       else
-        render json: { errors: @repair_order_employee.errors.full_messages },
+        render json: { errors: @repair_order.errors.full_messages },
         status: :unprocessable_entity
       end
   end
