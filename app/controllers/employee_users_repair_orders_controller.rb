@@ -29,9 +29,10 @@ class EmployeeUsersRepairOrdersController < ApplicationController
 
   def repair_order_employees_show
     @repair_order = current_business_user.repair_orders.find(params[:id])
-
     @repair_order_employee = @repair_order.employee_users_repair_orders.find(params[:id])
-    if @repair_order_employee.save
+    if @repair_order_employee
+      render json: {repair_order_employees: @repair_order_employees.as_json },
+      status: :create
     end
   end
 
