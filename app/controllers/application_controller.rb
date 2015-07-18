@@ -41,4 +41,16 @@ class ApplicationController < ActionController::Base
         status: :unauthorized
     end
   end
+
+  # def current_client
+  #   token3 = request.headers['Access-Token3']
+  #   token3 && Client.find_by(access_token3: token3)
+  # end
+  #
+  # def authenticate_client_with_token!
+  #   unless current_client
+  #     render json: { message: "Client Access Token Not Found." },
+  #       status: :unauthorized
+  #   end
+  # end
 end

@@ -901,12 +901,12 @@ Example success:
 
 ### **Show Repair Items**
 
-`GET 'repair_items'`
+`GET 'repair_items/:repair_order_id'`
 
 
 ### **Add Repair Item**
 
-`POST 'repair_item/:id'`
+`POST 'repair_item'`
 
 
 ### **Add Repair Item Quantity**

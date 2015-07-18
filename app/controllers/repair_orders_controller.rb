@@ -59,13 +59,11 @@ class RepairOrdersController < ApplicationController
     @repair_order = current_business_user.repair_orders.find(params[:id])
     @repair_order_items = @repair_order.repair_items.all
 
-    if @repair_order_items
-     render json: { repair_order: @repair_order_items },
+
+    #  render json: { repair_order_items: @repair_order_items(include: =>{:repair_order} },
+     render json: @repair_order.as_json(include:  @repair_order_items  ),
          status: :ok
-     else
-       render json: { errors: @repair_order_items.errors.full_messages },
-         status: :not_found
-     end
+
   end
 
 
