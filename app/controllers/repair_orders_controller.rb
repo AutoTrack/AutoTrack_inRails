@@ -14,8 +14,7 @@ class RepairOrdersController < ApplicationController
 
    if @business_repair_orders
     # render json: { repair_orders: @business_repair_orders.as_json(include:=>{ [:client, :vehicle])} },
-    render json: {business_repair_orders: @business_repair_orders.as_json(include: :client),
-                  vehicle: @business_repair_orders.as_json(include: :vehicle) },
+    render json: {business_repair_orders: @business_repair_orders.as_json(include: [:vehicle, :client])},
     status: :ok
 
    else
