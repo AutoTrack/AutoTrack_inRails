@@ -979,7 +979,7 @@ Example success:
 `GET 'vehicle/:id'`
 
 Params:
-  * none
+  * id
   * Returns array of all employee users.
 
 Response:
