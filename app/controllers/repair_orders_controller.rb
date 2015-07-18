@@ -44,7 +44,8 @@ class RepairOrdersController < ApplicationController
                                  client_id: @client_id,
                                  business_user_id: @business_id)
     if @repair_order.save
-      render json: { repair_order: @repair_order.as_json(include: :vehicle) },
+      render json: { repair_order: @repair_order.as_json(include: :client),
+                     vehicle: @repair_order.as_json(include: :vehicle) },
       status: :created
     else
       render json: { errors: @repair_order.errors.full_messages },
