@@ -9,7 +9,7 @@ class RepairOrder < ActiveRecord::Base
   has_many :inventory_items, through: :repair_items
 
   belongs_to :client
-  has_one :vehicle
+  belongs_to :vehicle
   has_one :invoice
   #----------------------------------------------------------------
 
