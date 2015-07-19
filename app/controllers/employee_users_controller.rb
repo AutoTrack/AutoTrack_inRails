@@ -91,7 +91,7 @@ class EmployeeUsersController < ApplicationController
                                                       employee_pin: params[:employee_pin])
     if @pin_employee_user
 
-      render json: { employee_user: @pin_employee_user.as_json },
+      render json: { employee_user_pin: @pin_employee_user.as_json },
         status: :ok
     else
       render json: { message: "Invalid Employee Pin" },
