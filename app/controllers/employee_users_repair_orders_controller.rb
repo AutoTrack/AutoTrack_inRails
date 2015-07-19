@@ -26,13 +26,13 @@ class EmployeeUsersRepairOrdersController < ApplicationController
       end
   end
 
-  def repair_order_employees_show
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_employee = @repair_order.employee_users_repair_orders.find(params[:id])
-    if @repair_order_employee
-      render json: {repair_order_employees: @repair_order_employees.as_json },
-      status: :create
-    end
+  def repair_order_employee_show
+
+    @repair_order_employee = current_business_user.employee_users_repair_orders.find(params[:id])
+
+      render json: { repair_order_employee: @repair_order_employee.as_json(include: :employee_user) },
+      status: :ok
+
   end
 
   def repair_order_employees_show_all
@@ -40,17 +40,17 @@ class EmployeeUsersRepairOrdersController < ApplicationController
 
     @repair_order_employees = @repair_order.employee_users_repair_orders.all
 
-      render json: { employee_users: @repair_order_employees.employee_users_repair_orders.as_json },
+      render json: { repair_order_employees: @repair_order_employees.as_json(include: :employee_user) },
       status: :ok
   end
 
 # This will remove employee from repair order.
   def repair_order_employees_delete
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_employee = current_business_user.employee_users.where(
-                                                :id => params[:employee_number])
-    @repair_order.employee_users.destroy
-    if @repair_order.employee_users.save
+    @repair_order_employee = current_business_user.employee_users_repair_orders.find(params[:id])
+    # @repair_order_employee = current_business_user.employee_users.where(
+    #                                             :id => params[:employee_number])
+    @repair_order_employee.destroy
+    if @repair_order_employee
       render json: { repair_order_employees: @repair_order_employee.as_json },
       status: :ok
     else

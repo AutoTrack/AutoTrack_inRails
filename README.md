@@ -72,8 +72,10 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `POST 'repair_order'`
 * [Attach Employee To Repair Order](#attach-employee-to-repair-order)
 `POST` 'employee_users_repair_order/attach_employee'`
-* [Repair Order Employees Show](#repair-order-employees-show)
-`GET` 'employee_users_repair_order/show_employees/:id'`
+* [Repair Order Employee Show](#repair-order-employee-show)
+`GET` 'employee_users_repair_order/show_employee/:id'`
+* [Repair Order Employees Show All](#repair-order-employees-show-all)
+`GET` 'employee_users_repair_order/show_all/:id'`
 * [Show A Repair Order](#show-a-repair-order)
 `GET 'repair_order/:id'`
 * [Update A Repair Order](#update-a-repair-order)
@@ -740,8 +742,8 @@ Example success:
 `POST` 'employee_users_repair_order/attach_employee'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * employee_user_id:integer
+  * Attaches employee to repair order.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -772,7 +774,7 @@ Example success:
       "business_user_id": 50,
       "vehicle_sub_model": "626",
       "repair_order_id": null,
-      "access_token4": "38f1fba916fafedd0b1fc67069915e89"
+      "access_token4": "38f1fba916fafedd0b1fc67069915"
     },
     "client": {
       "id": 12,
@@ -788,50 +790,16 @@ Example success:
       "created_at": "2015-07-18T15:41:49.435Z",
       "updated_at": "2015-07-18T15:41:49.435Z",
       "business_user_id": 50,
-      "access_token3": "1cfcfe088772af034628ae17ef2332b6"
+      "access_token3": "1cfcfe088772af034628ae17ef23"
     }
   }
 }
 ```
 
 
-### **Repair Order Employees Show**
+### **Repair Order Employee Show**
 
-`GET` 'employee_users_repair_order/show_employees/:id'`
-
-Params:
-  * none
-  * Returns array of all employee users.
-
-Response:
-  Status Code: 201 if successful, 422 if unsuccessful
-
-Example success:
-```json
-{
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
-}
-```
-
-
-### **Show A Repair Order**
-
-`GET 'repair_order/:id'`
+`GET` 'employee_users_repair_order/show_employee/:id'`
 
 Params:
   * id
@@ -843,29 +811,37 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
+  "repair_order_employee": {
+    "id": 12,
+    "employee_user_id": 10,
+    "repair_order_id": 60,
+    "business_user_id": 50,
+    "client_id": 12,
+    "vehicle_id": 27,
+    "employee_user": {
+      "id": 10,
+      "business_user_id": null,
       "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
       "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+      "employee_email": null,
+      "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "employee_pin": "1234",
+      "employee_access_rights": null,
+      "created_at": "2015-07-07T19:28:11.024Z",
+      "updated_at": "2015-07-07T19:28:11.024Z",
+      "super_user": true,
+      "access_token2": null,
+      "employee_number": null,
+      "role": null,
+      "employee_users_repair_order_id": null
+    }
   }
- ]
 }
 ```
 
+### **Repair Order Employees Show All**
 
-### **Update A Repair Order**
-
-`PATCH 'repair_order/:id'`
+`GET` 'employee_users_repair_order/show_all/:id'`
 
 Params:
   * none
@@ -877,22 +853,141 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
+  "repair_order_employees": [
     {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "id": 12,
+      "employee_user_id": 11,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27,
+      "employee_user": {
+        "id": 10,
+        "business_user_id": null,
+        "employee_first_name": "Tommy",
+        "employee_last_name": "Hilfiger",
+        "employee_email": null,
+        "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+        "employee_pin": "1234",
+        "employee_access_rights": null,
+        "created_at": "2015-07-07T19:28:11.024Z",
+        "updated_at": "2015-07-07T19:28:11.024Z",
+        "super_user": true,
+        "access_token2": null,
+        "employee_number": null,
+        "role": null,
+        "employee_users_repair_order_id": null
+      }
     },
     {
+      "id": 13,
+      "employee_user_id": 10,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27,
+      "employee_user": {
+        "id": 10,
+        "business_user_id": null,
+        "employee_first_name": "Philip",
+        "employee_last_name": "Wood",
+        "employee_email": null,
+        "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+        "employee_pin": "1234",
+        "employee_access_rights": null,
+        "created_at": "2015-07-07T19:28:11.024Z",
+        "updated_at": "2015-07-07T19:28:11.024Z",
+        "super_user": true,
+        "access_token2": null,
+        "employee_number": null,
+        "role": null,
+        "employee_users_repair_order_id": null
+      }
+    },
+    {
+      "id": 14,
+      "employee_user_id": 12,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27,
+      "employee_user": {
+        "id": 10,
+        "business_user_id": null,
+        "employee_first_name": "Jimmy",
+        "employee_last_name": "Dugan",
+        "employee_email": null,
+        "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+        "employee_pin": "1234",
+        "employee_access_rights": null,
+        "created_at": "2015-07-07T19:28:11.024Z",
+        "updated_at": "2015-07-07T19:28:11.024Z",
+        "super_user": true,
+        "access_token2": null,
+        "employee_number": null,
+        "role": null,
+        "employee_users_repair_order_id": null
+      }
+    },
+
+  ]
+}
+```
+
+
+### **Show A Repair Order**
+
+`GET 'repair_order/:id'`
+
+Params:
+  * id
+  * Shows a repair order.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "id": 60,
+  "business_user_id": 50,
+  "employee_user_id": null,
+  "client_id": 12,
+  "repair_order_number": null,
+  "vehicle_id": 27,
+  "repair_type_id": null,
+  "repair_status": false,
+  "created_at": "2015-07-18T19:28:32.393Z",
+  "updated_at": "2015-07-18T19:28:32.393Z",
+  "employee_users_repair_order_id": null,
+  "access_token5": "98e6251448c449411361203b5cd8d93b",
+  "repair_items": [],
+  "employee_users_repair_orders": [
+    {
       "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+      "employee_user_id": 2,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27
+    },
+    {
+      "id": 6,
+      "employee_user_id": 2,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27
+    },
+    {
+      "id": 7,
+      "employee_user_id": 2,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27
+    }
+  ]
 }
 ```
 
