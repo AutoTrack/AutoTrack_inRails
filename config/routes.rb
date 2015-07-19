@@ -62,11 +62,11 @@ patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
 delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
 
 #----------------------Invoices-Routes---------------------------------#
-get 'invoices_all', to: 'invoices#invoices_all'
-post 'invoices', to: 'invoices#invoices_create'
-get 'invoice/:id', to:'invoices#invoice_show'
-patch 'invoice/:id', to: 'invoices#invoice_update'
-delete 'invoice/:id', to: 'invoices#invoices_delete'
+# get 'invoices_all', to: 'invoices#invoices_all'
+# post 'invoices', to: 'invoices#invoices_create'
+# get 'invoice/:id', to:'invoices#invoice_show'
+# patch 'invoice/:id', to: 'invoices#invoice_update'
+# delete 'invoice/:id', to: 'invoices#invoices_delete'
 
 #------------------------RepairItems-Routes------------------------#
 

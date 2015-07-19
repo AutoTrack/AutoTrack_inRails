@@ -1,17 +1,23 @@
 class BusinessUser < ActiveRecord::Base
-# after_create :send_notification
-
-#   def send_notification
-#       BusinessUserMailer.new_business_user(self).deliver
-#   end
 
   has_many :employee_users
-  has_many :inventory_items
   has_many :repair_orders
-  has_many :invoices
-  has_many :clients
+
   has_many :inventory_items
+  has_many :repair_items
+
+  has_many :clients
+
+  has_many :vehicles
+  has_many :invoices
+
   has_many :employee_users_repair_orders
+
+  # after_create :send_notification
+
+  #   def send_notification
+  #       BusinessUserMailer.new_business_user(self).deliver
+  #   end
 
 #---Validations----
   validates :business_user_password, :access_token, presence: true
