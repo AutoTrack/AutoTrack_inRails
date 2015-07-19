@@ -37,7 +37,7 @@ class VehiclesController < ApplicationController
                                                    vehicle_liscense_plate: params[:vehicle_liscense_plate],
                                                    vehicle_comment: params[:vehicle_comment])
       if @new_vehicle.save
-        render json: {vehicle: @new_vehicle.as_json },
+        render json: {vehicle: @new_vehicle.as_json(include: :client) },
           status: :created
       else
         render json: { errors: @new_vehicle.errors.full_messages },
