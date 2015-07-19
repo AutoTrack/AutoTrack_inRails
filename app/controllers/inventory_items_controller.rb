@@ -1,6 +1,6 @@
 class InventoryItemsController < ApplicationController
-  # before_action :authenticate_business_user_with_token!
-  # before_action :authenticate_employee_user_with_token!
+  before_action :authenticate_business_user_with_token!
+  before_action :authenticate_employee_user_with_token!
 
     def inventory_items_index
           @inv_item = InventoryItem.all

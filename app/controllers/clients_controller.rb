@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
     def business_clients_index
         @business_clients = current_business_user.clients.all
 
-        render json: { business_cliets: @business_clients.as_json},
+        render json: { business_clients: @business_clients.as_json},
             status: :ok
 
             # render 'business_clients_index.json.jbuilder',

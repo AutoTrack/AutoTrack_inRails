@@ -9,4 +9,5 @@ class BusinessUserMailer < ApplicationMailer
     end
 
 
+
 end

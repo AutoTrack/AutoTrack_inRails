@@ -17,12 +17,18 @@ class InvoicesController < ApplicationController
     end
 
     def invoices_create
-        @invoice = current_business_user.invoices.new( invoice_url: params[ :invoice_url ],
-                                                                                       invoice_status: params[ :invoice_status ] )
+        # user = current_business_user
+        clients = current_business_user.clients.find_by(params[:id])
+        @invoice = clients.invoices.find_or_create_by( invoice_url: params[ :invoice_url ],
+                                                                            invoice_status: params[ :invoice_status ],
+                                                                            business_user_id: params[:business_user_id],
+                                                                            client_id:params[:client_id],
+                                                                            vehicle_id: params[:vehicle_id],
+                                                                            repair_order_id: params[:repair_order_id] )
 
 
         if @invoice.save
-            render json: { invoice: @business_user_id.repair_order.client.vehicle.invoice.as_json( only: [ :id, :business_user_id, :repair_order_id,
+            render json: { invoice: @invoice.as_json( only: [ :id, :business_user_id, :repair_order_id,
                                                                                         :client_id, :vehicle_id ] ) },
             status: :created
         end
@@ -35,7 +41,7 @@ class InvoicesController < ApplicationController
     end
 
     def invoice_update
-        @invoice = Invoice.find( params[ :id ] )
+        @invoice = current_business_user.invoices.find_by(params[:client_id])
 
         if @invoice.update(invoice_status: params[ :invoice_stauts ] )
 
