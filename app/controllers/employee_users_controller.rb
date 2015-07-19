@@ -18,10 +18,7 @@ class EmployeeUsersController < ApplicationController
   def index_by_business
 
     @business_employee_users = current_business_user.employee_users.all
-    render json: { employee_user: @business_employee_users.as_json(only: [:id, :employee_first_name,
-                                                                 :employee_last_name,
-                                                                 :employee_email,
-                                                                 :employee_number]) },
+    render json: { employee_user: @business_employee_users.as_json },
      status: :created
   end
 
@@ -91,7 +88,7 @@ class EmployeeUsersController < ApplicationController
 # This is for logging in through pin feature.
   def employee_pin_login
     @pin_employee_user = current_business_user.employee_users.find_by(
-                                                                employee_pin: params[:employee_pin])
+                                                      employee_pin: params[:employee_pin])
     if @pin_employee_user
 
       render json: { employee_user: @pin_employee_user.as_json },

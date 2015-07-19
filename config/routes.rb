@@ -29,7 +29,7 @@ delete 'client/:id', to: 'clients#client_destroy'
 
 get 'repair_orders', to: 'repair_orders#repair_orders_index'
 get 'repair_orders/business_user', to: 'repair_orders#business_repair_orders_index'
-get 'repair_orders/employee_user/:id', to: 'repair_orders#employee_repair_orders_index'
+get 'repair_orders/employee_user', to: 'repair_orders#employee_repair_orders_index'
 post 'repair_order', to: 'repair_orders#repair_order_create'
 get 'repair_order/:id', to: 'repair_orders#repair_order_show'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'

@@ -18,19 +18,24 @@ class RepairOrdersController < ApplicationController
     status: :ok
 
    else
-     render json: { business_repair_orders: @business_repair_orders.error.full_messages },
+     render json: { business_repair_orders: @business_repair_orders.errors.full_messages },
      status: :unprocessable_entity
    end
   end
 
 # This retrieves all repair orders for the current employee user.
   def employee_repair_orders_index
-    @employee_repair_orders = current_employee_user.repair_orders.all
+    @employee = current_employee_user.id
+    @employee_repair_orders = current_business_user.employee_users_repair_orders.find_by(
+                                                                employee_user_id: @employee )
+
+
+
     if @employee_repair_orders
-    render json: { repair_orders: @employee_repair_orders.as_json },
+    render json: { employee_repair_orders: @employee_repair_orders.as_json(include: [:repair_order, :client, :vehicle]) },
      status: :ok
    else
-     render json: { repair_orders: @employee_repair_orders.error.full_messages },
+     render json: { employee_repair_orders: @employee_repair_orders.errors.full_messages },
      status: :unprocessable_entity
    end
   end

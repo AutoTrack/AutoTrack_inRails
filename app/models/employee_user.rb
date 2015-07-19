@@ -1,10 +1,10 @@
 class EmployeeUser < ActiveRecord::Base
   belongs_to :business_user
-
   has_many :repair_orders
-  has_many :employee_users_repair_orders, through: :repair_orders
+  has_many :employee_users_repair_orders
+  # has_many :repair_orders, through: :employee_users_repair_orders
   #--------------------------------------------------------------
-  
+
 
 
 
