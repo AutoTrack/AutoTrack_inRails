@@ -41,4 +41,40 @@ class ApplicationController < ActionController::Base
         status: :unauthorized
     end
   end
+
+  def current_client
+    token3 = request.headers['Access-Token3']
+    token3 && Client.find_by(access_token3: token3)
+  end
+
+  def authenticate_client_with_token!
+    unless current_client
+      render json: { message: "Client Access Token Not Found." },
+        status: :unauthorized
+    end
+  end
+
+  def current_vehicle
+    token4 = request.headers['Access-Token4']
+    token4 && Vehicle.find_by(access_token4: token4)
+  end
+
+  def authenticate_vehicle_with_token!
+    unless current_vehicle
+      render json: { message: "Vehicle Access Token Not Found." },
+        status: :unauthorized
+    end
+  end
+
+  def current_repair_order
+    token5 = request.headers['Access-Token5']
+    token5 && RepairOrder.find_by(access_token5: token5)
+  end
+
+  def authenticate_repair_order_with_token!
+    unless current_repair_order
+      render json: { message: "Repair Order Access Token Not Found." },
+        status: :unauthorized
+    end
+  end
 end

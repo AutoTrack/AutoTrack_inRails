@@ -29,7 +29,7 @@ delete 'client/:id', to: 'clients#client_destroy'
 
 get 'repair_orders', to: 'repair_orders#repair_orders_index'
 get 'repair_orders/business_user', to: 'repair_orders#business_repair_orders_index'
-get 'repair_orders/employee_user/:id', to: 'repair_orders#employee_repair_orders_index'
+get 'repair_orders/employee_user', to: 'repair_orders#employee_repair_orders_index'
 post 'repair_order', to: 'repair_orders#repair_order_create'
 get 'repair_order/:id', to: 'repair_orders#repair_order_show'
 patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
@@ -38,8 +38,8 @@ delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
 #---------------------Repair_Orders_Employee_Users--------------------#
 
 post 'employee_users_repair_order/attach_employee', to: 'employee_users_repair_orders#repair_order_employees_create'
-get 'employee_users_repair_order/show_employees/:id', to: 'employee_users_repair_orders#repair_order_employees_show'
-
+get 'employee_users_repair_order/show_employee/:id', to: 'employee_users_repair_orders#repair_order_employee_show'
+get 'employee_users_repair_order/show_all/:id', to: 'employee_users_repair_orders#repair_order_employees_show_all'
 #-------------------------Vehicles-Routes-----------------------------#
 
 get 'vehicles', to: 'vehicles#vehicles_index'
@@ -54,7 +54,6 @@ delete 'vehicle/:id', to: 'vehicles#vehicle_destroy'
 #------------------------InventoryItems-Routes------------------------#
 
 get 'inventory_items', to: 'inventory_items#inventory_items_index'
-
 get 'inventory_items/business_user', to: 'inventory_items#business_inventory_items_index'
 post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'

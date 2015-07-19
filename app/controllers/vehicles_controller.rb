@@ -12,7 +12,7 @@ class VehiclesController < ApplicationController
     def business_vehicles_index
         @business_vehicles = current_business_user.vehicles.all
 
-        render json: {vehicle: @business_vehicles.as_json(include: :client)},
+        render json: {vehicle: @business_vehicles.as_json },
         status: :ok
     end
 
@@ -23,10 +23,11 @@ class VehiclesController < ApplicationController
         status: :ok
     end
 
-    def vehicles_create
 
-        @client = current_business_user.clients.find(params[:id])
-        @create_vehicle = @client.vehicles.create( client_id: params[:client_id],
+    def vehicles_create
+      @business_id = current_business_user.id
+      @new_vehicle = current_client.vehicles.new(
+                                                   business_user_id: @business_id,
                                                    vehicle_type: params[:vehicle_type],
                                                    vehicle_year: params[:vehicle_year],
                                                    vehicle_model: params[:vehicle_model],
@@ -35,10 +36,13 @@ class VehiclesController < ApplicationController
                                                    vehicle_color: params[:vehicle_color],
                                                    vehicle_liscense_plate: params[:vehicle_liscense_plate],
                                                    vehicle_comment: params[:vehicle_comment])
-        @create_vehicle
-
-        render json: {vehicle: @create_vehicle.as_json },
-        status: :create
+      if @new_vehicle.save
+        render json: {vehicle: @new_vehicle.as_json(include: :client) },
+          status: :created
+      else
+        render json: { errors: @new_vehicle.errors.full_messages },
+          status: :unprocessable_entity # 422 code, something wrong with data
+      end
     end
 
     def vehicle_show
@@ -63,7 +67,7 @@ class VehiclesController < ApplicationController
     end
 
     def vehicle_destroy
-        @vehicle  = current_business_user.vehicles.find(params[:id])
+        @vehicle = current_business_user.vehicles.find(params[:id])
         @vehicle.destroy
 
         render json: { message: "Vehicle #{@vehicle.id} has been removed from client profile" },

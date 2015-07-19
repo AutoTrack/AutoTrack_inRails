@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717121811) do
+ActiveRecord::Schema.define(version: 20150719210121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150717121811) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "business_user_id"
+    t.string   "access_token3"
   end
 
   create_table "employee_users", force: :cascade do |t|
@@ -67,11 +68,15 @@ ActiveRecord::Schema.define(version: 20150717121811) do
     t.string   "employee_number"
     t.string   "role"
     t.integer  "employee_users_repair_order_id"
+    t.integer  "employee_pin_number"
   end
 
   create_table "employee_users_repair_orders", force: :cascade do |t|
     t.integer "employee_user_id"
     t.integer "repair_order_id"
+    t.integer "business_user_id"
+    t.integer "client_id"
+    t.integer "vehicle_id"
   end
 
   create_table "inventory_items", force: :cascade do |t|
@@ -111,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150717121811) do
     t.integer  "repair_item_quantity"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "business_user_id"
   end
 
   create_table "repair_orders", force: :cascade do |t|
@@ -124,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150717121811) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.integer  "employee_users_repair_order_id"
+    t.string   "access_token5"
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -141,6 +148,7 @@ ActiveRecord::Schema.define(version: 20150717121811) do
     t.integer  "business_user_id"
     t.string   "vehicle_sub_model"
     t.integer  "repair_order_id"
+    t.string   "access_token4"
   end
 
 end

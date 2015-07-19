@@ -67,11 +67,15 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Repair Orders For A Business](#request-all-repair-orders-for-a-business)
 `GET 'repair_orders/business_user'`
 * [Request All Repair Orders For A Employee](#request-all-repair-orders-for-a-employee)
-`'repair_orders/employee_user/:id'`
+`'repair_orders/employee_user'`
 * [Create A Repair Order Number](#create-a-repair-order-number)
 `POST 'repair_order'`
 * [Attach Employee To Repair Order](#attach-employee-to-repair-order)
-`POST` 'repair_order/attach_employee'`
+`POST` 'employee_users_repair_order/attach_employee'`
+* [Repair Order Employee Show](#repair-order-employee-show)
+`GET` 'employee_users_repair_order/show_employee/:id'`
+* [Repair Order Employees Show All](#repair-order-employees-show-all)
+`GET` 'employee_users_repair_order/show_all/:id'`
 * [Show A Repair Order](#show-a-repair-order)
 `GET 'repair_order/:id'`
 * [Update A Repair Order](#update-a-repair-order)
@@ -83,7 +87,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Show Repair Item](#show-repair-item)
 `GET 'repair_item/:id'`
 * [Show Repair Items](#show-repair-items)
-`GET 'repair_items/:id'`
+`GET 'repair_items'`
 * [Add Repair Item](#add-repair-item)
 `POST 'repair_item/:id'`
 * [Add Repair Item Quantity](#add-repair-item-quantity)
@@ -94,9 +98,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `PATCH 'repair_item/quantity'`
 * [Checkout Repair Items](#check-out-repair-items)
 `PATCH 'repair_items/checkout'`
-
-
-
 
 ### **Vehicles**
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
@@ -662,7 +663,7 @@ Example success:
 
 ### **Request All Repair Orders For A Employee**
 
-`GET 'repair_orders/employee_user/:id'`
+`GET 'repair_orders/employee_user'`
 
 Params:
   * id
@@ -674,31 +675,63 @@ Response:
 Example success:
 ```json
 {
-      "id": 23,
-      "business_user_id": 52,
+  "employee_repair_orders": {
+    "id": 36,
+    "employee_user_id": 61,
+    "repair_order_id": 64,
+    "business_user_id": 50,
+    "client_id": 15,
+    "vehicle_id": 35,
+    "repair_order": {
+      "id": 64,
+      "business_user_id": 50,
       "employee_user_id": null,
-      "client_id": null,
-      "repair_order_number": "555557",
-      "vehicle_id": null,
-      "repair_type_id": null,
-      "repair_status": false,
-      "created_at": "2015-07-12T21:13:51.668Z",
-      "updated_at": "2015-07-12T21:13:51.668Z",
-      "employee_users_repair_order_id": null
-    },
-    {
-      "id": 24,
-      "business_user_id": 52,
-      "employee_user_id": null,
-      "client_id": null,
+      "client_id": 15,
       "repair_order_number": null,
-      "vehicle_id": null,
+      "vehicle_id": 35,
       "repair_type_id": null,
       "repair_status": false,
-      "created_at": "2015-07-12T21:15:47.638Z",
-      "updated_at": "2015-07-12T21:15:47.638Z",
-      "employee_users_repair_order_id": null
+      "created_at": "2015-07-19T14:05:46.584Z",
+      "updated_at": "2015-07-19T14:05:46.584Z",
+      "employee_users_repair_order_id": null,
+      "access_token5": "75680695c266745b5c018b2de3fc"
+    },
+    "client": {
+      "id": 15,
+      "client_first_name": "New",
+      "client_last_name": "Client",
+      "client_street_address": "123 Hello World",
+      "client_city": "ANywhere",
+      "client_state": "Anywhere",
+      "client_zipcode": "23423",
+      "client_primary_phone": null,
+      "client_secondary_phone": null,
+      "client_email": null,
+      "created_at": "2015-07-19T13:55:10.781Z",
+      "updated_at": "2015-07-19T13:55:10.781Z",
+      "business_user_id": 50,
+      "access_token3": "79292c7e29fbe3b25e4d1b663e7"
+    },
+    "vehicle": {
+      "id": 35,
+      "client_id": 15,
+      "vehicle_type": null,
+      "vehicle_year": null,
+      "vehicle_model": null,
+      "vehicle_vin_number": null,
+      "vehicle_color": null,
+      "vehicle_liscense_plate": null,
+      "vehicle_comment": null,
+      "created_at": "2015-07-19T14:02:42.710Z",
+      "updated_at": "2015-07-19T14:02:42.710Z",
+      "invoice_id": null,
+      "business_user_id": 50,
+      "vehicle_sub_model": null,
+      "repair_order_id": null,
+      "access_token4": "bc59386d7a1cd0949f837106ebb"
     }
+  }
+}
 ```
 
 
@@ -735,11 +768,11 @@ Example success:
 
 ### **Attach Employee To Repair Order**
 
-`POST` 'repair_order/attach_employee'`
+`POST` 'employee_users_repair_order/attach_employee'`
 
 Params:
-  * none
-  * Returns array of all employee users.
+  * employee_user_id:integer
+  * Attaches employee to repair order.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -747,29 +780,55 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+  "employee_repair_order": {
+    "id": 7,
+    "employee_user_id": 2,
+    "repair_order_id": 60,
+    "business_user_id": 50,
+    "client_id": 12,
+    "vehicle_id": 27,
+    "vehicle": {
+      "id": 27,
+      "client_id": 12,
+      "vehicle_type": "Mazda",
+      "vehicle_year": "2016",
+      "vehicle_model": "Protege",
+      "vehicle_vin_number": "lasfj345k3j4kdklffasf",
+      "vehicle_color": "Black",
+      "vehicle_liscense_plate": "4k5h64",
+      "vehicle_comment": "Dent on rear fender",
+      "created_at": "2015-07-18T16:54:24.106Z",
+      "updated_at": "2015-07-18T16:54:24.106Z",
+      "invoice_id": null,
+      "business_user_id": 50,
+      "vehicle_sub_model": "626",
+      "repair_order_id": null,
+      "access_token4": "38f1fba916fafedd0b1fc67069915"
     },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+    "client": {
+      "id": 12,
+      "client_first_name": "Johnny ",
+      "client_last_name": "Depp",
+      "client_street_address": "123 Colony Springs St",
+      "client_city": "Roswell",
+      "client_state": "GA",
+      "client_zipcode": "23423",
+      "client_primary_phone": null,
+      "client_secondary_phone": null,
+      "client_email": null,
+      "created_at": "2015-07-18T15:41:49.435Z",
+      "updated_at": "2015-07-18T15:41:49.435Z",
+      "business_user_id": 50,
+      "access_token3": "1cfcfe088772af034628ae17ef23"
+    }
   }
- ]
 }
 ```
 
 
-### **Show A Repair Order**
+### **Repair Order Employee Show**
 
-`GET 'repair_order/:id'`
+`GET` 'employee_users_repair_order/show_employee/:id'`
 
 Params:
   * id
@@ -781,29 +840,37 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
-    {
-      "id": 1,
+  "repair_order_employee": {
+    "id": 12,
+    "employee_user_id": 10,
+    "repair_order_id": 60,
+    "business_user_id": 50,
+    "client_id": 12,
+    "vehicle_id": 27,
+    "employee_user": {
+      "id": 10,
+      "business_user_id": null,
       "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
-    },
-    {
-      "id": 5,
-      "employee_first_name": "Juan",
       "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
+      "employee_email": null,
+      "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "employee_pin": "1234",
+      "employee_access_rights": null,
+      "created_at": "2015-07-07T19:28:11.024Z",
+      "updated_at": "2015-07-07T19:28:11.024Z",
+      "super_user": true,
+      "access_token2": null,
+      "employee_number": null,
+      "role": null,
+      "employee_users_repair_order_id": null
+    }
   }
- ]
 }
 ```
 
+### **Repair Order Employees Show All**
 
-### **Update A Repair Order**
-
-`PATCH 'repair_order/:id'`
+`GET` 'employee_users_repair_order/show_all/:id'`
 
 Params:
   * none
@@ -815,22 +882,141 @@ Response:
 Example success:
 ```json
 {
-  "employee_user": [
+  "repair_order_employees": [
     {
-      "id": 1,
-      "employee_first_name": "Philip",
-      "employee_last_name": "Marcinek",
-      "employee_email": pmarcinek@autotrak.com,
-      "employee_number": 34526
+      "id": 12,
+      "employee_user_id": 11,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27,
+      "employee_user": {
+        "id": 10,
+        "business_user_id": null,
+        "employee_first_name": "Tommy",
+        "employee_last_name": "Hilfiger",
+        "employee_email": null,
+        "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+        "employee_pin": "1234",
+        "employee_access_rights": null,
+        "created_at": "2015-07-07T19:28:11.024Z",
+        "updated_at": "2015-07-07T19:28:11.024Z",
+        "super_user": true,
+        "access_token2": null,
+        "employee_number": null,
+        "role": null,
+        "employee_users_repair_order_id": null
+      }
     },
     {
+      "id": 13,
+      "employee_user_id": 10,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27,
+      "employee_user": {
+        "id": 10,
+        "business_user_id": null,
+        "employee_first_name": "Philip",
+        "employee_last_name": "Wood",
+        "employee_email": null,
+        "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+        "employee_pin": "1234",
+        "employee_access_rights": null,
+        "created_at": "2015-07-07T19:28:11.024Z",
+        "updated_at": "2015-07-07T19:28:11.024Z",
+        "super_user": true,
+        "access_token2": null,
+        "employee_number": null,
+        "role": null,
+        "employee_users_repair_order_id": null
+      }
+    },
+    {
+      "id": 14,
+      "employee_user_id": 12,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27,
+      "employee_user": {
+        "id": 10,
+        "business_user_id": null,
+        "employee_first_name": "Jimmy",
+        "employee_last_name": "Dugan",
+        "employee_email": null,
+        "employee_password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+        "employee_pin": "1234",
+        "employee_access_rights": null,
+        "created_at": "2015-07-07T19:28:11.024Z",
+        "updated_at": "2015-07-07T19:28:11.024Z",
+        "super_user": true,
+        "access_token2": null,
+        "employee_number": null,
+        "role": null,
+        "employee_users_repair_order_id": null
+      }
+    },
+
+  ]
+}
+```
+
+
+### **Show A Repair Order**
+
+`GET 'repair_order/:id'`
+
+Params:
+  * id
+  * Shows a repair order.
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "id": 60,
+  "business_user_id": 50,
+  "employee_user_id": null,
+  "client_id": 12,
+  "repair_order_number": null,
+  "vehicle_id": 27,
+  "repair_type_id": null,
+  "repair_status": false,
+  "created_at": "2015-07-18T19:28:32.393Z",
+  "updated_at": "2015-07-18T19:28:32.393Z",
+  "employee_users_repair_order_id": null,
+  "access_token5": "98e6251448c449411361203b5cd8d93b",
+  "repair_items": [],
+  "employee_users_repair_orders": [
+    {
       "id": 5,
-      "employee_first_name": "Juan",
-      "employee_last_name": "Wood",
-      "employee_email": jwood@autotrak.com,
-      "employee_number": 34522
-  }
- ]
+      "employee_user_id": 2,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27
+    },
+    {
+      "id": 6,
+      "employee_user_id": 2,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27
+    },
+    {
+      "id": 7,
+      "employee_user_id": 2,
+      "repair_order_id": 60,
+      "business_user_id": 50,
+      "client_id": 12,
+      "vehicle_id": 27
+    }
+  ]
 }
 ```
 
@@ -858,7 +1044,38 @@ Example success:
 ```
 
 
+### **Show Repair Item**
+
+`GET 'repair_item/:id'`
+
+
+### **Show Repair Items**
+
+`GET 'repair_items/:repair_order_id'`
+
+
+### **Add Repair Item**
+
+`POST 'repair_item'`
+
+
 ### **Add Repair Item Quantity**
+
+`POST '/repair_item/quantity'`
+
+### **Remove Repair Item**
+
+`DELETE 'repair_item/:id'`
+
+
+### **Update Repair Item Quantity**
+
+`PATCH 'repair_item/quantity'`
+
+
+### **Checkout Repair Items**
+
+`PATCH 'repair_items/checkout'`
 
 
 ### **Request All Vehicles By Business**
@@ -876,97 +1093,21 @@ Example success:
 {
   "vehicle": [
     {
-      "id": 11,
-      "client_id": 7,
-      "vehicle_type": "Honda",
+      "id": 20,
+      "client_id": 10,
+      "vehicle_type": "Acura",
       "vehicle_year": "2010",
-      "vehicle_model": "Accord",
-      "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
-      "vehicle_color": "black",
-      "vehicle_liscense_plate": "RYDE1",
-      "vehicle_comment": "There was a scratch on the bumper",
-      "created_at": "2015-07-16T14:55:20.259Z",
-      "updated_at": "2015-07-16T14:55:20.259Z",
+      "vehicle_model": "Integra",
+      "vehicle_vin_number": "kjsdaflajsg34rt34",
+      "vehicle_color": "gray",
+      "vehicle_liscense_plate": "2334effds",
+      "vehicle_comment": "Scrap on hood",
+      "created_at": "2015-07-17T23:49:18.648Z",
+      "updated_at": "2015-07-17T23:49:18.648Z",
       "invoice_id": null,
-      "business_user_id": null,
-      "vehicle_sub_model": "LX",
-      "client": {
-        "id": 9,
-        "client_first_name": "Jimmy",
-        "client_last_name": "Page",
-        "client_street_address": "123 Hello Street",
-        "client_city": "Cape Coral",
-        "client_state": "Florida",
-        "client_zipcode": "23423",
-        "client_primary_phone": 555-668-5885,
-        "client_secondary_phone": 555-455-7567,
-        "client_email": jpage@blah.com,
-        "created_at": "2015-07-16T13:20:38.694Z",
-        "updated_at": "2015-07-16T13:20:38.694Z",
-        "business_user_id": 50
-      }
-    },
-    {
-      "id": 12,
-      "client_id": 7,
-      "vehicle_type": "Honda",
-      "vehicle_year": "2010",
-      "vehicle_model": "Accord",
-      "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
-      "vehicle_color": "black",
-      "vehicle_liscense_plate": "RYDE1",
-      "vehicle_comment": "There was a scratch on the bumper",
-      "created_at": "2015-07-16T14:55:20.259Z",
-      "updated_at": "2015-07-16T14:55:20.259Z",
-      "invoice_id": null,
-      "business_user_id": null,
-      "vehicle_sub_model": "LX",
-      "client": {
-        "id": 9,
-        "client_first_name": "Rod",
-        "client_last_name": "Stewart",
-        "client_street_address": "123 Hello Street",
-        "client_city": "Cape Coral",
-        "client_state": "Florida",
-        "client_zipcode": "23423",
-        "client_primary_phone": 555-668-5885,
-        "client_secondary_phone": 555-455-7567,
-        "client_email": jpage@blah.com,
-        "created_at": "2015-07-16T13:20:38.694Z",
-        "updated_at": "2015-07-16T13:20:38.694Z",
-        "business_user_id": 50
-      }
-    },
-    {
-      "id": 13,
-      "client_id": 7,
-      "vehicle_type": "Honda",
-      "vehicle_year": "2010",
-      "vehicle_model": "Accord",
-      "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
-      "vehicle_color": "black",
-      "vehicle_liscense_plate": "RYDE1",
-      "vehicle_comment": "There was a scratch on the bumper",
-      "created_at": "2015-07-16T14:55:20.259Z",
-      "updated_at": "2015-07-16T14:55:20.259Z",
-      "invoice_id": null,
-      "business_user_id": null,
-      "vehicle_sub_model": "LX",
-      "client": {
-        "id": 9,
-        "client_first_name": "Tom",
-        "client_last_name": "Brady",
-        "client_street_address": "123 Hello Street",
-        "client_city": "Cape Coral",
-        "client_state": "Florida",
-        "client_zipcode": "23423",
-        "client_primary_phone": 555-668-5885,
-        "client_secondary_phone": 555-455-7567,
-        "client_email": jpage@blah.com,
-        "created_at": "2015-07-16T13:20:38.694Z",
-        "updated_at": "2015-07-16T13:20:38.694Z",
-        "business_user_id": 50
-      }
+      "business_user_id": 50,
+      "vehicle_sub_model": "lx",
+      "repair_order_id": null
     }
   ]
 }
@@ -1012,7 +1153,8 @@ Example success:
 `POST 'vehicles'`
 
 Params:
-  * id (for client)
+  * client_id:integer
+  * business_user_id:integer
   * vehicle_type:string
   * vehicle_year:string
   * vehicle_model:string
@@ -1029,7 +1171,7 @@ Example success:
 ```json
 {
   "vehicle": {
-    "id": 15,
+    "id": 21,
     "client_id": 10,
     "vehicle_type": "Acura",
     "vehicle_year": "2010",
@@ -1038,10 +1180,10 @@ Example success:
     "vehicle_color": "gray",
     "vehicle_liscense_plate": "2334effds",
     "vehicle_comment": "Scrap on hood",
-    "created_at": "2015-07-17T15:08:49.701Z",
-    "updated_at": "2015-07-17T15:08:49.701Z",
+    "created_at": "2015-07-17T23:55:00.318Z",
+    "updated_at": "2015-07-17T23:55:00.318Z",
     "invoice_id": null,
-    "business_user_id": null,
+    "business_user_id": 50,
     "vehicle_sub_model": "lx",
     "repair_order_id": null
   }
@@ -1054,7 +1196,7 @@ Example success:
 `GET 'vehicle/:id'`
 
 Params:
-  * none
+  * id
   * Returns array of all employee users.
 
 Response:
@@ -1064,33 +1206,34 @@ Example success:
 ```json
 {
   "vehicle": {
-    "id": 11,
-    "client_id": 7,
-    "vehicle_type": "Honda",
+    "id": 20,
+    "client_id": 10,
+    "vehicle_type": "Acura",
     "vehicle_year": "2010",
-    "vehicle_model": "Accord",
-    "vehicle_vin_number": "234j34k5jkl35lk235lk235jl23",
-    "vehicle_color": "black",
-    "vehicle_liscense_plate": "RYDE1",
-    "vehicle_comment": "There was a scratch on the bumper",
-    "created_at": "2015-07-16T14:55:20.259Z",
-    "updated_at": "2015-07-16T14:55:20.259Z",
+    "vehicle_model": "Integra",
+    "vehicle_vin_number": "kjsdaflajsg34rt34",
+    "vehicle_color": "gray",
+    "vehicle_liscense_plate": "2334effds",
+    "vehicle_comment": "Scrap on hood",
+    "created_at": "2015-07-17T23:49:18.648Z",
+    "updated_at": "2015-07-17T23:49:18.648Z",
     "invoice_id": null,
-    "business_user_id": null,
-    "vehicle_sub_model": "LX",
+    "business_user_id": 50,
+    "vehicle_sub_model": "lx",
+    "repair_order_id": null,
     "client": {
-      "id": 9,
-      "client_first_name": "Jimmy",
-      "client_last_name": "Page",
-      "client_street_address": "123 Hello Street",
-      "client_city": "Cape Coral",
-      "client_state": "Florida",
+      "id": 10,
+      "client_first_name": "Harry",
+      "client_last_name": "Henderson",
+      "client_street_address": "123 Main St",
+      "client_city": "Nowhere",
+      "client_state": "Georgia",
       "client_zipcode": "23423",
-      "client_primary_phone": 555-668-5885,
-      "client_secondary_phone": 555-455-7567,
-      "client_email": jpage@blah.com,
-      "created_at": "2015-07-16T13:20:38.694Z",
-      "updated_at": "2015-07-16T13:20:38.694Z",
+      "client_primary_phone": null,
+      "client_secondary_phone": null,
+      "client_email": null,
+      "created_at": "2015-07-17T15:08:10.403Z",
+      "updated_at": "2015-07-17T15:08:10.403Z",
       "business_user_id": 50
     }
   }

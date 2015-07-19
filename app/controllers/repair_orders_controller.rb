@@ -12,33 +12,46 @@ class RepairOrdersController < ApplicationController
   def business_repair_orders_index
     @business_repair_orders = current_business_user.repair_orders.all
 
-    if @business_repair_orders
-    render json: { repair_orders: @business_repair_orders.as_json },
-     status: :ok
+   if @business_repair_orders
+    # render json: { repair_orders: @business_repair_orders.as_json(include:=>{ [:client, :vehicle])} },
+    render json: {business_repair_orders: @business_repair_orders.as_json(include: [:vehicle, :client])},
+    status: :ok
+
    else
-     render json: { repair_orders: @business_repair_orders.error.full_messages },
+     render json: { business_repair_orders: @business_repair_orders.errors.full_messages },
      status: :unprocessable_entity
    end
   end
 
 # This retrieves all repair orders for the current employee user.
   def employee_repair_orders_index
-    @employee_repair_orders = current_employee_user.repair_orders.all
+    @employee = current_employee_user.id
+    @employee_repair_orders = current_business_user.employee_users_repair_orders.find_by(
+                                                                employee_user_id: @employee )
+
+
+
     if @employee_repair_orders
-    render json: { repair_orders: @employee_repair_orders.as_json },
+    render json: { employee_repair_orders: @employee_repair_orders.as_json(include: [:repair_order, :client, :vehicle]) },
      status: :ok
    else
-     render json: { repair_orders: @employee_repair_orders.error.full_messages },
+     render json: { employee_repair_orders: @employee_repair_orders.errors.full_messages },
      status: :unprocessable_entity
    end
   end
 
 # This will be used in the creation of a RO Number page.
   def repair_order_create
-    @repair_order = current_business_user.repair_orders.new(repair_order_number:
-                                                            params[:repair_order_number])
+
+    @business_id = current_business_user.id
+    @client_id = current_client.id
+    @repair_order = current_vehicle.repair_orders.new(
+                                 repair_order_number: params[:repair_order_number],
+                                 client_id: @client_id,
+                                 business_user_id: @business_id)
     if @repair_order.save
-      render json: { repair_order: @repair_order.as_json },
+      render json: { repair_order: @repair_order.as_json(include: :client),
+                     vehicle: @repair_order.as_json(include: :vehicle) },
       status: :created
     else
       render json: { errors: @repair_order.errors.full_messages },
@@ -51,17 +64,11 @@ class RepairOrdersController < ApplicationController
   def repair_order_show
 
     @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_items = @repair_order.repair_items.all
 
-    if @repair_order_items
-     render json: { repair_order: @repair_order_items },
+     render json: @repair_order.as_json(include:  [:repair_items,
+                                                   :employee_users_repair_orders] ),
          status: :ok
-     else
-       render json: { errors: @repair_order_items.errors.full_messages },
-         status: :not_found
-     end
   end
-
 
   def repair_order_destroy
     @delete_repair_order = current_business_user.repair_orders.find(params[:id])
