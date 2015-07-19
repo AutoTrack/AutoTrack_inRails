@@ -67,7 +67,7 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Request All Repair Orders For A Business](#request-all-repair-orders-for-a-business)
 `GET 'repair_orders/business_user'`
 * [Request All Repair Orders For A Employee](#request-all-repair-orders-for-a-employee)
-`'repair_orders/employee_user/:id'`
+`'repair_orders/employee_user'`
 * [Create A Repair Order Number](#create-a-repair-order-number)
 `POST 'repair_order'`
 * [Attach Employee To Repair Order](#attach-employee-to-repair-order)
@@ -98,9 +98,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `PATCH 'repair_item/quantity'`
 * [Checkout Repair Items](#check-out-repair-items)
 `PATCH 'repair_items/checkout'`
-
-
-
 
 ### **Vehicles**
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
@@ -666,7 +663,7 @@ Example success:
 
 ### **Request All Repair Orders For A Employee**
 
-`GET 'repair_orders/employee_user/:id'`
+`GET 'repair_orders/employee_user'`
 
 Params:
   * id
@@ -678,31 +675,63 @@ Response:
 Example success:
 ```json
 {
-      "id": 23,
-      "business_user_id": 52,
+  "employee_repair_orders": {
+    "id": 36,
+    "employee_user_id": 61,
+    "repair_order_id": 64,
+    "business_user_id": 50,
+    "client_id": 15,
+    "vehicle_id": 35,
+    "repair_order": {
+      "id": 64,
+      "business_user_id": 50,
       "employee_user_id": null,
-      "client_id": null,
-      "repair_order_number": "555557",
-      "vehicle_id": null,
-      "repair_type_id": null,
-      "repair_status": false,
-      "created_at": "2015-07-12T21:13:51.668Z",
-      "updated_at": "2015-07-12T21:13:51.668Z",
-      "employee_users_repair_order_id": null
-    },
-    {
-      "id": 24,
-      "business_user_id": 52,
-      "employee_user_id": null,
-      "client_id": null,
+      "client_id": 15,
       "repair_order_number": null,
-      "vehicle_id": null,
+      "vehicle_id": 35,
       "repair_type_id": null,
       "repair_status": false,
-      "created_at": "2015-07-12T21:15:47.638Z",
-      "updated_at": "2015-07-12T21:15:47.638Z",
-      "employee_users_repair_order_id": null
+      "created_at": "2015-07-19T14:05:46.584Z",
+      "updated_at": "2015-07-19T14:05:46.584Z",
+      "employee_users_repair_order_id": null,
+      "access_token5": "75680695c266745b5c018b2de3fc"
+    },
+    "client": {
+      "id": 15,
+      "client_first_name": "New",
+      "client_last_name": "Client",
+      "client_street_address": "123 Hello World",
+      "client_city": "ANywhere",
+      "client_state": "Anywhere",
+      "client_zipcode": "23423",
+      "client_primary_phone": null,
+      "client_secondary_phone": null,
+      "client_email": null,
+      "created_at": "2015-07-19T13:55:10.781Z",
+      "updated_at": "2015-07-19T13:55:10.781Z",
+      "business_user_id": 50,
+      "access_token3": "79292c7e29fbe3b25e4d1b663e7"
+    },
+    "vehicle": {
+      "id": 35,
+      "client_id": 15,
+      "vehicle_type": null,
+      "vehicle_year": null,
+      "vehicle_model": null,
+      "vehicle_vin_number": null,
+      "vehicle_color": null,
+      "vehicle_liscense_plate": null,
+      "vehicle_comment": null,
+      "created_at": "2015-07-19T14:02:42.710Z",
+      "updated_at": "2015-07-19T14:02:42.710Z",
+      "invoice_id": null,
+      "business_user_id": 50,
+      "vehicle_sub_model": null,
+      "repair_order_id": null,
+      "access_token4": "bc59386d7a1cd0949f837106ebb"
     }
+  }
+}
 ```
 
 
