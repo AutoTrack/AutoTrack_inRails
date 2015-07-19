@@ -38,8 +38,8 @@ delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
 #---------------------Repair_Orders_Employee_Users--------------------#
 
 post 'employee_users_repair_order/attach_employee', to: 'employee_users_repair_orders#repair_order_employees_create'
-get 'employee_users_repair_order/show_employees/:id', to: 'employee_users_repair_orders#repair_order_employees_show'
-
+get 'employee_users_repair_order/show_employee/:id', to: 'employee_users_repair_orders#repair_order_employee_show'
+get 'employee_users_repair_order/show_all/:id', to: 'employee_users_repair_orders#repair_order_employees_show_all'
 #-------------------------Vehicles-Routes-----------------------------#
 
 get 'vehicles', to: 'vehicles#vehicles_index'

@@ -59,15 +59,11 @@ class RepairOrdersController < ApplicationController
   def repair_order_show
 
     @repair_order = current_business_user.repair_orders.find(params[:id])
-    @repair_order_items = @repair_order.repair_items.all
 
-
-    #  render json: { repair_order_items: @repair_order_items(include: =>{:repair_order} },
-     render json: @repair_order.as_json(include:  @repair_order_items  ),
+     render json: @repair_order.as_json(include:  [:repair_items,
+                                                   :employee_users_repair_orders] ),
          status: :ok
-
   end
-
 
   def repair_order_destroy
     @delete_repair_order = current_business_user.repair_orders.find(params[:id])
