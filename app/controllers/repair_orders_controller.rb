@@ -30,7 +30,6 @@ class RepairOrdersController < ApplicationController
 
     @employee_repair_orders = current_business_user.employee_users_repair_orders.where(
                                                                 employee_user_id: @employee )
-
    if @employee_repair_orders
     render json: { employee_repair_orders: @employee_repair_orders.as_json(include: [
                                                                           :repair_order,
@@ -65,11 +64,10 @@ class RepairOrdersController < ApplicationController
 
 # Displays repair order, client info, and vehicle info.
   def repair_order_show
-
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-
-     render json: @repair_order.as_json(include:  [:repair_items,
-                                                   :employee_users_repair_orders] ),
+    @repair_order = current_repair_order
+     render json: { repair_order: @repair_order.as_json(include: [
+                                                         :repair_items,
+                                                         :employee_users_repair_orders] )},
          status: :ok
   end
 

@@ -2,26 +2,35 @@ class RepairItemsController < ApplicationController
   before_action :authenticate_business_user_with_token!
   before_action :authenticate_employee_user_with_token!
 
+  def add_repair_item
+    @business = current_business_user.id
+    @add_repair_item = current_repair_order.repair_items.new(
+                                        inventory_item_id: params[:inventory_item_id],
+                                        business_user_id: @business )
+    if @add_repair_item.save
+      render json: { repair_item: @add_repair_item.as_json(include: :inventory_item) },
+        status: :ok
+    end
+  end
+
+  def add_repair_item_quantity
+    @add_repair_item_quantity = current_repair_order.repair_items.update(
+                                    repair_item_quantity: params[:repair_item_quantity])
+    unless @add_repair_item_quantity.nil? || @add_repair_item_quantity == 0
+      render json: { repair_items: @add_repair_item_quantity.as_json(include:
+                                                                      :inventory_item) },
+        status: :ok
+    else
+      flash[:error] = 'Please select a quantity'
+    end
+  end
+
   def remove_repair_item
     @repair_order = current_business_user.repair_orders.find(params[:id])
     @remove_repair_item = @repair_order.repair_items.destroy(params[:id])
     @remove_repair_item.save
       render json: { repair_items: @repair_order.as_json },
         status: :gone
-  end
-
-
-  def add_repair_item_quantity
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @add_repair_item_quantity = @repair_order.repair_items.update(
-                                    repair_item_quantity: params[:repair_item_quantity])
-    unless @add_repair_item_quantity.nil? || @add_repair_item_quantity == 0
-      @add_repair_item_quantity.save
-      render json: { repair_items: @add_repair_item_quantity.as_json },
-        status: :ok
-    else
-      flash[:error] = 'Please select a quantity'
-    end
   end
 
 
@@ -60,18 +69,7 @@ class RepairItemsController < ApplicationController
       status: :ok
   end
 
-  def add_repair_item
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-    @add_repair_item = @repair_order.repair_items.new(
-                                        inventory_item_id: params[:inventory_item_id],
-                                        repair_item_quantity: params[:repair_item_quantity],
-                                        repair_order_id: params[:repair_order_id],
-                                        business_user_id: params[:business_user_id])
-    if @add_repair_item.save
-      render json: { repair_item: @add_repair_item.as_json(include: :inventory_item) },
-        status: :ok
-    end
-  end
+
 
   def update_repair_item_quantity
     @repair_order = current_business_user.repair_orders.find(params[:id])
