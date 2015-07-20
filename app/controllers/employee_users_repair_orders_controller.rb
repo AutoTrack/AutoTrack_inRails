@@ -8,6 +8,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
     @vehicle_id = current_vehicle.id
 
     @employee_repair_order = current_repair_order.employee_users_repair_orders.create(
+                 id:params[:id],
                  business_user_id: @business_id,
                  client_id: @client_id,
                  vehicle_id: @vehicle_id,
