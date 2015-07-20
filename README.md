@@ -97,8 +97,11 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `GET 'repair_item/:id'`
 * [Show Repair Items](#show-repair-items)
 `GET 'repair_items'`
-* [Checkout Repair Items](#check-out-repair-items)
+* [Checkout Repair Items](#checkout-repair-items)
 `PATCH 'repair_items/checkout'`
+* [Checkout History](#checkout-history)
+`GET 'repair_items/history'`
+
 
 ### **Vehicles**
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
@@ -1239,6 +1242,13 @@ Example success:
 ### **Checkout Repair Items**
 
 `PATCH 'repair_items/checkout'`
+
+
+
+### **Checkout History**
+
+`GET 'repair_items/history'`
+
 
 
 ### **Request All Vehicles By Business**
