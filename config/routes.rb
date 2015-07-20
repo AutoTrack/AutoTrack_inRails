@@ -31,9 +31,9 @@ get 'repair_orders', to: 'repair_orders#repair_orders_index'
 get 'repair_orders/business_user', to: 'repair_orders#business_repair_orders_index'
 get 'repair_orders/employee_user', to: 'repair_orders#employee_repair_orders_index'
 post 'repair_order', to: 'repair_orders#repair_order_create'
-get 'repair_order/:id', to: 'repair_orders#repair_order_show'
-patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
-delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
+get 'repair_order', to: 'repair_orders#repair_order_show'
+patch 'repair_order', to: 'repair_orders#repair_order_update'
+delete 'repair_order', to: 'repair_orders#repair_order_destroy'
 
 #---------------------Repair_Orders_Employee_Users--------------------#
 
@@ -71,8 +71,8 @@ delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
 
 post 'repair_item', to: 'repair_items#add_repair_item'
 delete 'repair_item/:id', to: 'repair_items#remove_repair_item'
-post 'repair_item/quantity', to: 'repair_items#add_repair_item_quantity'
-patch 'repair_item/quantity', to: 'repair_items#update_repair_item_quantity'
+patch 'repair_item/quantity', to: 'repair_items#add_repair_item_quantity'
+# patch 'repair_item/quantity', to: 'repair_items#update_repair_item_quantity'
 get 'repair_items/:id', to: 'repair_items#show_repair_items'
 get 'repair_item/:id', to: 'repair_items#show_repair_item'
 patch 'repair_items/checkout', to: 'repair_items#checkout_repair_items'
