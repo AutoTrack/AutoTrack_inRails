@@ -84,18 +84,19 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `DELETE 'repair_order'`
 
 ### **Repair Items**
+
+* [Add Repair Item](#add-repair-item)
+`POST 'repair_item'`
+* [Remove Repair Item](#remove-repair-item)
+`DELETE 'repair_item/:id'`
+* [Add Repair Item Quantity](#add-repair-item-quantity)
+`PATCH '/repair_item/quantity'`
+* [Update Repair Item Quantity](#update-repair-item-quantity)
+`PATCH 'repair_item/update_quantity'`
 * [Show Repair Item](#show-repair-item)
 `GET 'repair_item/:id'`
 * [Show Repair Items](#show-repair-items)
 `GET 'repair_items'`
-* [Add Repair Item](#add-repair-item)
-`POST 'repair_item/:id'`
-* [Add Repair Item Quantity](#add-repair-item-quantity)
-`PATCH '/repair_item/quantity'`
-* [Remove Repair Item](#remove-repair-item)
-`DELETE 'repair_item/:id'`
-* [Update Repair Item Quantity](#update-repair-item-quantity)
-`PATCH 'repair_item/quantity'`
 * [Checkout Repair Items](#check-out-repair-items)
 `PATCH 'repair_items/checkout'`
 
