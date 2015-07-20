@@ -1158,17 +1158,6 @@ Example success:
 }
 ```
 
-
-### **Show Repair Item**
-
-`GET 'repair_item/:id'`
-
-
-### **Show Repair Items**
-
-`GET 'repair_items/:repair_order_id'`
-
-
 ### **Add Repair Item**
 
 `POST 'repair_item'`
@@ -1216,18 +1205,34 @@ Example success:
 ```
 
 
-### **Add Repair Item Quantity**
-
-`PATCH '/repair_item/quantity'`
-
 ### **Remove Repair Item**
 
 `DELETE 'repair_item/:id'`
 
 
+
+### **Add Repair Item Quantity**
+
+`PATCH '/repair_item/quantity'`
+
+
+
 ### **Update Repair Item Quantity**
 
-`PATCH 'repair_item/quantity'`
+`PATCH 'repair_item/update_quantity'`
+
+
+
+### **Show Repair Item**
+
+`GET 'repair_item/:id'`
+
+
+
+### **Show Repair Items**
+
+`GET 'repair_items'`
+
 
 
 ### **Checkout Repair Items**
