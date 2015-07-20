@@ -25,13 +25,11 @@ class RepairOrdersController < ApplicationController
 
 # This retrieves all repair orders for the current employee user.
   def employee_repair_orders_index
+
     @employee = current_employee_user.id
     @employee_repair_orders = current_business_user.employee_users_repair_orders.find_by(
                                                                 employee_user_id: @employee )
-
-
-
-    if @employee_repair_orders
+   if @employee_repair_orders
     render json: { employee_repair_orders: @employee_repair_orders.as_json(include: [:repair_order, :client, :vehicle]) },
      status: :ok
    else

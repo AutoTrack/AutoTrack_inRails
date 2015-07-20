@@ -6,19 +6,19 @@ class EmployeeUsersRepairOrdersController < ApplicationController
     @business_id = current_business_user.id
     @client_id = current_client.id
     @vehicle_id = current_vehicle.id
-    @employee_repair_order = current_repair_order.employee_users_repair_orders.new(
+
+    @employee_repair_order = current_repair_order.employee_users_repair_orders.create(
                  business_user_id: @business_id,
                  client_id: @client_id,
                  vehicle_id: @vehicle_id,
                  employee_user_id: params[:employee_user_id])
 
-
     # @employee_user = current_business_user.employee_users.find(params[:employee_user_id])
     #
     # @repair_order.employee_users << @employee_user
 
-      if @employee_repair_order.save
-        render json: {employee_repair_order: @employee_repair_order.as_json(include: [:vehicle, :client])},
+      if @employee_repair_order
+        render json: {employee_repair_order: @employee_repair_order.as_json(include: [:repair_order, :vehicle, :client])},
         status: :created
       else
         render json: { errors: @employee_repair_order.errors.full_messages },
