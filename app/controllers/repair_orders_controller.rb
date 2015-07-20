@@ -27,7 +27,8 @@ class RepairOrdersController < ApplicationController
   def employee_repair_orders_index
 
     @employee = current_employee_user.id
-    @employee_repair_orders = current_business_user.employee_users_repair_orders.find_all(
+
+    @employee_repair_orders = current_business_user.employee_users_repair_orders.where(
                                                                 employee_user_id: @employee )
 
    if @employee_repair_orders
