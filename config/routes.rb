@@ -76,7 +76,7 @@ patch 'repair_item/update_quantity', to: 'repair_items#update_repair_item_quanti
 get 'repair_item/:id', to: 'repair_items#show_repair_item'
 get 'repair_items', to: 'repair_items#show_repair_items'
 patch 'repair_items/checkout', to: 'repair_items#checkout_repair_items'
-
+get 'repair_items/history', to: 'repair_items#show_checkout_history'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
