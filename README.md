@@ -1237,6 +1237,234 @@ Example success:
 
 `GET 'repair_items'`
 
+Params:
+  * Returns all repair items that have not been checked out yet.  
+
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
+
+Example success:
+```json
+{
+  "repair_items": [
+    {
+      "id": 1,
+      "inventory_item_id": 1,
+      "repair_order_id": 14,
+      "repair_item_quantity": 30,
+      "created_at": "2015-07-21T12:42:44.084Z",
+      "updated_at": "2015-07-21T12:46:52.379Z",
+      "business_user_id": 3,
+      "checked_out": false,
+      "repair_order": {
+        "id": 14,
+        "business_user_id": 3,
+        "client_id": 15,
+        "repair_order_number": "393934",
+        "vehicle_id": 14,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-21T12:16:32.859Z",
+        "updated_at": "2015-07-21T12:16:32.859Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "f30d15a91ab06371f5dd57644a73d020"
+      },
+      "inventory_item": {
+        "id": 1,
+        "business_user_id": 3,
+        "part_number": "089091003",
+        "business_part_number": "xh-2134",
+        "category": "Body Materials",
+        "inventory_item_location": "A1",
+        "inventory_item_supplier": "Wurth",
+        "reorder_alert": 6,
+        "order_to_quantity": 24,
+        "inventory_item_billable": true,
+        "inventory_item_taxable": true,
+        "inventory_item_cost": 39.99,
+        "inventory_item_markup": 0.25,
+        "inventory_count": 18,
+        "created_at": "2015-07-21T01:48:14.893Z",
+        "updated_at": "2015-07-21T01:48:14.893Z",
+        "tool": false,
+        "part_name": "Sprayable Seam Sealer Black"
+      }
+    },
+    {
+      "id": 2,
+      "inventory_item_id": 2,
+      "repair_order_id": 14,
+      "repair_item_quantity": 15,
+      "created_at": "2015-07-21T12:42:57.389Z",
+      "updated_at": "2015-07-21T12:51:17.782Z",
+      "business_user_id": 3,
+      "checked_out": false,
+      "repair_order": {
+        "id": 14,
+        "business_user_id": 3,
+        "client_id": 15,
+        "repair_order_number": "393934",
+        "vehicle_id": 14,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-21T12:16:32.859Z",
+        "updated_at": "2015-07-21T12:16:32.859Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "f30d15a91ab06371f5dd57644a73d020"
+      },
+      "inventory_item": {
+        "id": 2,
+        "business_user_id": 3,
+        "part_number": "089391035",
+        "business_part_number": "xl-34542",
+        "category": "Body Materials",
+        "inventory_item_location": "A2",
+        "inventory_item_supplier": null,
+        "reorder_alert": null,
+        "order_to_quantity": null,
+        "inventory_item_billable": null,
+        "inventory_item_taxable": null,
+        "inventory_item_cost": null,
+        "inventory_item_markup": null,
+        "inventory_count": null,
+        "created_at": "2015-07-21T01:50:43.989Z",
+        "updated_at": "2015-07-21T01:50:43.989Z",
+        "tool": null,
+        "part_name": "Nonsag Seam Sealer"
+      }
+    },
+    {
+      "id": 3,
+      "inventory_item_id": 3,
+      "repair_order_id": 14,
+      "repair_item_quantity": 5,
+      "created_at": "2015-07-21T12:43:02.490Z",
+      "updated_at": "2015-07-21T12:51:29.600Z",
+      "business_user_id": 3,
+      "checked_out": false,
+      "repair_order": {
+        "id": 14,
+        "business_user_id": 3,
+        "client_id": 15,
+        "repair_order_number": "393934",
+        "vehicle_id": 14,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-21T12:16:32.859Z",
+        "updated_at": "2015-07-21T12:16:32.859Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "f30d15a91ab06371f5dd57644a73d020"
+      },
+      "inventory_item": {
+        "id": 3,
+        "business_user_id": 3,
+        "part_number": "089291874",
+        "business_part_number": "xl-323543",
+        "category": "Body Materials",
+        "inventory_item_location": "A3",
+        "inventory_item_supplier": "Wurth",
+        "reorder_alert": 12,
+        "order_to_quantity": 24,
+        "inventory_item_billable": true,
+        "inventory_item_taxable": true,
+        "inventory_item_cost": 16.78,
+        "inventory_item_markup": 0.25,
+        "inventory_count": 12,
+        "created_at": "2015-07-21T01:55:09.692Z",
+        "updated_at": "2015-07-21T01:55:09.692Z",
+        "tool": false,
+        "part_name": "Self Etch Primer"
+      }
+    },
+    {
+      "id": 4,
+      "inventory_item_id": 4,
+      "repair_order_id": 14,
+      "repair_item_quantity": 2,
+      "created_at": "2015-07-21T12:43:08.527Z",
+      "updated_at": "2015-07-21T12:51:37.542Z",
+      "business_user_id": 3,
+      "checked_out": false,
+      "repair_order": {
+        "id": 14,
+        "business_user_id": 3,
+        "client_id": 15,
+        "repair_order_number": "393934",
+        "vehicle_id": 14,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-21T12:16:32.859Z",
+        "updated_at": "2015-07-21T12:16:32.859Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "f30d15a91ab06371f5dd57644a73d020"
+      },
+      "inventory_item": {
+        "id": 4,
+        "business_user_id": 3,
+        "part_number": "150155051",
+        "business_part_number": "chr-23543",
+        "category": "Body Clip",
+        "inventory_item_location": "B1",
+        "inventory_item_supplier": "Fastenal",
+        "reorder_alert": 30,
+        "order_to_quantity": 75,
+        "inventory_item_billable": true,
+        "inventory_item_taxable": true,
+        "inventory_item_cost": 3.67,
+        "inventory_item_markup": 1,
+        "inventory_count": 78,
+        "created_at": "2015-07-21T01:57:19.493Z",
+        "updated_at": "2015-07-21T01:57:19.493Z",
+        "tool": false,
+        "part_name": "Chrysler Pad Shield Clip"
+      }
+    },
+    {
+      "id": 5,
+      "inventory_item_id": 5,
+      "repair_order_id": 14,
+      "repair_item_quantity": 7,
+      "created_at": "2015-07-21T12:43:11.938Z",
+      "updated_at": "2015-07-21T12:51:45.174Z",
+      "business_user_id": 3,
+      "checked_out": false,
+      "repair_order": {
+        "id": 14,
+        "business_user_id": 3,
+        "client_id": 15,
+        "repair_order_number": "393934",
+        "vehicle_id": 14,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-21T12:16:32.859Z",
+        "updated_at": "2015-07-21T12:16:32.859Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "f30d15a91ab06371f5dd57644a73d020"
+      },
+      "inventory_item": {
+        "id": 5,
+        "business_user_id": 3,
+        "part_number": "150155325",
+        "business_part_number": "Chr-235434",
+        "category": "Body Clip",
+        "inventory_item_location": "B2",
+        "inventory_item_supplier": "Wurth",
+        "reorder_alert": 15,
+        "order_to_quantity": 60,
+        "inventory_item_billable": true,
+        "inventory_item_taxable": true,
+        "inventory_item_cost": 1.67,
+        "inventory_item_markup": 0.25,
+        "inventory_count": 45,
+        "created_at": "2015-07-21T02:00:04.482Z",
+        "updated_at": "2015-07-21T02:00:04.482Z",
+        "tool": false,
+        "part_name": "Chrysler Fender Retainer Clip"
+      }
+    }
+  ]
+}
+```
 
 
 ### **Checkout Repair Items**
