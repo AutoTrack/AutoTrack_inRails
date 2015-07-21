@@ -31,8 +31,8 @@ class RepairItemsController < ApplicationController
     @add_item_quantity = @repair_item.update(repair_item_quantity: params[:repair_item_quantity])
 
     unless @add_item_quantity.nil? || @add_item_quantity == 0
-      render json: { repair_items: @add_item_quantity.as_json(include: [:repair_order,
-                                                                       :inventory_item]) },
+      render json: { repair_items: @repair_item.as_json(include: [:repair_order,
+                                                                  :inventory_item]) },
         status: :ok
     else
       render json: { errors: @add_item_quantity.errors.full_messages },
@@ -59,10 +59,10 @@ class RepairItemsController < ApplicationController
   def show_repair_items
     @repair_order_number = current_repair_order.repair_order_number
     @repair_items = current_repair_order.repair_items.all
-    @repair_items.each do |ri|
+    @checkout = @repair_items.each do |ri|
       if ri.checked_out==false
-        render json: { repair_items: @repair_items.as_json(include: [:repair_order,
-                                                                    :inventory_item]) },
+        render json: { repair_items: @checkout.as_json(include: [:repair_order,
+                                                                 :inventory_item]) },
           status: :ok
       else
         render json: { message: "There are currently no repair items attached to Repair Order #{@repair_order_number}" },
