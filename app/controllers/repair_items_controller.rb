@@ -44,6 +44,7 @@ class RepairItemsController < ApplicationController
     @repair_item = current_repair_order.repair_items.find(params[:id])
     @update_quantity = @repair_item.update(repair_item_quantity: params[
                                                               :repair_item_quantity])
+
       render json: { repair_item: @repair_item.as_json(include: [:repair_order,
                                                                 :inventory_item]) },
       status: :ok
@@ -101,5 +102,14 @@ class RepairItemsController < ApplicationController
         render json: { message: "There is no history of repair items attached to Repair Order #{@repair_order_number}" },
           status: :ok
       end
+  end
+
+  def return_item_to_inventory
+    @return_item_quantity =
+
+    update_quantity = inventory_item.inventory_count + @return_item_quantity
+
+    @return_item.inventory_item.update(inventory_count: @return_quantity)
+
   end
 end

@@ -11,7 +11,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
                  business_user_id: @business_id,
                  client_id: @client_id,
                  vehicle_id: @vehicle_id,
-                 employee_user_id: params[:employee_user_id])
+                 employee_user_id: params[:id])
 
     # @employee_user = current_business_user.employee_users.find(params[:employee_user_id])
     #
