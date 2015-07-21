@@ -106,6 +106,8 @@ GEM
     mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    money (6.6.0)
+      i18n (>= 0.6.4, <= 0.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     netrc (0.10.3)
@@ -117,7 +119,18 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    payday (1.1.4)
+      i18n (~> 0.7)
+      money (~> 6.5)
+      prawn (~> 1.0.0)
+      prawn-svg (~> 0.15.0.0)
+    pdf-core (0.2.5)
     pg (0.18.2)
+    prawn (1.0.0)
+      pdf-core (~> 0.2.2)
+      ttfunk (~> 1.1.1)
+    prawn-svg (0.15.0.0)
+      prawn (>= 0.8.4)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -186,6 +199,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    ttfunk (1.1.1)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -218,6 +232,7 @@ DEPENDENCIES
   kaminari
   mandrill-api (~> 1.0.53)
   paperclip (~> 4.3)
+  payday
   pg
   pry
   puma
