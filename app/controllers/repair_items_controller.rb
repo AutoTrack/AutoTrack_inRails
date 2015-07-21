@@ -104,12 +104,12 @@ class RepairItemsController < ApplicationController
       end
   end
 
-  def return_item_to_inventory
-    @return_item_quantity =
-
-    update_quantity = inventory_item.inventory_count + @return_item_quantity
-
-    @return_item.inventory_item.update(inventory_count: @return_quantity)
-
-  end
+  # def return_item_to_inventory
+  #   @return_item_quantity =
+  #
+  #   update_quantity = inventory_item.inventory_count + @return_item_quantity
+  #
+  #   @return_item.inventory_item.update(inventory_count: @return_quantity)
+  #
+  # end
 end
