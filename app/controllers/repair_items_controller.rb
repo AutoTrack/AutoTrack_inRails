@@ -72,7 +72,7 @@ class RepairItemsController < ApplicationController
 
   def checkout_repair_items
     @repair_order_number = current_repair_order.repair_order_number
-    @repair_items = current_repair_order.repair_items.where(checkout_out: false)
+    @repair_items = current_repair_order.repair_items.where(checked_out: false)
 
     if !@repair_items.empty?
       @repair_items.each do |ri|
