@@ -58,11 +58,11 @@ class RepairItemsController < ApplicationController
 
   def show_repair_items
     @repair_order_number = current_repair_order.repair_order_number
-    @repair_items = current_repair_order.repair_items.all
-    @checkout = @repair_items.each do |ri|
+    @repair_items = current_repair_order.repair_items.each do |ri|
       if ri.checked_out==false
-        render json: { repair_items: @checkout.as_json(include: [:repair_order,
-                                                                 :inventory_item]) },
+
+        render json: { repair_items: @repair_items.as_json(include: [:repair_order,
+                                                                     :inventory_item]) },
           status: :ok
       else
         render json: { message: "There are currently no repair items attached to Repair Order #{@repair_order_number}" },
