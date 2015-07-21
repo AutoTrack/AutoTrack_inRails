@@ -97,7 +97,7 @@ class RepairItemsController < ApplicationController
         render json: { message: "There is no history of repair items attached to Repair Order #{@repair_order_number}" },
           status: :ok
       end
-
+end
   end
 
 end
