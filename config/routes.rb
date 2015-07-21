@@ -31,9 +31,9 @@ get 'repair_orders', to: 'repair_orders#repair_orders_index'
 get 'repair_orders/business_user', to: 'repair_orders#business_repair_orders_index'
 get 'repair_orders/employee_user', to: 'repair_orders#employee_repair_orders_index'
 post 'repair_order', to: 'repair_orders#repair_order_create'
-get 'repair_order/:id', to: 'repair_orders#repair_order_show'
-patch 'repair_order/:id', to: 'repair_orders#repair_order_update'
-delete 'repair_order/:id', to: 'repair_orders#repair_order_destroy'
+get 'repair_order', to: 'repair_orders#repair_order_show'
+patch 'repair_order', to: 'repair_orders#repair_order_update'
+delete 'repair_order', to: 'repair_orders#repair_order_destroy'
 
 #---------------------Repair_Orders_Employee_Users--------------------#
 
@@ -71,12 +71,12 @@ delete 'invoice/:id', to: 'invoices#invoices_delete'
 
 post 'repair_item', to: 'repair_items#add_repair_item'
 delete 'repair_item/:id', to: 'repair_items#remove_repair_item'
-post 'repair_item/quantity', to: 'repair_items#add_repair_item_quantity'
-patch 'repair_item/quantity', to: 'repair_items#update_repair_item_quantity'
-get 'repair_items/:id', to: 'repair_items#show_repair_items'
+patch 'repair_item/quantity', to: 'repair_items#add_repair_item_quantity'
+patch 'repair_item/update_quantity', to: 'repair_items#update_repair_item_quantity'
 get 'repair_item/:id', to: 'repair_items#show_repair_item'
+get 'repair_items', to: 'repair_items#show_repair_items'
 patch 'repair_items/checkout', to: 'repair_items#checkout_repair_items'
-
+get 'repair_items/history', to: 'repair_items#show_checkout_history'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

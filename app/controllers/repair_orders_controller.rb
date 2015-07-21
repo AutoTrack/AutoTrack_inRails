@@ -14,7 +14,7 @@ class RepairOrdersController < ApplicationController
 
    if @business_repair_orders
     # render json: { repair_orders: @business_repair_orders.as_json(include:=>{ [:client, :vehicle])} },
-    render json: {business_repair_orders: @business_repair_orders.as_json(include: [:vehicle, :client])},
+    render json: {business_repair_orders: @business_repair_orders.as_json(include: [ :vehicle, :client])},
     status: :ok
 
    else
@@ -27,10 +27,14 @@ class RepairOrdersController < ApplicationController
   def employee_repair_orders_index
 
     @employee = current_employee_user.id
-    @employee_repair_orders = current_business_user.employee_users_repair_orders.find_by(
+
+    @employee_repair_orders = current_business_user.employee_users_repair_orders.where(
                                                                 employee_user_id: @employee )
    if @employee_repair_orders
-    render json: { employee_repair_orders: @employee_repair_orders.as_json(include: [:repair_order, :client, :vehicle]) },
+    render json: { employee_repair_orders: @employee_repair_orders.as_json(include: [
+                                                                          :repair_order,
+                                                                          :client,
+                                                                          :vehicle]) },
      status: :ok
    else
      render json: { employee_repair_orders: @employee_repair_orders.errors.full_messages },
@@ -60,11 +64,10 @@ class RepairOrdersController < ApplicationController
 
 # Displays repair order, client info, and vehicle info.
   def repair_order_show
-
-    @repair_order = current_business_user.repair_orders.find(params[:id])
-
-     render json: @repair_order.as_json(include:  [:repair_items,
-                                                   :employee_users_repair_orders] ),
+    @repair_order = current_repair_order
+     render json: { repair_order: @repair_order.as_json(include: [
+                                                         :repair_items,
+                                                         :employee_users_repair_orders ] )},
          status: :ok
   end
 

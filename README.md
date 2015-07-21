@@ -77,27 +77,31 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 * [Repair Order Employees Show All](#repair-order-employees-show-all)
 `GET` 'employee_users_repair_order/show_all/:id'`
 * [Show A Repair Order](#show-a-repair-order)
-`GET 'repair_order/:id'`
+`GET 'repair_order'`
 * [Update A Repair Order](#update-a-repair-order)
-`PATCH 'repair_order/:id'`
-* [Delete A Repair Order](#show-a-repair-order)
-`DELETE 'repair_order/:id'`
+`PATCH 'repair_order'`
+* [Delete A Repair Order](#delet-a-repair-order)
+`DELETE 'repair_order'`
 
 ### **Repair Items**
+
+* [Add Repair Item](#add-repair-item)
+`POST 'repair_item'`
+* [Remove Repair Item](#remove-repair-item)
+`DELETE 'repair_item/:id'`
+* [Add Repair Item Quantity](#add-repair-item-quantity)
+`PATCH '/repair_item/quantity'`
+* [Update Repair Item Quantity](#update-repair-item-quantity)
+`PATCH 'repair_item/update_quantity'`
 * [Show Repair Item](#show-repair-item)
 `GET 'repair_item/:id'`
 * [Show Repair Items](#show-repair-items)
 `GET 'repair_items'`
-* [Add Repair Item](#add-repair-item)
-`POST 'repair_item/:id'`
-* [Add Repair Item Quantity](#add-repair-item-quantity)
-`POST '/repair_item/quantity'`
-* [Remove Repair Item](#remove-repair-item)
-`DELETE 'repair_item/:id'`
-* [Update Repair Item Quantity](#update-repair-item-quantity)
-`PATCH 'repair_item/quantity'`
-* [Checkout Repair Items](#check-out-repair-items)
+* [Checkout Repair Items](#checkout-repair-items)
 `PATCH 'repair_items/checkout'`
+* [Checkout History](#checkout-history)
+`GET 'repair_items/history'`
+
 
 ### **Vehicles**
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)
@@ -675,62 +679,176 @@ Response:
 Example success:
 ```json
 {
-  "employee_repair_orders": {
-    "id": 36,
-    "employee_user_id": 61,
-    "repair_order_id": 64,
-    "business_user_id": 50,
-    "client_id": 15,
-    "vehicle_id": 35,
-    "repair_order": {
-      "id": 64,
-      "business_user_id": 50,
-      "employee_user_id": null,
-      "client_id": 15,
-      "repair_order_number": null,
-      "vehicle_id": 35,
-      "repair_type_id": null,
-      "repair_status": false,
-      "created_at": "2015-07-19T14:05:46.584Z",
-      "updated_at": "2015-07-19T14:05:46.584Z",
-      "employee_users_repair_order_id": null,
-      "access_token5": "75680695c266745b5c018b2de3fc"
+  "employee_repair_orders": [
+    {
+      "id": 1,
+      "employee_user_id": 1,
+      "repair_order_id": 2,
+      "business_user_id": 1,
+      "client_id": 1,
+      "vehicle_id": 1,
+      "repair_order": {
+        "id": 2,
+        "business_user_id": 1,
+        "employee_user_id": null,
+        "client_id": 1,
+        "repair_order_number": "123456",
+        "vehicle_id": 1,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-20T14:15:28.901Z",
+        "updated_at": "2015-07-20T14:15:28.901Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "ce73cb84580fd8910896ba8aed64a623"
+      },
+      "client": {
+        "id": 1,
+        "client_first_name": null,
+        "client_last_name": null,
+        "client_street_address": null,
+        "client_city": null,
+        "client_state": null,
+        "client_zipcode": null,
+        "client_primary_phone": null,
+        "client_secondary_phone": null,
+        "client_email": null,
+        "created_at": "2015-07-20T14:10:05.441Z",
+        "updated_at": "2015-07-20T14:10:05.441Z",
+        "business_user_id": 1,
+        "access_token3": "12477bd3ef4c49293f07e204918eadb2"
+      },
+      "vehicle": {
+        "id": 1,
+        "client_id": 1,
+        "vehicle_type": null,
+        "vehicle_year": null,
+        "vehicle_model": null,
+        "vehicle_vin_number": null,
+        "vehicle_color": null,
+        "vehicle_liscense_plate": null,
+        "vehicle_comment": null,
+        "created_at": "2015-07-20T14:10:28.865Z",
+        "updated_at": "2015-07-20T14:10:28.865Z",
+        "invoice_id": null,
+        "business_user_id": 1,
+        "vehicle_sub_model": null,
+        "repair_order_id": null,
+        "access_token4": "51f2861c8cc5524401ae7d1feb29c17f"
+      }
     },
-    "client": {
-      "id": 15,
-      "client_first_name": "New",
-      "client_last_name": "Client",
-      "client_street_address": "123 Hello World",
-      "client_city": "ANywhere",
-      "client_state": "Anywhere",
-      "client_zipcode": "23423",
-      "client_primary_phone": null,
-      "client_secondary_phone": null,
-      "client_email": null,
-      "created_at": "2015-07-19T13:55:10.781Z",
-      "updated_at": "2015-07-19T13:55:10.781Z",
-      "business_user_id": 50,
-      "access_token3": "79292c7e29fbe3b25e4d1b663e7"
+    {
+      "id": 2,
+      "employee_user_id": 1,
+      "repair_order_id": 2,
+      "business_user_id": 1,
+      "client_id": 1,
+      "vehicle_id": 1,
+      "repair_order": {
+        "id": 2,
+        "business_user_id": 1,
+        "employee_user_id": null,
+        "client_id": 1,
+        "repair_order_number": "123456",
+        "vehicle_id": 1,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-20T14:15:28.901Z",
+        "updated_at": "2015-07-20T14:15:28.901Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "ce73cb84580fd8910896ba8aed64a623"
+      },
+      "client": {
+        "id": 1,
+        "client_first_name": null,
+        "client_last_name": null,
+        "client_street_address": null,
+        "client_city": null,
+        "client_state": null,
+        "client_zipcode": null,
+        "client_primary_phone": null,
+        "client_secondary_phone": null,
+        "client_email": null,
+        "created_at": "2015-07-20T14:10:05.441Z",
+        "updated_at": "2015-07-20T14:10:05.441Z",
+        "business_user_id": 1,
+        "access_token3": "12477bd3ef4c49293f07e204918eadb2"
+      },
+      "vehicle": {
+        "id": 1,
+        "client_id": 1,
+        "vehicle_type": null,
+        "vehicle_year": null,
+        "vehicle_model": null,
+        "vehicle_vin_number": null,
+        "vehicle_color": null,
+        "vehicle_liscense_plate": null,
+        "vehicle_comment": null,
+        "created_at": "2015-07-20T14:10:28.865Z",
+        "updated_at": "2015-07-20T14:10:28.865Z",
+        "invoice_id": null,
+        "business_user_id": 1,
+        "vehicle_sub_model": null,
+        "repair_order_id": null,
+        "access_token4": "51f2861c8cc5524401ae7d1feb29c17f"
+      }
     },
-    "vehicle": {
-      "id": 35,
-      "client_id": 15,
-      "vehicle_type": null,
-      "vehicle_year": null,
-      "vehicle_model": null,
-      "vehicle_vin_number": null,
-      "vehicle_color": null,
-      "vehicle_liscense_plate": null,
-      "vehicle_comment": null,
-      "created_at": "2015-07-19T14:02:42.710Z",
-      "updated_at": "2015-07-19T14:02:42.710Z",
-      "invoice_id": null,
-      "business_user_id": 50,
-      "vehicle_sub_model": null,
-      "repair_order_id": null,
-      "access_token4": "bc59386d7a1cd0949f837106ebb"
+    {
+      "id": 3,
+      "employee_user_id": 1,
+      "repair_order_id": 2,
+      "business_user_id": 1,
+      "client_id": 1,
+      "vehicle_id": 1,
+      "repair_order": {
+        "id": 2,
+        "business_user_id": 1,
+        "employee_user_id": null,
+        "client_id": 1,
+        "repair_order_number": "123456",
+        "vehicle_id": 1,
+        "repair_type_id": null,
+        "repair_status": false,
+        "created_at": "2015-07-20T14:15:28.901Z",
+        "updated_at": "2015-07-20T14:15:28.901Z",
+        "employee_users_repair_order_id": null,
+        "access_token5": "ce73cb84580fd8910896ba8aed64a623"
+      },
+      "client": {
+        "id": 1,
+        "client_first_name": null,
+        "client_last_name": null,
+        "client_street_address": null,
+        "client_city": null,
+        "client_state": null,
+        "client_zipcode": null,
+        "client_primary_phone": null,
+        "client_secondary_phone": null,
+        "client_email": null,
+        "created_at": "2015-07-20T14:10:05.441Z",
+        "updated_at": "2015-07-20T14:10:05.441Z",
+        "business_user_id": 1,
+        "access_token3": "12477bd3ef4c49293f07e204918eadb2"
+      },
+      "vehicle": {
+        "id": 1,
+        "client_id": 1,
+        "vehicle_type": null,
+        "vehicle_year": null,
+        "vehicle_model": null,
+        "vehicle_vin_number": null,
+        "vehicle_color": null,
+        "vehicle_liscense_plate": null,
+        "vehicle_comment": null,
+        "created_at": "2015-07-20T14:10:28.865Z",
+        "updated_at": "2015-07-20T14:10:28.865Z",
+        "invoice_id": null,
+        "business_user_id": 1,
+        "vehicle_sub_model": null,
+        "repair_order_id": null,
+        "access_token4": "51f2861c8cc5524401ae7d1feb29c17f"
+      }
     }
-  }
+  ]
 }
 ```
 
@@ -966,10 +1084,9 @@ Example success:
 
 ### **Show A Repair Order**
 
-`GET 'repair_order/:id'`
+`GET 'repair_order'`
 
 Params:
-  * id
   * Shows a repair order.
 
 Response:
@@ -978,56 +1095,58 @@ Response:
 Example success:
 ```json
 {
-  "id": 60,
-  "business_user_id": 50,
-  "employee_user_id": null,
-  "client_id": 12,
-  "repair_order_number": null,
-  "vehicle_id": 27,
-  "repair_type_id": null,
-  "repair_status": false,
-  "created_at": "2015-07-18T19:28:32.393Z",
-  "updated_at": "2015-07-18T19:28:32.393Z",
-  "employee_users_repair_order_id": null,
-  "access_token5": "98e6251448c449411361203b5cd8d93b",
-  "repair_items": [],
-  "employee_users_repair_orders": [
-    {
-      "id": 5,
-      "employee_user_id": 2,
-      "repair_order_id": 60,
-      "business_user_id": 50,
-      "client_id": 12,
-      "vehicle_id": 27
-    },
-    {
-      "id": 6,
-      "employee_user_id": 2,
-      "repair_order_id": 60,
-      "business_user_id": 50,
-      "client_id": 12,
-      "vehicle_id": 27
-    },
-    {
-      "id": 7,
-      "employee_user_id": 2,
-      "repair_order_id": 60,
-      "business_user_id": 50,
-      "client_id": 12,
-      "vehicle_id": 27
-    }
-  ]
+  "repair_order": {
+    "id": 2,
+    "business_user_id": 1,
+    "employee_user_id": null,
+    "client_id": 1,
+    "repair_order_number": "123456",
+    "vehicle_id": 1,
+    "repair_type_id": null,
+    "repair_status": false,
+    "created_at": "2015-07-20T14:15:28.901Z",
+    "updated_at": "2015-07-20T14:15:28.901Z",
+    "employee_users_repair_order_id": null,
+    "access_token5": "ce73cb84580fd8910896ba8aed64a623",
+    "repair_items": [],
+    "employee_users_repair_orders": [
+      {
+        "id": 1,
+        "employee_user_id": 1,
+        "repair_order_id": 2,
+        "business_user_id": 1,
+        "client_id": 1,
+        "vehicle_id": 1
+      },
+      {
+        "id": 2,
+        "employee_user_id": 1,
+        "repair_order_id": 2,
+        "business_user_id": 1,
+        "client_id": 1,
+        "vehicle_id": 1
+      },
+      {
+        "id": 3,
+        "employee_user_id": 1,
+        "repair_order_id": 2,
+        "business_user_id": 1,
+        "client_id": 1,
+        "vehicle_id": 1
+      }
+    ]
+  }
 }
 ```
 
 
 ### **Delete A Repair Order**
 
-`DELETE 'repair_order/:id'`
+`DELETE 'repair_order'`
 
 Params:
   * none
-  * Returns array of all employee users.
+  * Deletes Repair Order.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -1043,39 +1162,93 @@ Example success:
 }
 ```
 
-
-### **Show Repair Item**
-
-`GET 'repair_item/:id'`
-
-
-### **Show Repair Items**
-
-`GET 'repair_items/:repair_order_id'`
-
-
 ### **Add Repair Item**
 
 `POST 'repair_item'`
 
+Params:
+  * inventory_item_id:integer
+  * Selects a repair item.
 
-### **Add Repair Item Quantity**
+Response:
+  Status Code: 201 if successful, 422 if unsuccessful
 
-`POST '/repair_item/quantity'`
+Example success:
+```json
+{
+  "repair_item": {
+    "id": 2,
+    "inventory_item_id": 1,
+    "repair_order_id": 2,
+    "repair_item_quantity": null,
+    "created_at": "2015-07-20T15:37:19.712Z",
+    "updated_at": "2015-07-20T15:37:19.712Z",
+    "business_user_id": 1,
+    "inventory_item": {
+      "id": 1,
+      "business_user_id": 1,
+      "part_number": "089091003",
+      "business_part_number": "xh-43232",
+      "category": "Seam Sealer",
+      "inventory_item_location": "A1",
+      "inventory_item_supplier": "Wurth",
+      "reorder_alert": 6,
+      "order_to_quantity": 12,
+      "inventory_item_billable": true,
+      "inventory_item_taxable": true,
+      "inventory_item_cost": 16.99,
+      "inventory_item_markup": 0.25,
+      "inventory_count": 6,
+      "created_at": "2015-07-20T15:36:33.591Z",
+      "updated_at": "2015-07-20T15:36:33.591Z",
+      "tool": false,
+      "part_name": "Sprayable Seam Sealer Black"
+    }
+  }
+}
+```
+
 
 ### **Remove Repair Item**
 
 `DELETE 'repair_item/:id'`
 
 
+
+### **Add Repair Item Quantity**
+
+`PATCH '/repair_item/quantity'`
+
+
+
 ### **Update Repair Item Quantity**
 
-`PATCH 'repair_item/quantity'`
+`PATCH 'repair_item/update_quantity'`
+
+
+
+### **Show Repair Item**
+
+`GET 'repair_item/:id'`
+
+
+
+### **Show Repair Items**
+
+`GET 'repair_items'`
+
 
 
 ### **Checkout Repair Items**
 
 `PATCH 'repair_items/checkout'`
+
+
+
+### **Checkout History**
+
+`GET 'repair_items/history'`
+
 
 
 ### **Request All Vehicles By Business**

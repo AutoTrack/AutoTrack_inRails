@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719210121) do
+ActiveRecord::Schema.define(version: 20150721113226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,14 +114,14 @@ ActiveRecord::Schema.define(version: 20150719210121) do
     t.integer  "inventory_item_id"
     t.integer  "repair_order_id"
     t.integer  "repair_item_quantity"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "business_user_id"
+    t.boolean  "checked_out",          default: false
   end
 
   create_table "repair_orders", force: :cascade do |t|
     t.integer  "business_user_id"
-    t.integer  "employee_user_id"
     t.integer  "client_id"
     t.string   "repair_order_number"
     t.integer  "vehicle_id"

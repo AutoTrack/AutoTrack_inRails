@@ -60,4 +60,3 @@ class InvoicesController < ApplicationController
         end
     end
 end
-
