@@ -67,7 +67,7 @@ class RepairOrdersController < ApplicationController
     @repair_order = current_repair_order
      render json: { repair_order: @repair_order.as_json(include: [
                                                          :repair_items,
-                                                         :employee_users_repair_orders] )},
+                                                         :employee_users_repair_orders ] )},
          status: :ok
   end
 
