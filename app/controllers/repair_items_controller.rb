@@ -78,7 +78,7 @@ class RepairItemsController < ApplicationController
       @repair_items.each do |ri|
         new_quantity = ri.inventory_item.inventory_count - ri.repair_item_quantity
         ri.inventory_item.update(inventory_count: new_quantity)
-        ri.checked_out.update_attribute(:checked_out, true)
+        ri.update(checked_out: true)
       end
 
       render json: { message: "Repair items have been successfully checked out for Repair Order #{@repair_order_number}" },
