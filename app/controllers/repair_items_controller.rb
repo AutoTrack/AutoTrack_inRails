@@ -8,8 +8,8 @@ class RepairItemsController < ApplicationController
                                         inventory_item_id: params[:inventory_item_id],
                                         business_user_id: @business )
     if @add_repair_item.save
-      render json: { repair_item: @add_repair_item.as_json(include: :repair_order,
-                                                                    :inventory_item) },
+      render json: { repair_item: @add_repair_item.as_json(include: [:repair_order,
+                                                                    :inventory_item]) },
         status: :ok
     end
   end
@@ -27,8 +27,8 @@ class RepairItemsController < ApplicationController
     @add_item_quantity = @repair_item.update(repair_item_quantity: params[:repair_item_quantity])
 
     unless @add_item_quantity.nil? || @add_item_quantity == 0
-      render json: { repair_items: @add_item_quantity.as_json(include: :repair_order,
-                                                                       :inventory_item) },
+      render json: { repair_items: @add_item_quantity.as_json(include: [:repair_order,
+                                                                       :inventory_item]) },
         status: :ok
     else
       flash[:error] = 'Please select a quantity'
@@ -39,15 +39,15 @@ class RepairItemsController < ApplicationController
     @repair_item = current_repair_order.repair_items.find(params[:id])
     @update_quantity = @repair_item.update(repair_item_quantity: params[
                                                               :repair_item_quantity])
-      render json: { repair_item: @repair_item.as_json(include: :repair_order,
-                                                                :inventory_item) },
+      render json: { repair_item: @repair_item.as_json(include: [:repair_order,
+                                                                :inventory_item]) },
       status: :ok
   end
 
   def show_repair_item
     @repair_item = current_repair_order.repair_items.find(params[:id])
-      render json: { repair_item: @repair_item.as_json(include: :repair_order,
-                                                                :inventory_item) },
+      render json: { repair_item: @repair_item.as_json(include: [:repair_order,
+                                                                :inventory_item]) },
       status: :ok
   end
 
@@ -56,8 +56,8 @@ class RepairItemsController < ApplicationController
     @repair_items = current_repair_order.repair_items.all
     @repair_items.each do |ri|
     if ri.checked_out==false
-      render json: { repair_items: @repair_items.as_json(include: :repair_order,
-                                                                  :inventory_item) },
+      render json: { repair_items: @repair_items.as_json(include: [:repair_order,
+                                                                  :inventory_item]) },
         status: :ok
     else
       render json: { message: "There are currently no repair items attached to Repair Order #{@repair_order_number}" },
@@ -86,8 +86,8 @@ class RepairItemsController < ApplicationController
     @repair_order_number = current_repair_order.repair_order_number
     @repair_items = current_repair_order.repair_items.each do |ri|
       if ri.checked_out == true
-        render json: { repair_items_history: @repair_items.as_json(include: :repair_order,
-                                                                    :inventory_item) },
+        render json: { repair_items_history: @repair_items.as_json(include: [:repair_order,
+                                                                    :inventory_item]) },
           status: :ok
       else
         render json: { message: "There is no history of repair items attached to Repair Order #{@repair_order_number}" },
