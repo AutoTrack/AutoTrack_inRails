@@ -80,7 +80,6 @@ class RepairItemsController < ApplicationController
         render json: { message: "There are no repair items to checkout for Repair Order #{@repair_order_number}" },
           status: :ok
       end
-    end
   end
 
   def show_checkout_history
