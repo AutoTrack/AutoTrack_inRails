@@ -30,6 +30,8 @@ gem 'httparty'
 # gem 'bcrypt', '~> 3.1.7'
 #database to deploy to heroku
 gem 'pg'
+#now we can upload pdfs
+gem "payday"
 #Let's get some Cars data and inventory
 gem 'edmunds_ruby'
 #because Heroku likes Puma

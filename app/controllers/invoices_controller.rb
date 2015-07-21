@@ -19,7 +19,7 @@ class InvoicesController < ApplicationController
     def invoices_create
         # user = current_business_user
         clients = current_business_user.clients.find_by(params[:id])
-        @invoice = clients.invoices.find_or_create_by( invoice_url: params[ :invoice_url ],
+        @invoice = clients.invoices.new( invoice_url: params[ :invoice_url ],
                                                                             invoice_status: params[ :invoice_status ],
                                                                             business_user_id: params[:business_user_id],
                                                                             client_id:params[:client_id],
@@ -59,18 +59,5 @@ class InvoicesController < ApplicationController
                 status: :gone
         end
     end
-
-
-
-protected
-    def amout
-
-        #
-
-    end
-
-    #current_business_user.
-    #customer name and info
-    #
 end
 
