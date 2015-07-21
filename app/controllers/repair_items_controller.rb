@@ -11,6 +11,9 @@ class RepairItemsController < ApplicationController
       render json: { repair_item: @add_repair_item.as_json(include: [:repair_order,
                                                                     :inventory_item]) },
         status: :ok
+    else
+        render json: { errors: @add_repair_item.errors.full_messages },
+        status: :unprocessable_entity
     end
   end
 
@@ -80,6 +83,7 @@ class RepairItemsController < ApplicationController
         render json: { message: "There are no repair items to checkout for Repair Order #{@repair_order_number}" },
           status: :ok
       end
+
   end
 
   def show_checkout_history
@@ -93,6 +97,7 @@ class RepairItemsController < ApplicationController
         render json: { message: "There is no history of repair items attached to Repair Order #{@repair_order_number}" },
           status: :ok
       end
+
   end
 
 end
