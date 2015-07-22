@@ -9,8 +9,7 @@ class RepairItemsController < ApplicationController
                                         inventory_item_id: params[:id],
                                         business_user_id: @business )
     if @add_repair_item.save
-      render json: { repair_item: @add_repair_item.as_json(include: [:repair_order,
-                                                                     :inventory_item]) },
+      render json: { repair_item: @add_repair_item.as_json },
         status: :ok
     else
         render json: { errors: @add_repair_item.errors.full_messages },
