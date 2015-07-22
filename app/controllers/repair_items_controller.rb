@@ -31,8 +31,7 @@ class RepairItemsController < ApplicationController
     @add_item_quantity = @repair_item.update(repair_item_quantity: params[:repair_item_quantity])
 
     unless @add_item_quantity.nil? || @add_item_quantity == 0
-      render json: { repair_items: @repair_item.as_json(include: [:repair_order,
-                                                                  :repair_item]) },
+      render json: { repair_items: @repair_item.as_json },
         status: :ok
     else
       render json: { errors: @add_item_quantity.errors.full_messages },
