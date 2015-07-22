@@ -6,7 +6,7 @@ class RepairItemsController < ApplicationController
   def add_repair_item
     @business = current_business_user.id
     @add_repair_item = current_repair_order.repair_items.new(
-                                        inventory_item_id: params[:inventory_item_id],
+                                        inventory_item_id: params[:id],
                                         business_user_id: @business )
     if @add_repair_item.save
       render json: { repair_item: @add_repair_item.as_json(include: [:repair_order,
@@ -104,16 +104,27 @@ class RepairItemsController < ApplicationController
       end
   end
 
-  # def return_item_to_inventory
-  #   @return_item = current_repair_order.repair_items.find(param[:id])
-  #
-  #   @return_quantity =
-  #   @return_item.inventory_item.inventory_count + @return_item.repair_item_quantity
-  #   ri.inventory_item.update(inventory_count: new_quantity)
-  #   ri.update(checked_out: true)
+  def return_item_to_inventory
+  #   @return_item = current_repair_order.repair_items.find(params[:id])
+  #   @inventory_adjustment = @repair_item_quantity - @quantity_returned
   #
   #
-  #   @return_item.update(repair_item_quantity: param[:repair_item_quantity])
+  #   @return_item.repair_item_quantity.update(repair_item_quantity: params[ @inventory_adjustment ])
   #
-  # end
+  #
+  #
+  #
+  #
+  # inventory item count + returned quantity = inventory count update
+
+
+    # @return_quantity =
+    # @return_item.inventory_item.inventory_count + @return_item.repair_item_quantity
+    # ri.inventory_item.update(inventory_count: new_quantity)
+    # ri.update(checked_out: true)
+    #
+    #
+    # @return_item.update(repair_item_quantity: param[:repair_item_quantity])
+
+  end
 end
