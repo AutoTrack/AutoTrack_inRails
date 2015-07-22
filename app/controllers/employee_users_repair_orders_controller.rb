@@ -47,8 +47,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
 # This will remove employee from repair order.
   def repair_order_employees_delete
     @repair_order_employee = current_business_user.employee_users_repair_orders.find(params[:id])
-    # @repair_order_employee = current_business_user.employee_users.where(
-    #                                             :id => params[:employee_number])
+  
     @repair_order_employee.destroy
     if @repair_order_employee
       render json: { repair_order_employees: @repair_order_employee.as_json },
