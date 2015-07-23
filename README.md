@@ -4,14 +4,9 @@
 * Ruby version
 __ruby 2.1.5p273__
 
-* Introduction
-* API Documantation
-** Client
-** Inventory Items
-** Vehicles
-** Repair Orders
 
 ## Introduction
+AutoTrak is an Inventory Management & Cost Recovery solution for collision centers in the automotive repair industry
 
 AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
 Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a responsive and amazing web-design.
@@ -84,7 +79,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `DELETE 'repair_order'`
 
 ### **Repair Items**
-
 * [Add Repair Item](#add-repair-item)
 `POST 'repair_item'`
 * [Remove Repair Item](#remove-repair-item)
@@ -101,7 +95,6 @@ Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a
 `PATCH 'repair_items/checkout'`
 * [Checkout History](#checkout-history)
 `GET 'repair_items/history'`
-
 
 ### **Vehicles**
 * [Request All Vehicles By Business](#request-all-vehicles-by-business)

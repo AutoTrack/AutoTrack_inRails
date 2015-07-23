@@ -13,9 +13,6 @@ class EmployeeUsersRepairOrdersController < ApplicationController
                  vehicle_id: @vehicle_id,
                  employee_user_id: params[:id])
 
-    # @employee_user = current_business_user.employee_users.find(params[:employee_user_id])
-    #
-    # @repair_order.employee_users << @employee_user
 
       if @employee_repair_order.save
         render json: {employee_repair_order: @employee_repair_order.as_json(include: [:repair_order, :vehicle, :client])},
@@ -47,7 +44,7 @@ class EmployeeUsersRepairOrdersController < ApplicationController
 # This will remove employee from repair order.
   def repair_order_employees_delete
     @repair_order_employee = current_business_user.employee_users_repair_orders.find(params[:id])
-  
+
     @repair_order_employee.destroy
     if @repair_order_employee
       render json: { repair_order_employees: @repair_order_employee.as_json },
