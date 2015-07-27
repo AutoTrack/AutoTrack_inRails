@@ -1,6 +1,6 @@
 
 
-# **Welcome to AutoTrak API Documantation**
+# **Welcome to AutoTrak API Documentation**
 * Ruby version
 __ruby 2.1.5p273__
 
@@ -9,7 +9,7 @@ __ruby 2.1.5p273__
 AutoTrak is an Inventory Management & Cost Recovery solution for collision centers in the automotive repair industry
 
 AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
-Indeed, with our Front-End Engineer(https://github.com/mmarcinek) this app has a responsive and amazing web-design.
+With our Front-End Engineer,(https://github.com/mmarcinek), this app has a responsive and amazing web-design.
 
 
 ### **Base URL: https://rocky-hollows-1826.herokuapp.com**
