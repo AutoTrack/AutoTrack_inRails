@@ -6,10 +6,12 @@ __ruby 2.1.5p273__
 
 
 ## Introduction
-AutoTrak is an Inventory Management & Cost Recovery solution for collision centers in the automotive repair industry
+AutoTrak is an Inventory Management & Cost Recovery solution for collision centers in the automotive repair industry.
 
 AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
 With our Front-End Engineer,(https://github.com/mmarcinek), this app has a responsive and amazing web-design.
+
+### **Link To Site: http://development.autotrak.divshot.io/#/**
 
 
 ### **Base URL: https://rocky-hollows-1826.herokuapp.com**
