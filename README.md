@@ -11,6 +11,8 @@ AutoTrak is an Inventory Management & Cost Recovery solution for collision cente
 AutoTrak is currently being developed by two Rails Engineers: https://github.com/juanr2001 and pwood1284.
 With our Front-End Engineer,(https://github.com/mmarcinek), this app has a responsive and amazing web-design.
 
+### **Return To Philip Wood's Website: https://philipcwood.wordpress.com**
+
 ### **Link To Site: http://development.autotrak.divshot.io/#/**
 
 
