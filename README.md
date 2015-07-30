@@ -13,7 +13,7 @@ With our Front-End Engineer,(https://github.com/mmarcinek), this app has a respo
 
 ### **Return To Philip Wood's Website: https://philipcwood.wordpress.com**
 
-### **Link To Site: http://development.autotrak.divshot.io/#/**
+### **Link To AutoTrak site: http://development.autotrak.divshot.io/#/**
 
 
 ### **Base URL: https://rocky-hollows-1826.herokuapp.com**
