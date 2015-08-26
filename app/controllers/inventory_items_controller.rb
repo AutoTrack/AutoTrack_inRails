@@ -52,6 +52,16 @@ class InventoryItemsController < ApplicationController
 
     end
 
+    def inventory_item_by_location_show
+        @inv_item = current_business_user.inventory_items.find_by(inventory_item_location: params[:inventory_item_location])
+
+        render json: {inv_item: @inv_item.as_json},
+        status: :ok
+        # render 'inventory_item_show.json.jbuilder', status: :ok
+
+    end
+
+
     def inventory_item_update
         @inv_item = current_business_user.inventory_items.find(params[:id])
         @inv_item.update(part_number: params[:part_number],
