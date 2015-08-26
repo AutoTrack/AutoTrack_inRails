@@ -71,6 +71,12 @@ class RepairOrdersController < ApplicationController
          status: :ok
   end
 
+  def repair_order_show_by_ro_number
+    @repair_order = current_business_user.repair_orders.find_by(repair_order_number: params[:repair_order_number])
+     render json: { repair_order: @repair_order.as_json },
+         status: :ok
+  end
+
   def repair_order_destroy
     @delete_repair_order = current_business_user.repair_orders.find(params[:id])
     @delete_repair_order.destroy
