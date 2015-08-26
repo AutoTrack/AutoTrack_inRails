@@ -34,6 +34,9 @@ post 'repair_order', to: 'repair_orders#repair_order_create'
 get 'repair_order', to: 'repair_orders#repair_order_show'
 patch 'repair_order', to: 'repair_orders#repair_order_update'
 delete 'repair_order', to: 'repair_orders#repair_order_destroy'
+get 'repair_order/:ro_number', to: 'repair_orders#repair_order_show_by_ro_number'
+
+
 
 #---------------------Repair_Orders_Employee_Users--------------------#
 
