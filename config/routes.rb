@@ -62,7 +62,7 @@ post 'inventory_items', to: 'inventory_items#inventory_items_create'
 get 'inventory_item/:id', to: 'inventory_items#inventory_item_show'
 patch 'inventory_item/:id', to: 'inventory_items#inventory_item_update'
 delete 'inventory_item/:id', to: 'inventory_items#inventory_item_destroy'
-get 'inventory_item_by_location/:id', to: 'inventory_items#inventory_item_by_location_show'
+get 'inventory_item_by_location/:inventory_item_location', to: 'inventory_items#inventory_item_by_location_show'
 
 #----------------------Invoices-Routes---------------------------------#
 get 'invoices_all', to: 'invoices#invoices_all'
