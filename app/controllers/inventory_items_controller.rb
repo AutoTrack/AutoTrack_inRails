@@ -55,7 +55,7 @@ class InventoryItemsController < ApplicationController
     def inventory_item_by_location_show
         @inv_item = current_business_user.inventory_items.find_by(inventory_item_location: params[:inventory_item_location])
         if @inv_item
-          render json: {inv_item: @inv_item.as_json},
+          render json: {inv_item: @inv_item.as_json(include: [:access_token]) },
           status: :ok
         else
           render json: { errors: @inv_item.errors.full_messages },
