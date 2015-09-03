@@ -54,9 +54,13 @@ class InventoryItemsController < ApplicationController
 
     def inventory_item_by_location_show
         @inv_item = current_business_user.inventory_items.find_by(inventory_item_location: params[:inventory_item_location])
-
-        render json: {inv_item: @inv_item.as_json},
-        status: :ok
+        if @inv_item
+          render json: {inv_item: @inv_item.as_json},
+          status: :ok
+        else
+          render json: { errors: @inv_item.errors.full_messages },
+          status: :unprocessable_entity
+        end
         # render 'inventory_item_show.json.jbuilder', status: :ok
 
     end
