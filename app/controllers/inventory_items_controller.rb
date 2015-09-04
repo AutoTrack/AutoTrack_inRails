@@ -53,7 +53,10 @@ class InventoryItemsController < ApplicationController
     end
 
     def inventory_item_by_location_show
-        @inv_item = current_business_user.inventory_items.find_by(inventory_item_location: params[:inventory_item_location])
+        @inv_item = current_business_user.inventory_items.find_by(
+                                      inventory_item_location: params[:inventory_item_location],
+                                      business_user_id: params[:business_user_id]
+                                                                  )
         if @inv_item
           render json: {inv_item: @inv_item.as_json},
           status: :ok
