@@ -7,7 +7,7 @@ class RepairItemsController < ApplicationController
     @business = current_business_user.id
     @add_repair_item = current_repair_order.repair_items.new(
                                         inventory_item_id: params[:id],
-                                        business_user_id: @business )
+                                        business_user_id: params[:business_user_id] )
     if @add_repair_item.save
       render json: { repair_item: @add_repair_item.as_json },
         status: :ok
