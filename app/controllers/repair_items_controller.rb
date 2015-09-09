@@ -49,7 +49,7 @@ class RepairItemsController < ApplicationController
   end
 
   def show_repair_item
-    @repair_item = current_repair_order.repair_items.last
+    @repair_item = current_repair_order.repair_items.find(params[:id])
       render json: { repair_item: @repair_item.as_json(include: [:repair_order,
                                                                 :inventory_item]) },
       status: :ok
