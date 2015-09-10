@@ -22,7 +22,7 @@ class RepairItemsController < ApplicationController
     @repair_item = current_repair_order.repair_items.find(params[:id])
     @repair_item.destroy
       render json: { message: "Repair Item #{@repair_item.id} has been removed from Repair Order #{@repair_order_number}" },
-      status: :gone
+      status: :ok
   end
 
   def add_repair_item_quantity
