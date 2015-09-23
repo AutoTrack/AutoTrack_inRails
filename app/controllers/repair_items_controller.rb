@@ -103,8 +103,14 @@ class RepairItemsController < ApplicationController
   end
 
   # def return_item_to_inventory
-  #   @return_item = current_repair_order.repair_items.find(params[:id])
-  #   @repair_item_quantity = @return_item.repair_item_quantity
+  #   @return_repair_item = current_repair_order.repair_items.find(params[:id])
+  #   @return_inventory_item = current_repair_order.inventory_item.find(params[:id])
+
+  #   @return_repair_item.update(inventory_item_quantity: params[:inventory_item_quantity])
+
+  #   @return_inventory_item.update(repair_item_quantity: params[:repair_item_quantity])
+  #
+
   #   @quantity_returned = params[ :repair_item_quantity ]
   #   @inventory_adjustment = @repair_item_quantity - @quantity_returned
   #
